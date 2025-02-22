@@ -1,0 +1,36 @@
+# Ignore unnecessary system files
+.DS_Store
+Thumbs.db
+
+# Ignore node dependencies
+node_modules/
+npm-debug.log
+
+# Ignore WordPress core files (if not developing WP itself)
+wp-admin/
+wp-includes/
+
+# Ignore WordPress config files (avoid exposing database credentials)
+wp-config.php
+wp-config-sample.php
+
+# Ignore uploaded content (optional: only track code, not media)
+wp-content/uploads/
+
+# Ignore plugin and cache files
+wp-content/cache/
+wp-content/advanced-cache.php
+wp-content/backup-db/
+wp-content/backups/
+wp-content/mu-plugins/
+wp-content/plugins/
+
+# Ignore build artifacts
+*.log
+*.bak
+*.swp
+*.swo
+*.sql
+*.zip
+*.tar.gz
+*.env
