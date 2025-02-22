@@ -14,44 +14,37 @@
 
 get_header();
 ?>
-
-	<main id="primary" class="site-main">
-
-		<?php
-		if ( have_posts() ) :
-
-			if ( is_home() && ! is_front_page() ) :
-				?>
-				<header>
-					<h1 class="page-title screen-reader-text"><?php single_post_title(); ?></h1>
-				</header>
-				<?php
-			endif;
-
-			/* Start the Loop */
-			while ( have_posts() ) :
-				the_post();
-
-				/*
-				 * Include the Post-Type-specific template for the content.
-				 * If you want to override this in a child theme, then include a file
-				 * called content-___.php (where ___ is the Post Type name) and that will be used instead.
-				 */
-				get_template_part( 'template-parts/content', get_post_type() );
-
-			endwhile;
-
-			the_posts_navigation();
-
-		else :
-
-			get_template_part( 'template-parts/content', 'none' );
-
-		endif;
-		?>
-
-	</main><!-- #main -->
+  <section class="hero-section">
+    <div class="lottie">
+      <div class="lottie-hero" data-w-id="47cac669-4e2e-8e9f-d907-c742248ea198" data-animation-type="lottie" data-src="wp-content/themes/allmyhr-mmxxv/documents/64b6c16282020c34caa0f1e1_lottie-third.lottie" data-loop="1" data-direction="1" data-autoplay="1" data-is-ix2-target="0" data-renderer="svg" data-default-duration="15.958333333333334" data-duration="0"></div>
+      <div class="overlay-linear"></div>
+      <div class="overlay-radial"></div>
+    </div>
+    <div class="container h-content">
+      <h1 data-w-id="5ff76c14-9535-a666-9770-4405304ca541" style="opacity:0"><span class="highlight txt">Streamline </span>Your Company’s <br>HR Process</h1>
+      <p data-w-id="280c230b-7b91-4e93-726f-9132bd035b07" style="opacity:0">Providing the most cost-effective HR Solutions and best practices for recruiting, training, motivation &amp; retention for small &amp; mid-sized employers. <a href="#"><span class="highlight txt">Starting at $99 Per Month.</span></a>
+      </p>
+      <a href="#" class="btn w-button">Sign Up Now</a>
+      <a href="#" class="btn clear w-button">Get My Demo</a>
+    </div>
+	<?php get_template_part('template-parts/content', 'trusted'); ?>
+  </section>
+  	<section class="content-section bg-dkblue">
+  <?php get_template_part('template-parts/content', 'benefits-icons'); ?>
+  </section>
+  <section class="content-section bg-dkblue bg-gradientblack">
+  	<div class="container features">
+		<?php get_template_part('template-parts/content', 'benefits-jumbo'); ?>
+		<?php get_template_part('template-parts/content', 'benefits-dashboard'); ?>
+		<?php get_template_part('template-parts/content', 'testimonials'); ?>
+	</div>
+  </section>
+  <section class="content-section bg-white">
+	<?php get_template_part('template-parts/content', 'faqs'); ?>
+	<?php get_template_part('template-parts/content', 'quoteform'); ?>
+  </section>
+  
 
 <?php
-get_sidebar();
+/*get_sidebar();*/
 get_footer();

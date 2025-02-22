@@ -1,11 +1,11 @@
 /*!
 Theme Name: allmyhr-mmxxv
-Theme URI: http://underscores.me/
-Author: Underscores.me
-Author URI: http://underscores.me/
-Description: Description
+Theme URI: https://thecommonwealthcreative.com
+Author: Matthew Thomas Small
+Author URI: https://thecommonwealthcreative.com
+Description: AllMyHR eCommerce WordPress Theme
 Version: 1.0.0
-Tested up to: 5.4
+Tested up to: 6.7
 Requires PHP: 5.6
 License: GNU General Public License v2 or later
 License URI: LICENSE
@@ -91,11 +91,11 @@ main {
 /**
  * Correct the font size and margin on `h1` elements within `section` and
  * `article` contexts in Chrome, Firefox, and Safari.
- */
+
 h1 {
 	font-size: 2em;
 	margin: 0.67em 0;
-}
+} */
 
 /* Grouping content
 	 ========================================================================== */
@@ -966,4 +966,120 @@ textarea {
 	margin-left: auto;
 	margin-right: auto;
 	margin-bottom: 1.5em;
+}
+
+/* XXMMV */
+
+body {
+	color: #252525;
+	font-family: Nunito, sans-serif;
+	font-size: 20px;
+	line-height: 2rem;
+  }
+
+  /* Pages */
+
+  .page-template-default .site-main, .product-template-default .site-main, .single .site-main {
+	padding-top:100px;
+  }
+
+  /* Navigations */
+
+  .site-logo {
+    height: 40px!important;
+}
+
+  .navbar a:hover {
+	color: #fff;
+  }
+
+
+  .nav-menu.w-nav-menu ul, .mmxxv-nav {
+	list-style: none;
+	display: flex;
+	padding: 0px;
+	margin: 0px;
+  }
+
+  .nav-menu {
+    color: #fff;
+    display: flex;
+    justify-content: center; /* Centers items horizontally */
+    align-items: center;
+    height: 40px;
+}
+
+/* Buttons */
+
+.btn, .woocommerce div.product form.cart .button, .button, .woocommerce ul.products li.product .button, .wc-block-grid__product-add-to-cart.wp-block-button .wp-block-button__link {
+	color: #fff;
+	letter-spacing: -.5px;
+	background-color: #0495c9;
+	background-image: radial-gradient(circle at 0 0, #fbcf18 5%, #e24a41 55%, #007bff 95%);
+	border: 1px solid #040631;
+	border-radius: 8px;
+	justify-content: center;
+	align-items: center;
+	margin-top: 20px;
+	margin-left: 10px;
+	margin-right: 10px;
+	padding: 8px 18px;
+	font-size: 18px;
+	font-weight: 700;
+	line-height: 1.5rem;
+	transition: all .5s;
+	display: inline-flex;
+  }
+
+  .btn:hover, .woocommerce div.product form.cart .button:hover, .button:hover, .woocommerce ul.products li.product .button:hover, .wc-block-grid__product-add-to-cart.wp-block-button:hover .wp-block-button__link:hover {
+	border-color: #fff;
+	transform: translate(0, -2px);
+	color: #fff;
+  }
+
+
+  @media screen and (max-width: 991px) {
+  
+	.nav-menu {
+		color: #fff;
+		display: flex;
+		flex-direction: column; /* Stack items vertically */
+		align-items: center; /* Center items horizontally */
+		justify-content: center; /* Center items vertically */
+		height: 100vh; /* Full viewport height for centering */
+	}
+	
+	/* Ensure the menu container inside nav stacks items vertically */
+	.menu {
+		display: flex;
+		flex-direction: column; /* Stack list items vertically */
+		align-items: center; /* Center horizontally */
+		width: 100%;
+	}
+	
+	/* Ensure the <ul> inside .menu stacks items properly */
+	.menu ul, .mmxxv-nav  {
+		flex-direction: column; /* Force vertical stacking */
+		align-items: center; /* Center the menu items */
+	}
+	
+	/* Ensure individual <li> items don't force a horizontal layout */
+	.menu li, .mmxxv-nav li {
+		width: 100%;
+		text-align: center;
+	}
+	
+	/* Ensure links behave as block elements */
+	.nav-link {
+		width: 100%;
+		text-align: center;
+		padding: 10px 15px;
+	}
+
+	.nav-link.btn {
+		max-width: 300px;
+		margin: auto;
+	}
+	
+	
 }

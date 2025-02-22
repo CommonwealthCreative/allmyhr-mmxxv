@@ -11,12 +11,32 @@
 
 ?>
 <!doctype html>
-<html <?php language_attributes(); ?>>
+<html <?php language_attributes(); ?> 
+
+<?php 
+
+/* Indexes */ if ( is_home()) { echo 'data-wf-page="67b4f78ed1034a4efbd4393f"'; } 
+              if ( is_search() ) { echo 'data-wf-page="67741e41160207547be4c674"'; } 
+      
+                  else { echo 'data-wf-page="67b77370aa4177e837b7eaf4"';}
+      
+      ?> 
+
+
+
+
+data-wf-site="67b4f78dd1034a4efbd43935">
+
+
 <head>
 	<meta charset="<?php bloginfo( 'charset' ); ?>">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="profile" href="https://gmpg.org/xfn/11">
-
+	<script src="https://ajax.googleapis.com/ajax/libs/webfont/1.6.26/webfont.js" type="text/javascript"></script>
+  <script type="text/javascript">WebFont.load({  google: {    families: ["Inter:100,300,regular,500,700,900,100italic,300italic,italic,500italic,700italic,900italic","Nunito:200,regular,700,900,200italic,italic,700italic,900italic"]  }});</script>
+  <script type="text/javascript">!function(o,c){var n=c.documentElement,t=" w-mod-";n.className+=t+"js",("ontouchstart"in o||o.DocumentTouch&&c instanceof DocumentTouch)&&(n.className+=t+"touch")}(window,document);</script>
+  <link href="images/favicon.ico" rel="shortcut icon" type="image/x-icon">
+  <link href="images/webclip.png" rel="apple-touch-icon">
 	<?php wp_head(); ?>
 </head>
 
@@ -26,34 +46,32 @@
 	<a class="skip-link screen-reader-text" href="#primary"><?php esc_html_e( 'Skip to content', 'allmyhr-mmxxv' ); ?></a>
 
 	<header id="masthead" class="site-header">
-		<div class="site-branding">
-			<?php
-			the_custom_logo();
-			if ( is_front_page() && is_home() ) :
-				?>
-				<h1 class="site-title"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></h1>
+	<div data-animation="default" data-collapse="medium" data-duration="400" data-easing="ease" data-easing2="ease" data-doc-height="1" role="banner" class="navbar w-nav">
+    <div class="menu-button w-nav-button">
+      <div class="icon w-icon-nav-menu"></div>
+    </div>
+    <div class="container nav">
+      <a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home" class="site-info w-nav-brand"><img src="/wp-content/themes/allmyhr-mmxxv/images/allmyhr-logo.svg" loading="lazy" alt="" class="site-logo">
+        <div class="site-title">AllMyHR</div>
+      </a>
+      <a href="#" class="mobile-cart w-nav-link">( 0 ) <span class="fa"></span></a>
+      <nav role="navigation" class="nav-menu w-nav-menu">
 				<?php
-			else :
-				?>
-				<p class="site-title"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></p>
-				<?php
-			endif;
-			$allmyhr_mmxxv_description = get_bloginfo( 'description', 'display' );
-			if ( $allmyhr_mmxxv_description || is_customize_preview() ) :
-				?>
-				<p class="site-description"><?php echo $allmyhr_mmxxv_description; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?></p>
-			<?php endif; ?>
-		</div><!-- .site-branding -->
-
-		<nav id="site-navigation" class="main-navigation">
-			<button class="menu-toggle" aria-controls="primary-menu" aria-expanded="false"><?php esc_html_e( 'Primary Menu', 'allmyhr-mmxxv' ); ?></button>
-			<?php
 			wp_nav_menu(
 				array(
-					'theme_location' => 'menu-1',
-					'menu_id'        => 'primary-menu',
+					'theme_location'  => '',
+					'menu_id'         => '',
+					'container'       => 'div', 
+					'container_class' => 'mmxxv-nav', // Adds a class to the wrapper div
+					'items_wrap'      => '%3$s', // Removes the <ul> wrapper
+					'link_before'     => '<span class="nav-link w-nav-link">',
+					'link_after'      => '</span>',
 				)
 			);
 			?>
-		</nav><!-- #site-navigation -->
+        <a href="#" class="nav-link cart w-nav-link">( 0 ) <span class="fa"></span></a>
+        <a href="#" class="nav-link btn w-nav-link">Get Started</a>
+      </nav>
+    </div>
+  </div>
 	</header><!-- #masthead -->

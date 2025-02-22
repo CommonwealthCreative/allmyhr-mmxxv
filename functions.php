@@ -134,20 +134,44 @@ function allmyhr_mmxxv_widgets_init() {
 }
 add_action( 'widgets_init', 'allmyhr_mmxxv_widgets_init' );
 
+
+function load_google_jquery() {
+    if (!is_admin()) { // Don't override jQuery in the WordPress admin panel
+        wp_deregister_script('jquery'); // Remove default WP jQuery
+        wp_register_script('jquery', 'https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js', array(), '3.6.4', true);
+        wp_enqueue_script('jquery'); // Load Google's jQuery
+    }
+}
+add_action('wp_enqueue_scripts', 'load_google_jquery');
+
+
 /**
  * Enqueue scripts and styles.
  */
 function allmyhr_mmxxv_scripts() {
-	wp_enqueue_style( 'allmyhr-mmxxv-style', get_stylesheet_uri(), array(), _S_VERSION );
-	wp_style_add_data( 'allmyhr-mmxxv-style', 'rtl', 'replace' );
+    // Enqueue Normalize first (base styles)
+    wp_enqueue_style('normalize-styles', get_template_directory_uri() . '/css/normalize.css', array(), '1.0.0', 'all');
 
-	wp_enqueue_script( 'allmyhr-mmxxv-navigation', get_template_directory_uri() . '/js/navigation.js', array(), _S_VERSION, true );
+    // Enqueue Webflow styles next
+    wp_enqueue_style('webflow-styles', get_template_directory_uri() . '/css/webflow.css', array('normalize-styles'), '1.0.0', 'all');
 
-	if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
-		wp_enqueue_script( 'comment-reply' );
-	}
+    // Enqueue all-my-hr.webflow.css LAST to override Webflow styles
+    wp_enqueue_style('mmxxv-styles', get_template_directory_uri() . '/css/all-my-hr.webflow.css', array('webflow-styles'), '1.0.0', 'all');
+
+    // Enqueue theme's primary stylesheet last (if needed)
+    wp_enqueue_style('allmyhr-mmxxv-style', get_stylesheet_uri(), array(), _S_VERSION);
+    wp_style_add_data('allmyhr-mmxxv-style', 'rtl', 'replace');
+
+    // Enqueue scripts
+    wp_enqueue_script('allmyhr-mmxxv-navigation', get_template_directory_uri() . '/js/navigation.js', array(), _S_VERSION, true);
+    wp_enqueue_script('webflow-js', get_template_directory_uri() . '/js/webflow.js', array('jquery'), '1.0.0', true);
+
+    // Enqueue comment-reply script if needed
+    if (is_singular() && comments_open() && get_option('thread_comments')) {
+        wp_enqueue_script('comment-reply');
+    }
 }
-add_action( 'wp_enqueue_scripts', 'allmyhr_mmxxv_scripts' );
+add_action('wp_enqueue_scripts', 'allmyhr_mmxxv_scripts');
 
 /**
  * Implement the Custom Header feature.

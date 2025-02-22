@@ -11,8 +11,7 @@ get_header();
 ?>
 
 	<main id="primary" class="site-main">
-		<section class="content-section">
-		<div class="container p-content">
+
 		<?php
 		while ( have_posts() ) :
 			the_post();
@@ -33,10 +32,9 @@ get_header();
 
 		endwhile; // End of the loop.
 		?>
-		<img src="images/hrcertified.png" loading="lazy" style="opacity:0" data-w-id="a0234e13-ae73-f5e2-dabd-2961d7fd0666" alt="">
-		</div>
-		</section>
+
 	</main><!-- #main -->
 
 <?php
+get_sidebar();
 get_footer();
