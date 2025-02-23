@@ -977,25 +977,41 @@ body {
 	line-height: 2rem;
   }
 
+
+ /* Corrections */
+ 
+ 	.phrases, .p-left {
+		text-align: left;
+	}
+
+	.w-nav-link.w--current {
+		color: inherit;
+	}
+
   /* Pages */
 
-  .page-template-default .site-main, .product-template-default .site-main, .single .site-main {
-	padding-top:100px;
+  .page-template-default .site-main, .product-template-default .site-main, .single .site-main, .page-template .site-main {
+	padding-top:50px;
+  }
+
+  .form-container {
+	align-items: center;
+	padding: 20px
   }
 
   /* Navigations */
 
-  .site-logo {
-    height: 40px!important;
-}
+	.site-logo {
+		height: 40px!important;
+	}
 
 	.site-info:visited {
 		color: #fff;
 	}
 
-  .navbar a:hover {
-	color: #fff;
-  }
+	.navbar a:hover, .site-info:hover {
+		color: #fff;
+	}
 
 
   .nav-menu.w-nav-menu ul, .mmxxv-nav {
@@ -1055,7 +1071,42 @@ a:visited {
 	color: #fff;
   }
 
+
+  /* Footer Widgets */
+
+  .footer-widget {
+    font-family: Inter, sans-serif;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 1.5rem;
+    letter-spacing: 0;
+    text-decoration: none;
+}
+
+.footer-widget .wp-block-page-list, .footer-widget .wp-block-latest-posts__list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.footer-widget .wp-block-pages-list__item, .footer-widget .wp-block-latest-posts__post-title {
+    line-height: 2rem;
+}
+
+.footer-widget .wp-block-pages-list__item__link, .footer-widget a.wp-block-latest-posts__post-title, .w-layout-cell.footer-col a {
+    text-decoration: none;
+    color: inherit;
+}
+
+.footer-widget .wp-block-pages-list__item__link:hover, .footer-widget a.wp-block-latest-posts__post-title:hover, .w-layout-cell.footer-col a:hover {
+    color: #b3b9bb;
+}
+
   /* WooCommerce */
+
+  .wc-block-components-notice-banner.wc-block-components-notice-snackbar, .wc-block-components-notice-snackbar-list .wc-block-components-notice-banner {
+	z-index: 99;
+  }
 
   .woocommerce:where(body:not(.woocommerce-uses-block-theme)) div.product p.price, .woocommerce:where(body:not(.woocommerce-uses-block-theme)) div.product span.price {
 	color: #252525;
@@ -1074,7 +1125,7 @@ a:visited {
 		min-width: 100%;
 	}
 
-	.card.products .headlineicon, 	.card .headlineicon {
+	.card.products .headlineicon, .card .headlineicon {
 		max-width: 75px;
 		border-radius: 8px;
 	}
@@ -1091,6 +1142,13 @@ a:visited {
     border-radius: 8px;
 	}
 
+	 .input-text.qty.text {
+	padding: 8px;
+    position: relative;
+    top: 20px;
+    border-radius: 8px;
+	}
+
 	a.reset_variations {
 		text-decoration: none;
 		color: #252525;
@@ -1099,49 +1157,83 @@ a:visited {
 		position: relative;
 		top: -2px;
 	}
+
+	.bg-highlight.highlight {
+		height: 86%;
+	}
+
+	.bg-glow.highlight {
+		height: 89%;
+	}
+
+	.limited-subscription-notice.notice {
+		color: red
+	}
   @media screen and (max-width: 991px) {
+
+	.mobile-cart .nav-link.cart.w-nav-link  {
+		justify-content: flex-start;
+		align-items: center;
+		margin-right: 0;
+		padding-top: 0;
+		padding-bottom: 0;
+		display: flex;
+		position: static;
+		color: #fff;
+		font-size: 12px;
+		line-height: 12px;
+		max-height: 30px;
+	  }
   
 	.nav-menu {
 		color: #fff;
-		display: flex;
 		flex-direction: column;
-		align-items: center; 
-		justify-content: center; 
-		height: auto; 
+		align-items: stretch;
+		justify-content: center;
+		height: auto;
+		width: 100%;
+		padding-top: 20px;
 	}
-
+	
 	.menu {
 		display: flex;
-		flex-direction: column; 
-		align-items: center;
+		flex-direction: column;
+		align-items: stretch;
 		width: 100%;
 	}
-
-	.menu ul, .mmxxv-nav  {
-		flex-direction: column; 
-		align-items: center; 
+	
+	.menu ul, .mmxxv-nav, .nav-menu.w-nav-menu ul, .mmxxv-nav {
+		display: flex;
+		flex-direction: column;
+		align-items: stretch;
+		width: 100%;
 	}
-nav-link btn w-nav-link w--nav-link-open
+	
 	.menu li, .mmxxv-nav li {
 		width: 100%;
 		text-align: center;
 		border-bottom: 1px solid #ebebeb;
-		margin: 5px auto; 
+		margin: 10px 0;
 	}
-
+	
 	.mmxxv-nav li a {
+		display: block;
+		width: 100%;
 		text-decoration: none;
 	}
 	
 	.nav-link {
+		display: block;
 		width: 100%;
 		text-align: center;
 		padding: 10px 15px;
 	}
-
+	
 	.nav-link.btn {
 		max-width: 200px;
 		margin: 20px auto;
+		display: flex;
+		justify-content: center;
 	}
 	
 	

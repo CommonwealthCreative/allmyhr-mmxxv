@@ -22,10 +22,10 @@ get_header();
     </div>
     <div class="container h-content">
       <h1 data-w-id="5ff76c14-9535-a666-9770-4405304ca541" style="opacity:0"><span class="highlight txt">Streamline </span>Your Company’s <br>HR Process</h1>
-      <p data-w-id="280c230b-7b91-4e93-726f-9132bd035b07" style="opacity:0">Providing the most cost-effective HR Solutions and best practices for recruiting, training, motivation &amp; retention for small &amp; mid-sized employers. <a href="#"><span class="highlight txt">Starting at $99 Per Month.</span></a>
+      <p data-w-id="280c230b-7b91-4e93-726f-9132bd035b07" style="opacity:0">Providing the most cost-effective HR Solutions and best practices for recruiting, training, motivation &amp; retention for small &amp; mid-sized employers. <a href="/services/allmyhr-monthly-subscription/"><span class="highlight txt">Starting at $99 Per Month.</span></a>
       </p>
-      <a href="#" class="btn w-button">Sign Up Now</a>
-      <a href="#" class="btn clear w-button">Get My Demo</a>
+      <a href="/services/" class="btn w-button">Sign Up Now</a>
+      <a href="/contact-allmyhr/" class="btn clear w-button">Get My Demo</a>
     </div>
 	<?php get_template_part('template-parts/content', 'trusted'); ?>
   </section>

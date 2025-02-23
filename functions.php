@@ -210,6 +210,33 @@ function mmxxv_add_woocommerce_support() {
 add_action( 'after_setup_theme', 'mmxxv_add_woocommerce_support' );
 
 /**
+ * MMXVV Footer Widgets
+ */
+
+ function mmxxv_register_footer_widgets() {
+    register_sidebar(array(
+        'name'          => esc_html__('Footer Widget Left (Company)', 'allmyhr-mmxxv'),
+        'id'            => 'footer-widget-left',
+        'description'   => esc_html__('Add widgets here for the left footer section.', 'allmyhr-mmxxv'),
+        'before_widget' => '<div class="footer-widget footer-widget-left">',
+        'after_widget'  => '</div>',
+        'before_title'  => '<h3 class="widget-title">',
+        'after_title'   => '</h3>',
+    ));
+
+    register_sidebar(array(
+        'name'          => esc_html__('Footer Widget Right (Quick Links)', 'allmyhr-mmxxv'),
+        'id'            => 'footer-widget-right',
+        'description'   => esc_html__('Add widgets here for the right footer section.', 'allmyhr-mmxxv'),
+        'before_widget' => '<div class="footer-widget footer-widget-right">',
+        'after_widget'  => '</div>',
+        'before_title'  => '<h3 class="widget-title">',
+        'after_title'   => '</h3>',
+    ));
+}
+add_action('widgets_init', 'mmxxv_register_footer_widgets');
+
+/**
  * Call a product anywhere by ID	
  */
 function mmxxv_product_tab_card( $product_id ) {
@@ -257,22 +284,23 @@ function mmxxv_product_tab_card( $product_id ) {
             
             // Crumb text.
             echo '<div class="crumb">';
-                echo 'Thousands of templates, tools, checklists, and policies to make your job easier. Resources include FLSA classification, performance management, salary benchmarking, interactive audits, job description builder, and more.';
+                echo  '<p>AllMyHR provides businesses with a complete HR compliance and management solution, combining expert guidance, up-to-date labor law resources, and essential HR tools in one platform. It helps organizations streamline HR processes, reduce compliance risks, and stay informed with the latest regulatory updates.</p>';
             echo '</div>';
             
             // HR section with bullet items.
             echo '<div class="hr">';
                 echo '<div class="w-layout-hflex bullet">';
                     echo '<div class="crumb"><span class="fa highlight blu txt"></span></div>';
-                    echo '<h4 class="crumb">All documents have been posted in easy-to-understand language</h4>';
+
+                    echo '<h4 class="crumb"><b>All-in-One HR Management Platform</b> – Streamline employee management, policies, and documentation with a centralized, user-friendly system.</h4>';
                 echo '</div>';
                 echo '<div class="w-layout-hflex bullet">';
                     echo '<div class="crumb"><span class="fa highlight blu txt"></span></div>';
-                    echo '<h4 class="crumb">Your own Private Compliance Portal</h4>';
+                    echo '<h4 class="crumb"><b>Comprehensive HR Compliance & Support</b> – Access expert guidance, labor law updates, and compliance tools to mitigate risks and ensure regulatory adherence.</h4>';
                 echo '</div>';
                 echo '<div class="w-layout-hflex bullet">';
                     echo '<div class="crumb"><span class="fa highlight blu txt"></span></div>';
-                    echo '<h4 class="crumb">No more wasted time Googling for answers to critical issues</h4>';
+                    echo '<h4 class="crumb"><b>Continuous Updates & Expert Insights</b> – Stay ahead of HR regulations with real-time updates, training resources, and expert-backed insights.</h4>';
                 echo '</div>';
             echo '</div>';
             
@@ -337,10 +365,15 @@ add_action( 'mmxxv_product_tab_card_hook', 'mmxxv_product_tab_card', 10, 1 );
  * Woocommerce Send to Cart
  */
 
-function mmxxv_redirect_to_checkout_on_add_to_cart( $url ) {
-    return wc_get_checkout_url(); // Redirects the user to the checkout page
+ function mmxxv_redirect_to_checkout_on_add_to_cart( $url ) {
+    if ( WC()->cart ) {
+        remove_filter('woocommerce_add_to_cart_redirect', '__return_false'); // Prevent WooCommerce from overriding redirect behavior
+        return wc_get_checkout_url(); // Redirect to checkout while keeping cart items
+    }
+    return $url;
 }
 add_filter( 'woocommerce_add_to_cart_redirect', 'mmxxv_redirect_to_checkout_on_add_to_cart' );
+
 
 /**
  * Woocommerce Cart Count
@@ -357,4 +390,5 @@ function mmxxv_cart_item_count() {
             ( ' . esc_html( $cart_count ) . ' ) <span class="fa"></span>
           </a>';
 }
+
 

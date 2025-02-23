@@ -11,7 +11,7 @@
 
 <div class="trusted-container">
       <div class="center">
-        <div class="crumb highlight blu txt">Trusted by thousands for complete HR solutions.</div>
+        <div class="crumb highlight blu txt"><span class="fa"></span> The Trusted HR Solution by U.S.A Corporations.</div>
       </div>
       <div class="w-layout-hflex carousel-container">
         <div class="companies-container">

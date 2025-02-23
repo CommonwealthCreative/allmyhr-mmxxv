@@ -64,14 +64,14 @@ get_header();
         </div>
       </div>
     </div>
-    <a href="#" class="highlight txt">More Than 500 Employees? Ask Us For A Custom Quote.</a>
+    <a href="#quote" class="highlight txt">More Than 500 Employees? Ask Us For A Custom Quote.</a>
   </section>
   <section id="ondemand" class="content-section bg-dkblue bg-gradientblack">
     <div class="container features">
       <div data-w-id="9d2d1334-04f7-1727-2bde-ab46a553ce10" style="opacity:0" class="container h-content">
         <h2 class="center"><span class="highlight txt">On-Demand HR Services</span><br>We offer straightforward, flexible pricing tailored to your business's growing HR needs.</h2>
-        <a href="#" class="btn wht w-button">Schedule A Demo</a>
-        <a href="#" class="btn clear w-button">Contact Us Today</a>
+        <a href="#quote" class="btn wht w-button">Schedule A Demo</a>
+        <a href="/contact-allmyhr/" class="btn clear w-button">Contact Us Today</a>
       </div>
       <div id="w-node-_728995ad-174f-d62c-3c5c-78d5b987a086-b987a086" class="w-layout-layout wf-layout-layout">
       <?php

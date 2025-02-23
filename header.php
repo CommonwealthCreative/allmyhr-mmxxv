@@ -46,25 +46,26 @@
       <a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home" class="site-info w-nav-brand"><img src="/wp-content/themes/allmyhr-mmxxv/images/allmyhr-logo.svg" loading="lazy" alt="" class="site-logo">
         <div class="site-title">AllMyHR</div>
       </a>
-      <a href="#" class="mobile-cart w-nav-link">( 0 ) <span class="fa"></span></a>
+      <div class="mobile-cart w-nav-link"><?php mmxxv_cart_item_count(); ?></div>
       <nav role="navigation" class="nav-menu w-nav-menu">
 				<?php
-			wp_nav_menu(
-				array(
-					'theme_location'  => '',
-					'menu_id'         => '',
-					'container'       => 'div', 
-					'container_class' => 'mmxxv-nav', // Adds a class to the wrapper div
-					'items_wrap'      => '%3$s', // Removes the <ul> wrapper
-					'link_before'     => '<span class="nav-link w-nav-link">',
-					'link_after'      => '</span>',
-				)
-			);
+				wp_nav_menu(
+					array(
+						'theme_location'  => 'menu-1',
+						'menu_id'         => 'primary-menu',
+						'container'       => 'div', 
+						'container_class' => 'mmxxv-nav',
+						'items_wrap'      => '<ul class="nav-list">%3$s</ul>',
+						'link_before'     => '<span class="nav-link w-nav-link">',
+						'link_after'      => '</span>',
+					)
+				);
+
 			?>
 
 		<?php mmxxv_cart_item_count(); ?>
 
-        <a href="#" class="nav-link btn w-nav-link">Get Started</a>
+        <a href="/services/" class="nav-link btn w-nav-link">Get Started</a>
       </nav>
     </div>
   </div>
