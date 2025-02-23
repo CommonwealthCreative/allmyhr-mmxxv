@@ -46,7 +46,7 @@
           <div class="w-layout-cell form-container"></div>
         </div>
         <div class="lottie">
-          <div class="lottie-hero" data-w-id="3f2af9d4-41e4-7039-0f14-f45ee77d02ac" data-animation-type="lottie" data-src="wp-content/themes/allmyhr-mmxxv/documents/64b6c16282020c34caa0f1e1_lottie-third.lottie" data-loop="1" data-direction="1" data-autoplay="1" data-is-ix2-target="0" data-renderer="svg" data-default-duration="15.958333333333334" data-duration="0"></div>
+          <div class="lottie-hero" data-w-id="3f2af9d4-41e4-7039-0f14-f45ee77d02ac" data-animation-type="lottie" data-src="/wp-content/themes/allmyhr-mmxxv/documents/64b6c16282020c34caa0f1e1_lottie-third.lottie" data-loop="1" data-direction="1" data-autoplay="1" data-is-ix2-target="0" data-renderer="svg" data-default-duration="15.958333333333334" data-duration="0"></div>
           <div class="overlay-linear"></div>
           <div id="quote" class="overlay-radial"></div>
         </div>

@@ -989,6 +989,10 @@ body {
     height: 40px!important;
 }
 
+	.site-info:visited {
+		color: #fff;
+	}
+
   .navbar a:hover {
 	color: #fff;
   }
@@ -1009,9 +1013,22 @@ body {
     height: 40px;
 }
 
-/* Buttons */
+/* Buttons + Links */
 
-.btn, .woocommerce div.product form.cart .button, .button, .woocommerce ul.products li.product .button, .wc-block-grid__product-add-to-cart.wp-block-button .wp-block-button__link {
+.footer-link a {
+	color:#b3b9bb;
+	text-decoration: none;
+}
+
+.footer-link a:hover {
+	color: #fff;
+}
+
+a:visited {
+	color: inherit;
+}
+
+.btn, .woocommerce div.product form.cart .button, .button, .woocommerce ul.products li.product .button, .wc-block-grid__product-add-to-cart.wp-block-button .wp-block-button__link, .card-tab-variations .single_add_to_cart_button, .wp-element-button {
 	color: #fff;
 	letter-spacing: -.5px;
 	background-color: #0495c9;
@@ -1029,47 +1046,93 @@ body {
 	line-height: 1.5rem;
 	transition: all .5s;
 	display: inline-flex;
+	text-decoration: none;
   }
 
-  .btn:hover, .woocommerce div.product form.cart .button:hover, .button:hover, .woocommerce ul.products li.product .button:hover, .wc-block-grid__product-add-to-cart.wp-block-button:hover .wp-block-button__link:hover {
+  .btn:hover, .woocommerce div.product form.cart .button:hover, .button:hover, .woocommerce ul.products li.product .button:hover, .wc-block-grid__product-add-to-cart.wp-block-button:hover .wp-block-button__link:hover, button.single_add_to_cart_button button.alt {
 	border-color: #fff;
 	transform: translate(0, -2px);
 	color: #fff;
   }
 
+  /* WooCommerce */
 
+  .woocommerce:where(body:not(.woocommerce-uses-block-theme)) div.product p.price, .woocommerce:where(body:not(.woocommerce-uses-block-theme)) div.product span.price {
+	color: #252525;
+  }
+  
+	.card-tab-variations {
+		min-height: 200px;
+	}
+
+  	.card-tab-title {
+		display: flex!important; 
+		text-decoration: none;
+	}
+
+	.card.products {
+		min-width: 100%;
+	}
+
+	.card.products .headlineicon, 	.card .headlineicon {
+		max-width: 75px;
+		border-radius: 8px;
+	}
+
+	.card-tab-variations .woocommerce-variation-price {
+		display: none;
+	}
+	.card-tab-variations .label {width: 120px;}
+
+	select#employees {
+		padding: 8px;
+    position: relative;
+    top: -3px;
+    border-radius: 8px;
+	}
+
+	a.reset_variations {
+		text-decoration: none;
+		color: #252525;
+		margin-left: 20px;
+		font-size: 16px;
+		position: relative;
+		top: -2px;
+	}
   @media screen and (max-width: 991px) {
   
 	.nav-menu {
 		color: #fff;
 		display: flex;
-		flex-direction: column; /* Stack items vertically */
-		align-items: center; /* Center items horizontally */
-		justify-content: center; /* Center items vertically */
-		height: 100vh; /* Full viewport height for centering */
+		flex-direction: column;
+		align-items: center; 
+		justify-content: center; 
+		height: auto; 
 	}
-	
-	/* Ensure the menu container inside nav stacks items vertically */
+
 	.menu {
 		display: flex;
-		flex-direction: column; /* Stack list items vertically */
-		align-items: center; /* Center horizontally */
+		flex-direction: column; 
+		align-items: center;
 		width: 100%;
 	}
-	
-	/* Ensure the <ul> inside .menu stacks items properly */
+
 	.menu ul, .mmxxv-nav  {
-		flex-direction: column; /* Force vertical stacking */
-		align-items: center; /* Center the menu items */
+		flex-direction: column; 
+		align-items: center; 
 	}
-	
-	/* Ensure individual <li> items don't force a horizontal layout */
+nav-link btn w-nav-link w--nav-link-open
 	.menu li, .mmxxv-nav li {
 		width: 100%;
 		text-align: center;
+		border-bottom: 1px solid #ebebeb;
+		margin: 5px auto; 
+	}
+
+	.mmxxv-nav li a {
+		text-decoration: none;
 	}
 	
-	/* Ensure links behave as block elements */
 	.nav-link {
 		width: 100%;
 		text-align: center;
@@ -1077,8 +1140,8 @@ body {
 	}
 
 	.nav-link.btn {
-		max-width: 300px;
-		margin: auto;
+		max-width: 200px;
+		margin: 20px auto;
 	}
 	
 	

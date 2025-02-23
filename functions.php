@@ -200,3 +200,161 @@ if ( defined( 'JETPACK__VERSION' ) ) {
 	require get_template_directory() . '/inc/jetpack.php';
 }
 
+/**
+ * Woocommerce Support
+ */
+
+function mmxxv_add_woocommerce_support() {
+	add_theme_support( 'woocommerce' );
+}
+add_action( 'after_setup_theme', 'mmxxv_add_woocommerce_support' );
+
+/**
+ * Call a product anywhere by ID	
+ */
+function mmxxv_product_tab_card( $product_id ) {
+    if ( ! $product_id ) {
+        return;
+    }
+    
+    // Use a dedicated query to isolate the product.
+    $args = array(
+        'p'         => $product_id,
+        'post_type' => 'product',
+    );
+    $custom_query = new WP_Query( $args );
+    
+    if ( ! $custom_query->have_posts() ) {
+        echo 'Product not found.';
+        return;
+    }
+    
+    while ( $custom_query->have_posts() ) {
+        $custom_query->the_post();
+        
+        // Get the product object.
+        $current_product = wc_get_product( $product_id );
+        if ( ! $current_product ) {
+            echo 'Product not found.';
+            return;
+        }
+        
+        // Retrieve dynamic values.
+        $title        = get_the_title();
+        $product_link = get_permalink();
+        $price_html   = $current_product->get_price_html();
+        
+        echo '<div data-w-id="01359f47-5257-5e6d-ef23-984a4434e930" class="card lite w-inline-block">';
+            
+            // Product details: image and title (wrapped in a link).
+            echo '<div class="w-layout-hflex phrases hr">';
+                echo '<a class="card-tab-title highlight txt" href="' . esc_url( $product_link ) . '">';
+                    echo '<img loading="lazy" src="/wp-content/themes/allmyhr-mmxxv/images/allmyhr-logo.svg" alt="" class="headlineicon">';
+                    echo '<h2>' . esc_html( $title ) . '</h2>';
+                echo '</a>';
+				echo '<h3 class="fa move highlight txt">&#x279C;</h3>';
+            echo '</div>';
+            
+            // Crumb text.
+            echo '<div class="crumb">';
+                echo 'Thousands of templates, tools, checklists, and policies to make your job easier. Resources include FLSA classification, performance management, salary benchmarking, interactive audits, job description builder, and more.';
+            echo '</div>';
+            
+            // HR section with bullet items.
+            echo '<div class="hr">';
+                echo '<div class="w-layout-hflex bullet">';
+                    echo '<div class="crumb"><span class="fa highlight blu txt"></span></div>';
+                    echo '<h4 class="crumb">All documents have been posted in easy-to-understand language</h4>';
+                echo '</div>';
+                echo '<div class="w-layout-hflex bullet">';
+                    echo '<div class="crumb"><span class="fa highlight blu txt"></span></div>';
+                    echo '<h4 class="crumb">Your own Private Compliance Portal</h4>';
+                echo '</div>';
+                echo '<div class="w-layout-hflex bullet">';
+                    echo '<div class="crumb"><span class="fa highlight blu txt"></span></div>';
+                    echo '<h4 class="crumb">No more wasted time Googling for answers to critical issues</h4>';
+                echo '</div>';
+            echo '</div>';
+            
+            // Interactive add-to-cart section.
+            echo '<div class="card-tab-variations">';
+			echo '<h3 class="price">' . $price_html . '</h3>';
+                
+                // WooCommerce variable product logic.
+                if ( $current_product->is_type( 'variable' ) ) {
+                    wp_enqueue_script( 'wc-add-to-cart-variation' );
+                    ob_start();
+                    wc_get_template( 'single-product/add-to-cart/variable.php', array(
+                        'available_variations' => $current_product->get_available_variations(),
+                        'attributes'           => $current_product->get_variation_attributes(),
+                        'selected_attributes'  => $current_product->get_default_attributes(),
+                        'product'              => $current_product,
+                    ) );
+                    $add_to_cart_form = ob_get_clean();
+
+                    // Replace the button class.
+                    $add_to_cart_form = str_replace( 
+                        'single_add_to_cart_button button alt', 
+                        'btn', 
+                        $add_to_cart_form 
+                    );
+
+                    echo $add_to_cart_form;
+                } else {
+                    // For simple products.
+                    ob_start();
+                    woocommerce_template_single_add_to_cart();
+                    $add_to_cart_button = ob_get_clean();
+                    
+                    // Replace the button class.
+                    $add_to_cart_button = str_replace( 
+                        'single_add_to_cart_button button alt', 
+                        'btn', 
+                        $add_to_cart_button 
+                    );
+
+                    echo $add_to_cart_button;
+                }
+                
+            echo '</div>'; // close card-tab-variations
+            
+        echo '</div>'; // close card container
+    }
+    
+    wp_reset_postdata();
+    ?>
+    <script type="text/javascript">
+    jQuery(document).on('found_variation', '.variations_form', function(event, variation) {
+         // Update the price inside the closest card container.
+         jQuery(this).closest('.card').find('.price').html(variation.price_html);
+    });
+    </script>
+    <?php
+}
+add_action( 'mmxxv_product_tab_card_hook', 'mmxxv_product_tab_card', 10, 1 );
+
+/**
+ * Woocommerce Send to Cart
+ */
+
+function mmxxv_redirect_to_checkout_on_add_to_cart( $url ) {
+    return wc_get_checkout_url(); // Redirects the user to the checkout page
+}
+add_filter( 'woocommerce_add_to_cart_redirect', 'mmxxv_redirect_to_checkout_on_add_to_cart' );
+
+/**
+ * Woocommerce Cart Count
+ */
+
+function mmxxv_cart_item_count() {
+    if ( function_exists( 'WC' ) && WC()->cart ) {
+        $cart_count = WC()->cart->get_cart_contents_count();
+    } else {
+        $cart_count = 0; 
+    }
+
+    echo '<a href="' . esc_url( wc_get_cart_url() ) . '" class="nav-link cart w-nav-link">
+            ( ' . esc_html( $cart_count ) . ' ) <span class="fa"></span>
+          </a>';
+}
+

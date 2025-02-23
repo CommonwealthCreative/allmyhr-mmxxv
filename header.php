@@ -11,23 +11,15 @@
 
 ?>
 <!doctype html>
-<html <?php language_attributes(); ?> 
-
-<?php 
-
-/* Indexes */ if ( is_home()) { echo 'data-wf-page="67b4f78ed1034a4efbd4393f"'; } 
-              if ( is_search() ) { echo 'data-wf-page="67741e41160207547be4c674"'; } 
-      
-                  else { echo 'data-wf-page="67b77370aa4177e837b7eaf4"';}
-      
-      ?> 
-
-
-
-
-data-wf-site="67b4f78dd1034a4efbd43935">
-
-
+<html <?php language_attributes(); ?>
+	<?php 
+			if ( is_home()) { echo 'data-wf-page="67b4f78ed1034a4efbd4393f"'; } 
+			if ( is_search() ) { echo 'data-wf-page="67741e41160207547be4c674"'; } 
+			if ( is_post_type_archive('product') || is_tax('product_cat') || is_tax('product_tag') || is_archive() ) { echo 'data-wf-page="67b79103fab81b124f3e27f5"'; }
+			
+			else { echo 'data-wf-page="67b77370aa4177e837b7eaf4"';} ?> 
+			
+			data-wf-site="67b4f78dd1034a4efbd43935">
 <head>
 	<meta charset="<?php bloginfo( 'charset' ); ?>">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
@@ -69,7 +61,9 @@ data-wf-site="67b4f78dd1034a4efbd43935">
 				)
 			);
 			?>
-        <a href="#" class="nav-link cart w-nav-link">( 0 ) <span class="fa"></span></a>
+
+		<?php mmxxv_cart_item_count(); ?>
+
         <a href="#" class="nav-link btn w-nav-link">Get Started</a>
       </nav>
     </div>

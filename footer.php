@@ -34,7 +34,7 @@
               <div class="footer-title hr">Contact</div>
               <div class="w-layout-hflex bullet">
                 <div class="crumb"><span class="fa highlight txt"></span></div>
-                <h4 class="crumb">P.O. Box 1628  Stafford VA.22555-1628</h4>
+                <h4 class="crumb">P.O. Box 1628 Stafford VA.22555-1628</h4>
               </div>
               <div class="w-layout-hflex bullet">
                 <div class="crumb"><span class="fa highlight txt"></span></div>
@@ -61,7 +61,7 @@
   <section class="footer-section">
     <div class="container footer">
       <div class="w-layout-hflex"><img src="/wp-content/themes/allmyhr-mmxxv/images/allmyhr-users.svg" loading="lazy" width="Auto" height="25" alt="" class="footer-icons"><img src="/wp-content/themes/allmyhr-mmxxv/images/allmyhr-certification.svg" loading="lazy" alt="" height="25" class="footer-icons"><img src="/wp-content/themes/allmyhr-mmxxv/images/allmyhr-gdpr.svg" loading="lazy" alt="" height="25" class="footer-icons"><img src="/wp-content/themes/allmyhr-mmxxv/images/allmyhr-hippa.svg" loading="lazy" alt="" height="25" class="footer-icons"></div>
-      <a href="#" class="footer-link">©2025 AllMyHr Company. All Rights Reserved. Terms &amp; Conditions. Website By Commonwealth Creative</a>
+      <p class="footer-link">©2025 AllMyHr Company. <a href="/terms">All Rights Reserved. Terms &amp; Conditions.</a> <a target="_blank" href="https://thecommonwealthcreative.com">Website By Commonwealth Creative</a></p>
     </div>
   </section>
 
