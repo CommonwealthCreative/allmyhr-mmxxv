@@ -68,8 +68,8 @@ get_header();
   </section>
   <section id="ondemand" class="content-section bg-dkblue bg-gradientblack">
     <div class="container features">
-      <div data-w-id="9d2d1334-04f7-1727-2bde-ab46a553ce10" style="opacity:0" class="container h-content">
-        <h2 class="center"><span class="highlight txt">On-Demand HR Services</span><br>We offer straightforward, flexible pricing tailored to your business's growing HR needs.</h2>
+    <div class="container h-content">
+    <h2 data-w-id="9d2d1334-04f7-1727-2bde-ab46a553ce11" style="opacity:0" class="center"><span class="highlight txt">On-Demand HR Services</span><br>Reduce Compliance Risks, Boost Efficiency, and Streamline Administration</h2>
         <a href="#quote" class="btn wht w-button">Schedule A Demo</a>
         <a href="/contact-allmyhr/" class="btn clear w-button">Contact Us Today</a>
       </div>
