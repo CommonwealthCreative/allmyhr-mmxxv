@@ -952,7 +952,7 @@ a {
 
 .faq-card {
   cursor: pointer;
-  border: 1px solid #fff;
+  border: 1px solid #0879f8;
   border-radius: 20px;
   flex-direction: column;
   align-items: flex-start;
@@ -965,7 +965,8 @@ a {
 }
 
 .faq-card:hover {
-  background-color: #02041a80;
+  background-color: #052260;
+  transform: translate(0, -4px);
   box-shadow: 0 3px 30px #0000000d;
 }
 

@@ -71,7 +71,7 @@ get_header();
             <div class="faq-question">
               <div class="w-layout-hflex phrases">
                 <div class="fa highlight blu txt"></div>
-                <h4>LMS System: Certificates &amp; Courses</h4>
+                <h4>LMS Platform: Certificates &amp; Courses</h4>
               </div>
               <div data-is-ix2-target="1" class="faq-arrow" data-w-id="0e24b523-12e8-000b-2a3c-2a5f80b3670a" data-animation-type="lottie" data-src="/wp-content/themes/allmyhr-mmxxv/documents/Animation---1740434329510.json" data-loop="1" data-direction="1" data-autoplay="0" data-renderer="svg" data-default-duration="0" data-duration="1"></div>
             </div>
@@ -97,7 +97,7 @@ get_header();
             <div class="faq-question">
               <div class="w-layout-hflex phrases">
                 <div class="fa highlight blu txt"></div>
-                <h4>Track Current HR Trends</h4>
+                <h4>Current HR Trends &amp; Alerts</h4>
               </div>
               <div data-is-ix2-target="1" class="faq-arrow" data-w-id="2c06e9f7-5b12-3989-b220-51d91510dbbd" data-animation-type="lottie" data-src="/wp-content/themes/allmyhr-mmxxv/documents/Animation---1740434329510.json" data-loop="1" data-direction="1" data-autoplay="0" data-renderer="svg" data-default-duration="0" data-duration="1"></div>
             </div>
