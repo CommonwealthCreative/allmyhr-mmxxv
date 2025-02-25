@@ -1083,13 +1083,13 @@ a:visited {
     text-decoration: none;
 }
 
-.footer-widget .wp-block-page-list, .footer-widget .wp-block-latest-posts__list {
+.footer-widget .wp-block-page-list, .footer-widget .wp-block-latest-posts__list, .footer-widget ul {
     list-style: none;
     padding: 0;
     margin: 0;
 }
 
-.footer-widget .wp-block-pages-list__item, .footer-widget .wp-block-latest-posts__post-title {
+.footer-widget .wp-block-pages-list__item, .footer-widget .wp-block-latest-posts__post-title, .footer-widget ul {
     line-height: 2rem;
 }
 
@@ -1101,6 +1101,24 @@ a:visited {
 .footer-widget .wp-block-pages-list__item__link:hover, .footer-widget a.wp-block-latest-posts__post-title:hover, .w-layout-cell.footer-col a:hover {
     color: #b3b9bb;
 }
+
+  /* Account Logins */	
+
+	.mo-openid-app-icons {
+		display: flex!important;
+		align-items: center;
+		padding: 20px 0px;
+	}
+
+	.mo-openid-app-icons > a {
+		display: flex!important;
+		align-items: center!important;
+		margin: 10px!important;
+	}
+
+	.woocommerce form .form-row input.input-text, .woocommerce form .form-row textarea {
+		line-height: 2rem;
+	}
 
   /* WooCommerce */
 
@@ -1171,6 +1189,14 @@ a:visited {
 	}
   @media screen and (max-width: 991px) {
 
+	.mo-openid-app-icons {
+		display: inline!important;
+	}
+
+	.mo-openid-app-icons > a {
+		margin: 10px 0!important;
+	}
+
 	.mobile-cart .nav-link.cart.w-nav-link  {
 		justify-content: flex-start;
 		align-items: center;
@@ -1209,7 +1235,7 @@ a:visited {
 		width: 100%;
 	}
 	
-	.menu li, .mmxxv-nav li {
+	.mmxxv-nav li {
 		width: 100%;
 		text-align: center;
 		border-bottom: 1px solid #ebebeb;

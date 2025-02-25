@@ -27,8 +27,8 @@
 	<script src="https://ajax.googleapis.com/ajax/libs/webfont/1.6.26/webfont.js" type="text/javascript"></script>
   <script type="text/javascript">WebFont.load({  google: {    families: ["Inter:100,300,regular,500,700,900,100italic,300italic,italic,500italic,700italic,900italic","Nunito:200,regular,700,900,200italic,italic,700italic,900italic"]  }});</script>
   <script type="text/javascript">!function(o,c){var n=c.documentElement,t=" w-mod-";n.className+=t+"js",("ontouchstart"in o||o.DocumentTouch&&c instanceof DocumentTouch)&&(n.className+=t+"touch")}(window,document);</script>
-  <link href="images/favicon.ico" rel="shortcut icon" type="image/x-icon">
-  <link href="images/webclip.png" rel="apple-touch-icon">
+  <link href="/wp-content/themes/allmyhr-mmxxv/images/favicon.ico" rel="shortcut icon" type="image/x-icon">
+  <link href="/wp-content/themes/allmyhr-mmxxv/images/webclip.png" rel="apple-touch-icon">
 	<?php wp_head(); ?>
 </head>
 

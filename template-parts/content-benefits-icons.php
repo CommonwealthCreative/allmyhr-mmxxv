@@ -10,7 +10,7 @@
 ?>
 
 <div class="container">
-      <h2 class="center">Save Time, Cut Costs, and Keep Your HR Running Flawlessly</h2>
+
       <div id="w-node-c1dcfe34-3424-b4ea-721f-9e9ae22f5a1f-e22f5a1c" class="w-layout-layout wf-layout-layout">
         <div class="w-layout-cell">
           <div data-w-id="c1dcfe34-3424-b4ea-721f-9e9ae22f5a21" class="card"><img src="/wp-content/themes/allmyhr-mmxxv/images/industries.webp" loading="lazy" width="100" height="Auto" alt="">
@@ -36,19 +36,9 @@
             <div class="crumb">Our team of HR-certified professionals brings expertise and credibility, ensuring your business receives trusted guidance in all areas of human resources.</div>
           </div>
         </div>
-      </div>
-      <div id="w-node-c1dcfe34-3424-b4ea-721f-9e9ae22f5a3c-e22f5a1c" class="w-layout-layout wf-layout-layout">
-        <div class="w-layout-cell center">
-          <div><strong class="stats">2,900+</strong></div>
-          <div class="crumb highlight txt">Companies Served</div>
-        </div>
-        <div class="w-layout-cell center">
-          <div><strong class="stats">340+</strong></div>
-          <div class="crumb highlight txt">Training Courses</div>
-        </div>
-        <div class="w-layout-cell center">
-          <div><strong class="stats">$2 Million+</strong></div>
-          <div class="crumb highlight txt">Saved Annually</div>
-        </div>
-      </div>
-    </div>
+</div>
+<div class="container center">
+<h2 class=""><span class="highlight txt">Save Time, Cut Costs, and Keep Your HR Running Flawlessly</span></h2>
+      <a href="/services" class="btn wht w-button">Sign Up Now</a>
+        <a href="/contact-allmyhr" class="btn clear w-button">Get My Demo</a>
+</div>
