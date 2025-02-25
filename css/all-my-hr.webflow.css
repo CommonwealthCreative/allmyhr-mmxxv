@@ -953,7 +953,7 @@ a {
 .faq-card {
   cursor: pointer;
   border: 1px solid #0879f8;
-  border-radius: 20px;
+  border-radius: 8px;
   flex-direction: column;
   align-items: flex-start;
   width: 100%;
