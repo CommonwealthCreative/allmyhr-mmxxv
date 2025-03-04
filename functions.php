@@ -163,7 +163,6 @@ function allmyhr_mmxxv_scripts() {
     wp_style_add_data('allmyhr-mmxxv-style', 'rtl', 'replace');
 
     // Enqueue scripts
-    wp_enqueue_script('allmyhr-mmxxv-navigation', get_template_directory_uri() . '/js/navigation.js', array(), _S_VERSION, true);
     wp_enqueue_script('webflow-js', get_template_directory_uri() . '/js/webflow.js', array('jquery'), '1.0.0', true);
 
     // Enqueue comment-reply script if needed

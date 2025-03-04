@@ -13,7 +13,7 @@
 <!doctype html>
 <html <?php language_attributes(); ?>
 	<?php 
-			if ( is_home()) { echo 'data-wf-page="67b4f78ed1034a4efbd4393f"'; } 
+			if ( is_home() || is_page_template( 'homealt.php' )) { echo 'data-wf-page="67b4f78ed1034a4efbd4393f"'; } 
 			if ( is_search() ) { echo 'data-wf-page="67741e41160207547be4c674"'; } 
 			if ( is_post_type_archive('product') || is_tax('product_cat') || is_tax('product_tag') || is_archive() ) { echo 'data-wf-page="67b79103fab81b124f3e27f5"'; }
 			

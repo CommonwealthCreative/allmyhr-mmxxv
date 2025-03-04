@@ -1,6 +1,6 @@
 <?php
 /**
- * The main template file
+ * Template Name: Home Alt
  *
  * This is the most generic template file in a WordPress theme
  * and one of the two required files for a theme (the other being style.css).
@@ -14,9 +14,9 @@
 
 get_header();
 ?> 
- <div data-w-id="8a799611-cf86-bde8-7da8-eb88c679e185" style="display:none" class="videomodal">
-    <div style="padding-top:56.17021276595745%" class="video w-video w-embed"><iframe class="embedly-embed" src="https://cdn.embedly.com/widgets/media.html?src=https%3A%2F%2Fwww.youtube.com%2Fembed%2F3TqL8dvFafY%3Ffeature%3Doembed&display_name=YouTube&url=https%3A%2F%2Fwww.youtube.com%2Fwatch%3Fv%3D3TqL8dvFafY&image=https%3A%2F%2Fi.ytimg.com%2Fvi%2F3TqL8dvFafY%2Fhqdefault.jpg&type=text%2Fhtml&schema=youtube" width="940" height="528" scrolling="no" allowfullscreen="" title="The Benefits & Features of tryHRIS"></iframe></div>
-  </div>
+<div data-w-id="8a799611-cf86-bde8-7da8-eb88c679e185" style="display:none" class="videomodal">
+<div style="padding-top:56.27659574468085%" class="video w-video w-embed"><iframe width="560" height="315" src="https://www.youtube.com/embed/3TqL8dvFafY?si=BF2yzN26nmL5vCvq" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></div>
+</div>
   <section class="hero-section">
     <div class="lottie">
       <div class="lottie-hero" data-w-id="47cac669-4e2e-8e9f-d907-c742248ea198" data-animation-type="lottie" data-src="/wp-content/themes/allmyhr-mmxxv/documents/64b6c16282020c34caa0f1e1_lottie-third.lottie" data-loop="1" data-direction="1" data-autoplay="1" data-is-ix2-target="0" data-renderer="svg" data-default-duration="15.958333333333334" data-duration="0"></div>
@@ -24,28 +24,20 @@ get_header();
       <div class="overlay-radial"></div>
     </div>
     <div class="container h-content">
-      <h1 data-w-id="5ff76c14-9535-a666-9770-4405304ca541" style="opacity:0"><span class="highlight txt">Streamline </span>Your Company’s HR</h1>
+    <h1 data-w-id="5ff76c14-9535-a666-9770-4405304ca541" style="opacity:0"><span class="highlight txt">Streamline </span>Your Company’s HR</h1>
       <div data-w-id="3093b0c5-b16f-c89b-2b6d-7abac541acfd" style="opacity:0" class="w-layout-hflex phrases hero-text">
-        <a href="#" class="video-thumb w-inline-block">
-          <div data-w-id="719366e5-82b9-18de-3851-f5d8d28718c2" class="lottie-animation" data-animation-type="lottie" data-src="/wp-content/themes/allmyhr-mmxxv/documents/Animation---1740613569953.json" data-loop="1" data-direction="1" data-autoplay="1" data-is-ix2-target="0" data-renderer="svg" data-default-duration="2" data-duration="0"></div>
+        <a href="#" class="w-inline-block">
+          <div data-w-id="719366e5-82b9-18de-3851-f5d8d28718c2" class="btn center" style="margin-right: 40px;" >Membership Includes</div>
         </a>
-        <p data-w-id="280c230b-7b91-4e93-726f-9132bd035b07" style="opacity:0">Providing the most cost-effective HR Solutions and best practices for recruiting, training, motivation &amp; retention for small &amp; mid-sized employers. </p>
+        <p data-w-id="280c230b-7b91-4e93-726f-9132bd035b07" style="opacity:0; margin-bottom:0px;">The Most Cost-Effective HR Solution for Small & Mid-Size Employers. <a href="/services"><span class="highlight txt">Starting at $99 Per Month.</span></a>
+        </p>
       </div>
-      <div>
-        <div>
-              <div class="number-input-container center" style="display: flex;">
-              <label for="user_number" class="crumb">Instant Pricing:</label>
-              <input type="number" id="user_number" name="user_number" placeholder="Enter # of Employees" min="1" max="500" style="min-width:200px; margin-left: 20px;">
-              </div>
-              <div id="price-message"></div>  
-        </div>
-      </div>
-      <div class="spaced">
-      <a href="/services/allmyhr-monthly-subscription/" id="picker" class="btn w-button">Sign Up Now</a>
-        <a href="#" class="btn clear w-button">Get My Demo</a>
-        <a href="#" class="btn wht w-button">Schedule A Call</a>
-      </div>
-      <h2>The Most Cost-Effective HR Solution</h2>
+      <div class="number-input-container center" style="display: flex;">
+  <label for="user_number" class="crumb">Instant Pricing:</label>
+  <input type="number" id="user_number" name="user_number" placeholder="Enter a number" min="1" max="500" style="min-width:200px; margin-left: 20px;">
+</div>
+<div id="price-message"></div>
+      <h2>HR Membership includes all of the following</h2>
       <div id="w-node-_78bab3d5-6256-b993-9747-3ffbacfcaf8e-fbd4393f" class="w-layout-layout toggles wf-layout-layout">
         <div class="w-layout-cell">
           <div data-w-id="78bab3d5-6256-b993-9747-3ffbacfcaf91" class="faq-card">
@@ -130,6 +122,8 @@ get_header();
           </div>
         </div>
       </div>
+      <a href="/services/allmyhr-monthly-subscription/" id="picker" class="btn w-button">Start Today</a>
+<a href="/contact-allmyhr/" class="btn clear w-button">Get My Demo</a>
     </div>
 	<?php get_template_part('template-parts/content', 'trusted'); ?>
   </section>
@@ -145,7 +139,19 @@ get_header();
 	<?php get_template_part('template-parts/content', 'faqs'); ?>
 	<?php get_template_part('template-parts/content', 'quoteform'); ?>
   </section>
-  <script>
+  <!-- New input field above the #picker button -->
+<div class="number-input-container">
+  <label for="user_number">How Many Employees do you have?</label>
+  <input type="number" id="user_number" name="user_number" placeholder="Enter a number between 1 and 500" min="1" max="500">
+</div>
+
+<a href="/services/allmyhr-monthly-subscription/" id="picker" class="btn w-button">Sign Up Now</a>
+<a href="/contact-allmyhr/" class="btn clear w-button">Get My Demo</a>
+
+<!-- (Optional) Price message placeholder if needed -->
+<div id="price-message"></div>
+
+<script>
 document.addEventListener('DOMContentLoaded', function() {
     const userNumberInput = document.getElementById('user_number');
     const pickerLink = document.getElementById('picker');
@@ -175,11 +181,11 @@ document.addEventListener('DOMContentLoaded', function() {
             </span> <span class="subscription-details">/ month + $${signup} once time fee</span></h3>`;
     }
 
-    // Set default message ($99/month, with no sign‑up fee)
-    priceMessage.innerHTML = `<p class="price highlight txt"><span class="from">Starting at: </span>
+    // Set default message (for RA Members pricing: monthly $89.10, with no sign‑up fee)
+    priceMessage.innerHTML = `<h3 class="price"><span class="from">Starting at: </span>
         <span class="woocommerce-Price-amount amount">
-            <bdi><span class="woocommerce-Price-currencySymbol">$</span>99</bdi>
-        </span> <span class="subscription-details">/ month</span></p>`;
+            <bdi><span class="woocommerce-Price-currencySymbol">$</span>89.10</bdi>
+        </span> <span class="subscription-details">/ month</span></h3>`;
     // Set default button text and opacity.
     pickerLink.textContent = "Sign Up Now";
     pickerLink.style.opacity = '0.5';
@@ -192,10 +198,10 @@ document.addEventListener('DOMContentLoaded', function() {
             pickerLink.href = baseProductURL;
             pickerLink.textContent = "Sign Up Now";
             pickerLink.style.opacity = '0.5';
-            priceMessage.innerHTML = `<p class="price highlight txt"><span class="from">Starting at: </span>
-        <span class="woocommerce-Price-amount amount">
-            <bdi><span class="woocommerce-Price-currencySymbol">$</span>99</bdi>
-        </span> <span class="subscription-details">/ month</span></p>`;
+            priceMessage.innerHTML = `<h3 class="price"><span class="from">Starting at: </span>
+                <span class="woocommerce-Price-amount amount">
+                    <bdi><span class="woocommerce-Price-currencySymbol">$</span>89.10</bdi>
+                </span> <span class="subscription-details">/ month</span></h3>`;
             return;
         }
         let numberValue = parseInt(inputVal, 10);
@@ -205,7 +211,7 @@ document.addEventListener('DOMContentLoaded', function() {
             pickerLink.href = contactURL;
             pickerLink.textContent = "Get A Quote";
             pickerLink.style.opacity = '1';
-            priceMessage.innerHTML = `<p><a href="/contact-allmyhr/" class="highlight txt">Please contact us for a custom quote</a></p>`;
+            priceMessage.innerHTML = `<p>Please contact us for a custom quote</p>`;
             return;
         }
         
@@ -224,10 +230,10 @@ document.addEventListener('DOMContentLoaded', function() {
             pickerLink.href = baseProductURL;
             pickerLink.textContent = "Sign Up Now";
             pickerLink.style.opacity = '0.5';
-            priceMessage.innerHTML = `<p class="price highlight txt"><span class="from">Starting at: </span>
-        <span class="woocommerce-Price-amount amount">
-            <bdi><span class="woocommerce-Price-currencySymbol">$</span>99</bdi>
-        </span> <span class="subscription-details">/ month</span></p>`;
+            priceMessage.innerHTML = `<h3 class="price"><span class="from">Starting at: </span>
+                <span class="woocommerce-Price-amount amount">
+                    <bdi><span class="woocommerce-Price-currencySymbol">$</span>89.10</bdi>
+                </span> <span class="subscription-details">/ month</span></h3>`;
         }
     });
 
@@ -240,6 +246,10 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 });
 </script>
+
+
+
+
 
 <?php
 /*get_sidebar();*/

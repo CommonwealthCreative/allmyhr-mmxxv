@@ -944,11 +944,13 @@ a {
 .toggles {
   grid-column-gap: 20px;
   grid-row-gap: 20px;
+  padding-left: 0;
+  padding-right: 0;
 }
 
 .faq-paragraph {
   text-align: left;
-  margin-bottom: 20px;
+  margin-bottom: 10px;
   font-size: .9rem;
   line-height: 1.5rem;
   text-decoration: none;
@@ -961,8 +963,8 @@ a {
   flex-direction: column;
   align-items: flex-start;
   width: 100%;
-  margin-bottom: 20px;
-  padding: 10px 20px 0;
+  margin-bottom: 10px;
+  padding: 5px 20px 0;
   transition: all .5s ease-in-out;
   display: flex;
   box-shadow: 0 0 30px #00000005;
@@ -990,7 +992,7 @@ a {
   justify-content: space-between;
   align-items: center;
   width: 100%;
-  margin-bottom: 10px;
+  margin-bottom: 0;
   display: flex;
 }
 
@@ -1016,6 +1018,26 @@ a {
   height: 300px;
   margin-left: auto;
   margin-right: auto;
+}
+
+.video-thumb {
+  background-image: url('../images/Screenshot-2025-03-04-at-10.26.35-AM.png');
+  background-position: 50%;
+  background-repeat: no-repeat;
+  background-size: 90%;
+  border: 1px solid #0879f8;
+  border-radius: 8px;
+  margin-right: 20px;
+  padding: 2px;
+}
+
+.lottie-animation {
+  width: 150px;
+  height: 100px;
+}
+
+.spaced {
+  padding-bottom: 20px;
 }
 
 @media screen and (max-width: 991px) {
@@ -1265,6 +1287,10 @@ a {
     height: 40px;
   }
 
+  .phrases.hero-text {
+    flex-flow: column;
+  }
+
   .stats {
     font-size: 24px;
   }
@@ -1428,6 +1454,10 @@ a {
 
   .phrases {
     padding-top: 0;
+  }
+
+  .phrases.hero-text {
+    flex-flow: column;
   }
 
   .stats {
