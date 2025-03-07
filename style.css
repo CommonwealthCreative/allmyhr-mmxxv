@@ -988,6 +988,14 @@ body {
 		color: inherit;
 	}
 
+	.container.wide {
+		max-width: 1400px;
+	}
+
+	.container.wide .card.products {
+		min-height: 380px;
+	}
+
   /* Pages */
 
   .page-template-default .site-main, .product-template-default .site-main, .single .site-main, .page-template .site-main {

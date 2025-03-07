@@ -15,7 +15,17 @@
 get_header();
 ?> 
  <div data-w-id="8a799611-cf86-bde8-7da8-eb88c679e185" style="display:none" class="videomodal">
-    <div style="padding-top:56.17021276595745%" class="video w-video w-embed"><iframe class="embedly-embed" src="https://cdn.embedly.com/widgets/media.html?src=https%3A%2F%2Fwww.youtube.com%2Fembed%2F3TqL8dvFafY%3Ffeature%3Doembed&display_name=YouTube&url=https%3A%2F%2Fwww.youtube.com%2Fwatch%3Fv%3D3TqL8dvFafY&image=https%3A%2F%2Fi.ytimg.com%2Fvi%2F3TqL8dvFafY%2Fhqdefault.jpg&type=text%2Fhtml&schema=youtube" width="940" height="528" scrolling="no" allowfullscreen="" title="The Benefits & Features of tryHRIS"></iframe></div>
+    <div style="padding-top:56.17021276595745%" class="video w-video w-embed"><iframe class="embedly-embed" 
+  src="https://cdn.embedly.com/widgets/media.html?src=https%3A%2F%2Fwww.youtube.com%2Fembed%2F3TqL8dvFafY%3Ffeature%3Doembed%26autoplay%3D1%26mute%3D1%26rel%3D0&display_name=YouTube&url=https%3A%2F%2Fwww.youtube.com%2Fwatch%3Fv%3D3TqL8dvFafY&image=https%3A%2F%2Fi.ytimg.com%2Fvi%2F3TqL8dvFafY%2Fhqdefault.jpg&type=text%2Fhtml&schema=youtube" 
+  width="940" 
+  height="528" 
+  scrolling="no" 
+  allowfullscreen 
+  allow="autoplay; encrypted-media" 
+  title="The Benefits & Features of tryHRIS">
+</iframe>
+
+      </div>
   </div>
   <section class="hero-section">
     <div class="lottie">
@@ -29,7 +39,7 @@ get_header();
         <a href="#" class="video-thumb w-inline-block">
           <div data-w-id="719366e5-82b9-18de-3851-f5d8d28718c2" class="lottie-animation" data-animation-type="lottie" data-src="/wp-content/themes/allmyhr-mmxxv/documents/Animation---1740613569953.json" data-loop="1" data-direction="1" data-autoplay="1" data-is-ix2-target="0" data-renderer="svg" data-default-duration="2" data-duration="0"></div>
         </a>
-        <p data-w-id="280c230b-7b91-4e93-726f-9132bd035b07" style="opacity:0">Providing the most cost-effective HR Solutions and best practices for recruiting, training, motivation &amp; retention for small &amp; mid-sized employers. </p>
+        <p data-w-id="280c230b-7b91-4e93-726f-9132bd035b07" style="opacity:0; padding-top:30px;">The most cost-effective HR Solutions for small &amp; mid-sized employers. </p>
       </div>
       <div>
         <div>
@@ -45,7 +55,8 @@ get_header();
         <a href="#" class="btn clear w-button">Get My Demo</a>
         <a href="#" class="btn wht w-button">Schedule A Call</a>
       </div>
-      <h2>The Most Cost-Effective HR Solution</h2>
+      <h2>All included in your AllMyHR Membership</h2>
+      <p class="crumbs highlight blu txt" style="margin-bottom:0px;">No Long Term Contracts</p>
       <div id="w-node-_78bab3d5-6256-b993-9747-3ffbacfcaf8e-fbd4393f" class="w-layout-layout toggles wf-layout-layout">
         <div class="w-layout-cell">
           <div data-w-id="78bab3d5-6256-b993-9747-3ffbacfcaf91" class="faq-card">
@@ -135,9 +146,11 @@ get_header();
   </section>
   	<section class="content-section bg-dkblue">
     <?php get_template_part('template-parts/content', 'benefits-jumbo'); ?>
+    <?php get_template_part('template-parts/content', 'build'); ?>
+
   </section>
   <section class="content-section bg-dkblue bg-gradientblack">
-  <?php get_template_part('template-parts/content', 'benefits-icons'); ?>
+    <?php get_template_part('template-parts/content', 'benefits-icons'); ?>
     <?php get_template_part('template-parts/content', 'benefits-dashboard'); ?>
 		<?php get_template_part('template-parts/content', 'testimonials'); ?>
   </section>
@@ -172,7 +185,7 @@ document.addEventListener('DOMContentLoaded', function() {
         priceMessage.innerHTML = `<h3 class="price"><span class="from"></span>
             <span class="woocommerce-Price-amount amount">
                 <bdi><span class="woocommerce-Price-currencySymbol">$</span>${monthly}</bdi>
-            </span> <span class="subscription-details">/ month + $${signup} once time fee</span></h3>`;
+            </span> <span class="subscription-details">/ month + $${signup} one time fee</span></h3>`;
     }
 
     // Set default message ($99/month, with no sign‑up fee)
@@ -181,7 +194,7 @@ document.addEventListener('DOMContentLoaded', function() {
             <bdi><span class="woocommerce-Price-currencySymbol">$</span>99</bdi>
         </span> <span class="subscription-details">/ month</span></p>`;
     // Set default button text and opacity.
-    pickerLink.textContent = "Sign Up Now";
+    pickerLink.textContent = "Buy Now";
     pickerLink.style.opacity = '0.5';
 
     // Listen for changes in the input field.
@@ -190,7 +203,7 @@ document.addEventListener('DOMContentLoaded', function() {
         if (inputVal === '') {
             // No input: revert to default state.
             pickerLink.href = baseProductURL;
-            pickerLink.textContent = "Sign Up Now";
+            pickerLink.textContent = "Buy Now";
             pickerLink.style.opacity = '0.5';
             priceMessage.innerHTML = `<p class="price highlight txt"><span class="from">Starting at: </span>
         <span class="woocommerce-Price-amount amount">
@@ -216,13 +229,13 @@ document.addEventListener('DOMContentLoaded', function() {
                 '?add-to-cart=' + product_id +
                 '&variation_id=' + matchedRange.variation_id +
                 '&attribute_employees=' + encodeURIComponent(matchedRange.slug);
-            pickerLink.textContent = "Sign Up Now";
+            pickerLink.textContent = "Buy Now";
             pickerLink.style.opacity = '1';
             updatePriceMessage(matchedRange.monthly, matchedRange.signup);
         } else {
             // For any invalid input (shouldn't happen here), revert to default.
             pickerLink.href = baseProductURL;
-            pickerLink.textContent = "Sign Up Now";
+            pickerLink.textContent = "Buy Now";
             pickerLink.style.opacity = '0.5';
             priceMessage.innerHTML = `<p class="price highlight txt"><span class="from">Starting at: </span>
         <span class="woocommerce-Price-amount amount">

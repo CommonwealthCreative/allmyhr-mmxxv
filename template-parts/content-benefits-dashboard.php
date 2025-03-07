@@ -12,7 +12,7 @@
     <div data-w-id="550baef3-6bff-bff4-8e38-614c2cbe1a38" class="container">
       <div id="w-node-_550baef3-6bff-bff4-8e38-614c2cbe1a39-2cbe1a38" class="w-layout-layout wf-layout-layout">
         <div class="w-layout-cell">
-          <div class="screens"><img src="/wp-content/themes/allmyhr-mmxxv/images/all-my-hr-portal-screen-1.svg" loading="lazy" alt="" class="screen _1"><img src="/wp-content/themes/allmyhr-mmxxv/images/all-my-hr-portal-screen-3.svg" loading="lazy" alt="" class="screen _4"><img src="/wp-content/themes/allmyhr-mmxxv/images/all-my-hr-portal-screen-2.svg" loading="lazy" alt="" class="screen _2"><img src="/wp-content/themes/allmyhr-mmxxv/images/all-my-hr-portal-screen-4.svg" loading="lazy" alt="" class="screen _3"></div>
+          <div class="screens"><img src="/wp-content/themes/allmyhr-mmxxv/images/all-my-hr-portal-screen-5.svg" loading="lazy" alt="" class="screen _1"><img src="/wp-content/themes/allmyhr-mmxxv/images/all-my-hr-portal-screen-7.svg" loading="lazy" alt="" class="screen _4"><img src="/wp-content/themes/allmyhr-mmxxv/images/all-my-hr-portal-screen-6.svg" loading="lazy" alt="" class="screen _2"><img src="/wp-content/themes/allmyhr-mmxxv/images/all-my-hr-portal-screen-8.svg" loading="lazy" alt="" class="screen _3"></div>
         </div>
         <div class="w-layout-cell">
           <div data-w-id="550baef3-6bff-bff4-8e38-614c2cbe1a3d" class="w-layout-hflex phrases"><img src="/wp-content/themes/allmyhr-mmxxv/images/employee-relations.png" loading="lazy" alt="" class="headlineicon">
