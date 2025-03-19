@@ -33,7 +33,7 @@
       <div class="w-layout-cell">
         <a href="https://allmyhr.com/wrap-document-pop-plan/" class="card products w-inline-block">
           <h3>Pop & Wrap Documents</h3>
-          <div><strong>$6</strong> Each or<br><strong>$145</strong> Both<br><span class="crumb">(Paid Annually)</span></div>
+          <div><strong>$75</strong> Each or<br><strong>$145</strong> Both<br><span class="crumb">(Paid Annually)</span></div>
           <p class="btn">Buy Now</p>
         </a>
       </div>

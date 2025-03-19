@@ -54,16 +54,8 @@
             </div>
           </div>
           <div class="w-layout-cell form-container">
-          <?php if ( is_singular( array( 'post', 'page' ) ) ) : ?>
-                <?php
-                while ( have_posts() ) :
-                    the_post();
-                    the_content();
-                endwhile;
-                ?>
-            <?php else : ?>
+  
                 <p>Insert Form here</p>
-            <?php endif; ?>
 
           </div>
         </div>
