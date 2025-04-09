@@ -390,4 +390,99 @@ function mmxxv_cart_item_count() {
           </a>';
 }
 
+/**
+ * Woocommerce Empty Cart Redirect
+ */
+function cc_redirect_empty_cart_to_home() {
+    if (is_cart() && WC()->cart->is_empty()) {
+        wp_safe_redirect(home_url());
+        exit;
+    }
+}
+add_action('template_redirect', 'cc_redirect_empty_cart_to_home');
+
+/**
+ * Woocommerce Empty Cart Action Redirect
+ */
+function cc_redirect_on_cart_block_empty() {
+    if (is_cart()) {
+        ?>
+        <script type="text/javascript">
+        (function() {
+            let redirected = false;
+
+            function checkCartBlockEmpty() {
+                const emptyBlock = document.querySelector('.wp-block-woocommerce-empty-cart-block');
+                const onCartPage = window.location.pathname.includes('/cart');
+
+                if (emptyBlock && onCartPage && !redirected) {
+                    redirected = true;
+                    window.location.href = "<?php echo esc_url(home_url()); ?>";
+                }
+            }
+
+            // Run immediately on page load
+            checkCartBlockEmpty();
+
+            // Start polling for up to 10 seconds
+            const interval = setInterval(checkCartBlockEmpty, 300);
+            setTimeout(() => clearInterval(interval), 10000);
+        })();
+        </script>
+        <?php
+    }
+}
+add_action('wp_footer', 'cc_redirect_on_cart_block_empty', 100);
+
+
+/**
+ * Woocommerce Checkout Account Message
+ */
+function cc_insert_login_notice_above_checkout( $content ) {
+    if ( is_checkout() && ! is_user_logged_in() && has_block( 'woocommerce/checkout', $content ) ) {
+
+        $notice = '
+        <div class="woocommerce-info cc-checkout-login-notice" style="margin-bottom:2rem;">
+            If you are an existing or previous customer, 
+            <a href="#" class="cc-toggle-login" style="text-decoration: underline;">please login to your account</a>.
+            <div class="cc-checkout-login-form" style="margin-top:1rem; display:none;">
+                <form method="post" action="' . esc_url( wp_login_url( wc_get_checkout_url() ) ) . '">
+                    <input type="text" name="log" placeholder="Username or email" style="display:block; margin-bottom:1rem; padding:0.5rem; width:100%; max-width:300px;">
+                    <input type="password" name="pwd" placeholder="Password" style="display:block; margin-bottom:1rem; padding:0.5rem; width:100%; max-width:300px;">
+                    <button type="submit" class="button" style="padding:0.5rem 1rem;">Login</button>
+                </form>
+            </div>
+        </div>
+        <script>
+            document.addEventListener("DOMContentLoaded", function () {
+                const toggle = document.querySelector(".cc-toggle-login");
+                const form = document.querySelector(".cc-checkout-login-form");
+                if (toggle && form) {
+                    toggle.addEventListener("click", function(e) {
+                        e.preventDefault();
+                        form.style.display = form.style.display === "block" ? "none" : "block";
+                    });
+                }
+            });
+        </script>';
+
+        return $notice . $content;
+    }
+
+    return $content;
+}
+add_filter( 'the_content', 'cc_insert_login_notice_above_checkout', 1 );
+
+
+
+
+
+
+
+
+
+
+
+
+
 
