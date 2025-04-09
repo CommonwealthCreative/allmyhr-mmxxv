@@ -79,55 +79,54 @@ document.addEventListener('DOMContentLoaded', function() {
   const pickerLink = document.getElementById('picker');
   const priceMessage = document.getElementById('price-message');
 
-  // Default messaging for 1-30 employees.
   const defaultPricingMsg = "$6 Annually per Employee (Minimum of $180 Annually up to 30 employees)";
-  const defaultBuyLink = "https://allmyhr.com/?add-to-cart=28034";
+  const defaultBuyLink = "/?add-to-cart=145";
 
-  // Set initial state.
   priceMessage.innerHTML = `<p class="price highlight txt">${defaultPricingMsg}</p>`;
   pickerLink.textContent = "Buy Now";
   pickerLink.style.opacity = '0.5';
   pickerLink.href = defaultBuyLink;
+  pickerLink.setAttribute('data-mode', 'default');
 
-  // Update display based on the number entered.
   userNumberInput.addEventListener('input', function() {
     const inputVal = userNumberInput.value.trim();
     if (inputVal === '') {
       priceMessage.innerHTML = `<p class="price highlight txt">${defaultPricingMsg}</p>`;
-      pickerLink.href = defaultBuyLink;
+      pickerLink.textContent = "Buy Now";
+      pickerLink.setAttribute('data-mode', 'default');
       pickerLink.style.opacity = '0.5';
       return;
     }
+
     let numberValue = parseInt(inputVal, 10);
+
     if (numberValue >= 1 && numberValue <= 30) {
-      // For 1–30 employees, fixed pricing.
       priceMessage.innerHTML = `<p class="price highlight txt">$180 Total cost of Harassment Training</p>`;
-      pickerLink.href = defaultBuyLink;
+      pickerLink.textContent = "Buy Now";
+      pickerLink.setAttribute('data-mode', 'direct');
       pickerLink.style.opacity = '1';
     } else if (numberValue >= 31 && numberValue <= 300) {
-      // For 31–300 employees.
       const additionalEmployees = numberValue - 30;
       const totalCost = 180 + 6 * additionalEmployees;
       priceMessage.innerHTML = `<p class="price highlight txt">$${totalCost} Total cost of Harassment Training</p>`;
-      // We'll handle add-to-cart via JavaScript.
-      pickerLink.href = "#";
+      pickerLink.textContent = "Buy Now";
+      pickerLink.setAttribute('data-mode', 'ajax');
+      pickerLink.setAttribute('data-additional', additionalEmployees);
       pickerLink.style.opacity = '1';
-      // Save the additional quantity for later.
-      pickerLink.dataset.additional = additionalEmployees;
     } else if (numberValue >= 301) {
-      // For 301 or more employees, use a custom quote.
       priceMessage.innerHTML = `<p><a href="/contact-allmyhr/" class="highlight txt">Please contact us for a custom quote</a></p>`;
       pickerLink.href = "/contact-allmyhr/";
       pickerLink.textContent = "Get A Quote";
+      pickerLink.setAttribute('data-mode', 'quote');
       pickerLink.style.opacity = '1';
     } else {
       priceMessage.innerHTML = `<p class="price highlight txt">${defaultPricingMsg}</p>`;
-      pickerLink.href = defaultBuyLink;
+      pickerLink.textContent = "Buy Now";
+      pickerLink.setAttribute('data-mode', 'default');
       pickerLink.style.opacity = '0.5';
     }
   });
 
-  // Function to add a product to the cart via WooCommerce AJAX.
   function addProductToCart(productId, quantity) {
     const formData = new FormData();
     formData.append('product_id', productId);
@@ -139,45 +138,38 @@ document.addEventListener('DOMContentLoaded', function() {
     }).then(response => response.json());
   }
 
-  // When the button is clicked, if the employee count is between 31 and 300,
-  // add both products via AJAX.
   pickerLink.addEventListener('click', function(e) {
+    const mode = pickerLink.getAttribute('data-mode');
     const inputVal = userNumberInput.value.trim();
-    if (!inputVal) {
+
+    if (!inputVal || mode === 'default') {
       e.preventDefault();
       alert("Please enter the number of employees your company has...");
       return;
     }
-    let numberValue = parseInt(inputVal, 10);
-    if (numberValue >= 31 && numberValue <= 300) {
+
+    if (mode === 'direct') {
       e.preventDefault();
-      const additionalEmployees = parseInt(pickerLink.dataset.additional, 10);
-      // First add the 1-30 Employees product (ID 28034) with quantity 1.
-      addProductToCart(28034, 1)
-        .then(response1 => {
-          console.log("Added product 28034:", response1);
-          // Then add the Per Employee product (ID 24798) with quantity equal to additionalEmployees.
-          return addProductToCart(24798, additionalEmployees);
-        })
-        .then(response2 => {
-          console.log("Added product 24798:", response2);
-          // Redirect to the cart after both products have been added.
+      window.location.href = "/?add-to-cart=145";
+      return;
+    }
+
+    if (mode === 'ajax') {
+      e.preventDefault();
+      const additionalEmployees = parseInt(pickerLink.getAttribute('data-additional'), 10);
+      addProductToCart(145, 1) // Base package for 1–30 employees
+        .then(() => addProductToCart(144, additionalEmployees)) // Per-employee addon
+        .then(() => {
           window.location.href = "/cart/";
         })
         .catch(error => {
           console.error("Error adding products:", error);
           alert("There was an error adding products to your cart. Please try again.");
         });
+      return;
     }
-    // For numbers outside 31–300, the default link behavior occurs.
+
+    // Let quote link redirect normally
   });
 });
 </script>
-
-
-
-
-
-
-
-

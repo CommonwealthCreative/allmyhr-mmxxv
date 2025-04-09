@@ -39,7 +39,7 @@ get_header();
         <a href="#" class="video-thumb w-inline-block">
           <div data-w-id="719366e5-82b9-18de-3851-f5d8d28718c2" class="lottie-animation" data-animation-type="lottie" data-src="/wp-content/themes/allmyhr-mmxxv/documents/Animation---1740613569953.json" data-loop="1" data-direction="1" data-autoplay="1" data-is-ix2-target="0" data-renderer="svg" data-default-duration="2" data-duration="0"></div>
         </a>
-        <p data-w-id="280c230b-7b91-4e93-726f-9132bd035b07" style="opacity:0; padding-top:30px;">The most cost-effective HR Solutions for small &amp; mid-sized employers. </p>
+        <p data-w-id="280c230b-7b91-4e93-726f-9132bd035b07" style="opacity:0; padding-top:30px;">The Most Cost-Effective HR Solutions for Small &amp; Mid-Sized Employers. </p>
       </div>
       <div>
         <div>
@@ -56,7 +56,7 @@ get_header();
         <a href="#" class="btn wht w-button">Schedule A Call</a>
       </div>
       <h2>All included in your AllMyHR Membership</h2>
-      <p class="crumbs highlight blu txt" style="margin-bottom:0px;">No Long Term Contracts</p>
+      <p class="crumbs highlight blu txt" style="margin-bottom:0px;">No Long Term Contracts / 30 Day Money Back Guarantee</p>
       <div id="w-node-_78bab3d5-6256-b993-9747-3ffbacfcaf8e-fbd4393f" class="w-layout-layout toggles wf-layout-layout">
         <div class="w-layout-cell">
           <div data-w-id="78bab3d5-6256-b993-9747-3ffbacfcaf91" class="faq-card">
@@ -167,15 +167,15 @@ document.addEventListener('DOMContentLoaded', function() {
     // Define the range mappings with corresponding variation IDs, attribute values,
     // monthly prices, and one-time sign-up fees.
     const ranges = [
-        { min: 1,   max: 24,  slug: '1-24',   variation_id: 125, monthly: '99.00',  signup: '250.00' },
-        { min: 25,  max: 50,  slug: '25-50',  variation_id: 126, monthly: '149.00', signup: '250.00' },
-        { min: 51,  max: 100, slug: '51-100', variation_id: 127, monthly: '199.00', signup: '250.00' },
-        { min: 101, max: 250, slug: '101-250', variation_id: 128, monthly: '249.00', signup: '500.00' },
-        { min: 251, max: 500, slug: '250-500', variation_id: 129, monthly: '299.00', signup: '500.00' }
+        { min: 1,   max: 24,  slug: '1-24',   variation_id: 408, monthly: '99.00',  signup: '250.00' },
+        { min: 25,  max: 50,  slug: '25-50',  variation_id: 409, monthly: '149.00', signup: '250.00' },
+        { min: 51,  max: 100, slug: '51-100', variation_id: 410, monthly: '199.00', signup: '250.00' },
+        { min: 101, max: 250, slug: '101-250', variation_id: 411, monthly: '249.00', signup: '500.00' },
+        { min: 251, max: 500, slug: '250-500', variation_id: 412, monthly: '299.00', signup: '500.00' }
     ];
 
     // Your variable product ID and base URL.
-    const product_id = 124;
+    const product_id = 401;
     const baseProductURL = '/services/allmyhr-monthly-subscription/';
     const contactURL = '/contact-allmyhr/';
 

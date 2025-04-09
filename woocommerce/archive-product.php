@@ -56,10 +56,10 @@ get_header();
         </div>
         <div class="slider-card plans w-tab-content">
           <div data-w-tab="Monthly" class="w-tab-pane w--tab-active">
-          <?php do_action( 'mmxxv_product_tab_card_hook', 124 ); ?>
+          <?php do_action( 'mmxxv_product_tab_card_hook', 401 ); ?>
           </div>
           <div data-w-tab="Annually" class="w-tab-pane">
-          <?php do_action( 'mmxxv_product_tab_card_hook', 113 ); ?>
+          <?php do_action( 'mmxxv_product_tab_card_hook', 400 ); ?>
           </div>
         </div>
       </div>

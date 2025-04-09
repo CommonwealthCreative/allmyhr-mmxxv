@@ -26,7 +26,7 @@
           <div class="crumb highlight txt">Training Courses</div>
         </div>
         <div class="w-layout-cell center">
-          <div><strong class="stats">$2 Million+</strong></div>
+          <div><strong class="stats">$29 Million+</strong></div>
           <div class="crumb highlight txt">Saved Annually</div>
         </div>
       </div>
