@@ -390,88 +390,106 @@ function mmxxv_cart_item_count() {
           </a>';
 }
 
-/**
- * Woocommerce Empty Cart Redirect
- */
-function cc_redirect_empty_cart_to_home() {
-    if (is_cart() && WC()->cart->is_empty()) {
-        wp_safe_redirect(home_url());
-        exit;
-    }
-}
-add_action('template_redirect', 'cc_redirect_empty_cart_to_home');
+function cc_insert_checkout_login_message( $content ) {
+    if ( is_checkout() && has_block( 'woocommerce/checkout', $content ) ) {
 
-/**
- * Woocommerce Empty Cart Action Redirect
- */
-function cc_redirect_on_cart_block_empty() {
-    if (is_cart()) {
-        ?>
-        <script type="text/javascript">
-        (function() {
-            let redirected = false;
+        ob_start();
 
-            function checkCartBlockEmpty() {
-                const emptyBlock = document.querySelector('.wp-block-woocommerce-empty-cart-block');
-                const onCartPage = window.location.pathname.includes('/cart');
+        echo '<div class="woocommerce-info cc-checkout-login-notice" style="margin-bottom:2rem;">';
 
-                if (emptyBlock && onCartPage && !redirected) {
-                    redirected = true;
-                    window.location.href = "<?php echo esc_url(home_url()); ?>";
-                }
-            }
+        if ( is_user_logged_in() ) {
+            $current_user = wp_get_current_user();
+            $account_url  = wc_get_page_permalink( 'myaccount' );
 
-            // Run immediately on page load
-            checkCartBlockEmpty();
+            echo 'You are logged in as <strong>' . esc_html( $current_user->display_name ) . '</strong>. ';
+            echo '<a href="' . esc_url( $account_url ) . '" style="text-decoration: underline;">Account Details</a>';
+        } else {
+            echo 'If you are an existing or previous customer, ';
+            echo '<a href="#" class="cc-toggle-login" style="text-decoration: underline;">please login to your account</a>.';
+            echo '<div class="cc-checkout-login-form" style="margin-top:1rem; display:none;">';
+            echo '<form method="post" action="' . esc_url( wp_login_url( wc_get_checkout_url() ) ) . '">';
+            echo '<input type="text" name="log" placeholder="Username or email" style="display:block; margin-bottom:1rem; padding:0.5rem; width:100%; max-width:300px;">';
+            echo '<input type="password" name="pwd" placeholder="Password" style="display:block; margin-bottom:1rem; padding:0.5rem; width:100%; max-width:300px;">';
+            echo '<button type="submit" class="button" style="padding:0.5rem 1rem;">Login</button>';
+            echo '</form></div>';
+        }
 
-            // Start polling for up to 10 seconds
-            const interval = setInterval(checkCartBlockEmpty, 300);
-            setTimeout(() => clearInterval(interval), 10000);
-        })();
-        </script>
-        <?php
-    }
-}
-add_action('wp_footer', 'cc_redirect_on_cart_block_empty', 100);
+        echo '</div>';
 
+        if ( ! is_user_logged_in() ) {
+            echo '<script>
+                document.addEventListener("DOMContentLoaded", function () {
+                    const toggle = document.querySelector(".cc-toggle-login");
+                    const form = document.querySelector(".cc-checkout-login-form");
+                    if (toggle && form) {
+                        toggle.addEventListener("click", function(e) {
+                            e.preventDefault();
+                            form.style.display = form.style.display === "block" ? "none" : "block";
+                        });
+                    }
+                });
+            </script>';
+        }
 
-/**
- * Woocommerce Checkout Account Message
- */
-function cc_insert_login_notice_above_checkout( $content ) {
-    if ( is_checkout() && ! is_user_logged_in() && has_block( 'woocommerce/checkout', $content ) ) {
-
-        $notice = '
-        <div class="woocommerce-info cc-checkout-login-notice" style="margin-bottom:2rem;">
-            If you are an existing or previous customer, 
-            <a href="#" class="cc-toggle-login" style="text-decoration: underline;">please login to your account</a>.
-            <div class="cc-checkout-login-form" style="margin-top:1rem; display:none;">
-                <form method="post" action="' . esc_url( wp_login_url( wc_get_checkout_url() ) ) . '">
-                    <input type="text" name="log" placeholder="Username or email" style="display:block; margin-bottom:1rem; padding:0.5rem; width:100%; max-width:300px;">
-                    <input type="password" name="pwd" placeholder="Password" style="display:block; margin-bottom:1rem; padding:0.5rem; width:100%; max-width:300px;">
-                    <button type="submit" class="button" style="padding:0.5rem 1rem;">Login</button>
-                </form>
-            </div>
-        </div>
-        <script>
-            document.addEventListener("DOMContentLoaded", function () {
-                const toggle = document.querySelector(".cc-toggle-login");
-                const form = document.querySelector(".cc-checkout-login-form");
-                if (toggle && form) {
-                    toggle.addEventListener("click", function(e) {
-                        e.preventDefault();
-                        form.style.display = form.style.display === "block" ? "none" : "block";
-                    });
-                }
-            });
-        </script>';
+        $notice = ob_get_clean();
 
         return $notice . $content;
     }
 
     return $content;
 }
-add_filter( 'the_content', 'cc_insert_login_notice_above_checkout', 1 );
+add_filter( 'the_content', 'cc_insert_checkout_login_message', 1 );
+
+// Display alert at the top of the thank you page
+add_action( 'woocommerce_before_thankyou', 'allmyhr_thankyou_account_alert_top', 1 );
+function allmyhr_thankyou_account_alert_top( $order_id ) {
+	if ( ! $order_id ) return;
+	echo allmyhr_account_alert_html();
+}
+
+// Display alert at the bottom using output buffer on the thank you page
+add_filter( 'the_content', 'allmyhr_thankyou_account_alert_bottom' );
+function allmyhr_thankyou_account_alert_bottom( $content ) {
+	if ( ! is_order_received_page() ) return $content;
+
+	// Append alert only once
+	if ( strpos( $content, 'allmyhr-thankyou-bottom-alert' ) !== false ) return $content;
+
+	return $content . allmyhr_account_alert_html( true );
+}
+
+// The alert HTML used in both places
+function allmyhr_account_alert_html( $is_bottom = false ) {
+	$classes = 'woocommerce-error allmyhr-thankyou-' . ( $is_bottom ? 'bottom' : 'top' ) . '-alert';
+	$message = 'Important: To complete your order, you must fill out our account setup form. This step is required to activate your subscription and ensure you receive access to your services. ';
+	$link_text = 'Complete your account setup here.';
+	$link_url = 'https://allmyhr.com/account-set-up-form/';
+
+	return '<ul class="' . esc_attr( $classes ) . '" role="alert" style="margin: 2rem 0; list-style: none;">'
+	     . '<li><b>' . esc_html( $message ) . '<a href="' . esc_url( $link_url ) . '" style="color: #b81c23; text-decoration: underline;" target="_blank">' . esc_html( $link_text ) . '</a></b></li>'
+	     . '</ul>';
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
