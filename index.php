@@ -52,8 +52,8 @@ get_header();
       </div>
       <div class="spaced">
       <a href="/services/allmyhr-monthly-subscription/" id="picker" class="btn w-button">Sign Up Now</a>
-        <a href="#" class="btn clear w-button">Get My Demo</a>
-        <a href="#" class="btn wht w-button">Schedule A Call</a>
+        <a href="https://allmyhr.com/contact-allmyhr/" class="btn clear w-button">Get My Demo</a>
+        <a href="https://calendly.com/sjacksonallmyhr/10-minute-walkthrough?month=2025-04" class="btn wht w-button">Schedule A Call</a>
       </div>
       <h2>All included in your AllMyHR Membership</h2>
       <p class="crumbs highlight blu txt" style="margin-bottom:0px;">No Long Term Contracts / 30 Day Money Back Guarantee</p>
