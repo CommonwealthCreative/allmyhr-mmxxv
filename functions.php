@@ -461,14 +461,15 @@ function allmyhr_thankyou_account_alert_bottom( $content ) {
 // The alert HTML used in both places
 function allmyhr_account_alert_html( $is_bottom = false ) {
 	$classes = 'woocommerce-error allmyhr-thankyou-' . ( $is_bottom ? 'bottom' : 'top' ) . '-alert';
-	$message = 'Important: To complete your order, you must fill out our account setup form. This step is required to activate your subscription and ensure you receive access to your services. ';
-	$link_text = 'Complete your account setup here.';
+	$message = 'Almost done. ';
+	$link_text = 'Click Here to complete your New Client Setup Form';
 	$link_url = 'https://allmyhr.com/account-set-up-form/';
 
-	return '<ul class="' . esc_attr( $classes ) . '" role="alert" style="margin: 2rem 0; list-style: none;">'
-	     . '<li><b>' . esc_html( $message ) . '<a href="' . esc_url( $link_url ) . '" style="color: #b81c23; text-decoration: underline;" target="_blank">' . esc_html( $link_text ) . '</a></b></li>'
+	return '<ul class="' . esc_attr( $classes ) . '" role="alert" style="margin: 2rem 0; list-style: none; font-size: 150%; color: red;">'
+	     . '<li><b>' . esc_html( $message ) . '<a href="' . esc_url( $link_url ) . '" style="color: red; text-decoration: underline;" target="_blank">' . esc_html( $link_text ) . '</a></b></li>'
 	     . '</ul>';
 }
+
 
 
 

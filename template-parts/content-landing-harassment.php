@@ -73,14 +73,14 @@
 						</div>
 						
 		</section>
-		<script>
+    <script>
 document.addEventListener('DOMContentLoaded', function() {
   const userNumberInput = document.getElementById('user_number');
   const pickerLink = document.getElementById('picker');
   const priceMessage = document.getElementById('price-message');
 
   const defaultPricingMsg = "$6 Annually per Employee (Minimum of $180 Annually up to 30 employees)";
-  const defaultBuyLink = "/?add-to-cart=145";
+  const defaultBuyLink = "/?add-to-cart=283";
 
   priceMessage.innerHTML = `<p class="price highlight txt">${defaultPricingMsg}</p>`;
   pickerLink.textContent = "Buy Now";
@@ -150,15 +150,15 @@ document.addEventListener('DOMContentLoaded', function() {
 
     if (mode === 'direct') {
       e.preventDefault();
-      window.location.href = "/?add-to-cart=145";
+      window.location.href = "/?add-to-cart=283";
       return;
     }
 
     if (mode === 'ajax') {
       e.preventDefault();
       const additionalEmployees = parseInt(pickerLink.getAttribute('data-additional'), 10);
-      addProductToCart(145, 1) // Base package for 1–30 employees
-        .then(() => addProductToCart(144, additionalEmployees)) // Per-employee addon
+      addProductToCart(283, 1) // Base package for 1–30 employees
+        .then(() => addProductToCart(458, additionalEmployees)) // Per-employee addon
         .then(() => {
           window.location.href = "/cart/";
         })

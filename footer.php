@@ -64,7 +64,27 @@
       <p class="footer-link">©2025 AllMyHr Company. <a href="https://allmyhr.com/terms-of-service/" target="_blank">All Rights Reserved. Terms &amp; Conditions.</a> <a target="_blank" href="https://thecommonwealthcreative.com">Website By Commonwealth Creative</a></p>
     </div>
   </section>
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+	console.log("[CC Checkout Scroll] Patch active");
 
+	const originalScrollTo = window.scrollTo;
+
+	window.scrollTo = function () {
+		// Call the original scrollTo
+		originalScrollTo.apply(window, arguments);
+
+		// Then offset by -200px after a short delay
+		setTimeout(function () {
+			window.scrollBy({
+				top: -200,
+				behavior: "smooth",
+			});
+			console.log("[CC Checkout Scroll] Applied -200px offset");
+		}, 100);
+	};
+});
+</script>
 
 
 </div><!-- #page -->
