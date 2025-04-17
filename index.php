@@ -42,17 +42,35 @@ get_header();
         <p data-w-id="280c230b-7b91-4e93-726f-9132bd035b07" style="opacity:0; padding-top:30px;">The Most Cost-Effective HR Solutions for Small &amp; Mid-Sized Employers. </p>
       </div>
       <div>
+      <div class="toggle-btn w-tab-menu">
+          <a data-w-tab="Monthly" class="price-tab w-inline-block w-tab-link w--current">
+            <div class="tab-text simple-nav-link">Monthly</div>
+            <div class="toggle-contain w-clearfix">
+              <div class="toggle-dot right"></div>
+            </div>
+            <div class="tab-text simple-nav-link active">Annually</div>
+          </a>
+          <a data-w-tab="Annually" class="price-tab w-inline-block w-tab-link">
+            <div class="tab-text simple-nav-link active">Monthly</div>
+            <div class="toggle-contain">
+              <div class="toggle-dot"></div>
+            </div>
+            <div class="tab-text simple-nav-link">Annually</div>
+          </a>
+        </div>
         <div>
               <div class="number-input-container center" style="display: flex;">
-              <label for="user_number" class="crumb">Instant Pricing:</label>
-              <input type="number" id="user_number" name="user_number" placeholder="Enter # of Employees" min="1" max="500" style="min-width:200px; margin-left: 20px;">
+              <!--<label for="user_number" class="crumb">Instant Pricing:</label>-->
+              <input type="number" id="user_number" name="user_number" placeholder="Enter # of Employees for Instant Pricing" min="1" max="500">
               </div>
-              <div id="price-message"></div>  
+              <div id="price-message"></div> 
+              <!-- pricing frequency toggle -->
         </div>
+        
       </div>
       <div class="spaced">
       <a href="/services/allmyhr-monthly-subscription/" id="picker" class="btn w-button">Sign Up Now</a>
-        <a href="https://allmyhr.com/contact-allmyhr/" class="btn clear w-button">Get My Demo</a>
+        <a href="https://calendly.com/sjacksonallmyhr/10-minute-walkthrough?month=2025-04" class="btn clear w-button">Schedule A Demo</a>
         <a href="https://calendly.com/sjacksonallmyhr/10-minute-walkthrough?month=2025-04" class="btn wht w-button">Schedule A Call</a>
       </div>
       <h2>All included in your AllMyHR Membership</h2>
@@ -159,100 +177,138 @@ get_header();
 	<?php get_template_part('template-parts/content', 'quoteform'); ?>
   </section>
   <script>
+// Pricing toggle and dynamic link script with annual savings
+
 document.addEventListener('DOMContentLoaded', function() {
-    const userNumberInput = document.getElementById('user_number');
-    const pickerLink = document.getElementById('picker');
-    const priceMessage = document.getElementById('price-message');
+  let freq = 'Monthly';
+  const monthlyBase = '/services/allmyhr-monthly-subscription/';
+  const annualBase  = '/services/allmyhr-annual-subscription/';
+  const contactURL  = '/contact-allmyhr/';
+  const monthlyID   = 401;
+  const annualID    = 400;
 
-    // Define the range mappings with corresponding variation IDs, attribute values,
-    // monthly prices, and one-time sign-up fees.
-    const ranges = [
-        { min: 1,   max: 24,  slug: '1-24',   variation_id: 408, monthly: '99.00',  signup: '250.00' },
-        { min: 25,  max: 50,  slug: '25-50',  variation_id: 409, monthly: '149.00', signup: '250.00' },
-        { min: 51,  max: 100, slug: '51-100', variation_id: 410, monthly: '199.00', signup: '250.00' },
-        { min: 101, max: 250, slug: '101-250', variation_id: 411, monthly: '249.00', signup: '500.00' },
-        { min: 251, max: 500, slug: '250-500', variation_id: 412, monthly: '299.00', signup: '500.00' }
-    ];
+  const monthlyRanges = [
+    { min: 1,   max: 24,  slug: '1-24', variation_id: 408, price: '99.00',  signup: '250.00' },
+    { min: 25,  max: 50,  slug: '25-50', variation_id: 409, price: '149.00', signup: '250.00' },
+    { min: 51,  max: 100, slug: '51-100', variation_id: 410, price: '199.00', signup: '250.00' },
+    { min: 101, max: 250, slug: '101-250', variation_id: 411, price: '249.00', signup: '500.00' },
+    { min: 251, max: 500, slug: '250-500', variation_id: 412, price: '299.00', signup: '500.00' }
+  ];
 
-    // Your variable product ID and base URL.
-    const product_id = 401;
-    const baseProductURL = '/services/allmyhr-monthly-subscription/';
-    const contactURL = '/contact-allmyhr/';
+  const annualRanges = [
+    { min: 1,   max: 24,  slug: '1-24',  variation_id: 406, price: '1069.00', signup: '250.00', save: '119' },
+    { min: 25,  max: 50,  slug: '25-50', variation_id: 407, price: '1609.00', signup: '250.00', save: '179' },
+    { min: 51,  max: 100, slug: '51-100',variation_id: 403, price: '2149.00', signup: '250.00', save: '239' },
+    { min: 101, max: 250, slug: '101-250',variation_id: 404, price: '2689.00', signup: '500.00', save: '299' },
+    { min: 251, max: 500, slug: '250-500',variation_id: 402, price: '3229.00', signup: '500.00', save: '359' }
+  ];
 
-    // Function to update the price message.
-    // Displays both the monthly price and the one‑time sign‑up fee.
-    function updatePriceMessage(monthly, signup) {
-        priceMessage.innerHTML = `<h3 class="price"><span class="from"></span>
-            <span class="woocommerce-Price-amount amount">
-                <bdi><span class="woocommerce-Price-currencySymbol">$</span>${monthly}</bdi>
-            </span> <span class="subscription-details">/ month + $${signup} one time fee</span></h3>`;
+  const userNumberInput = document.getElementById('user_number');
+  const pickerLink      = document.getElementById('picker');
+  const priceMessage    = document.getElementById('price-message');
+
+  function updateMonthly(price, fee) {
+    priceMessage.innerHTML =
+      `<h3 class="price">` +
+      `  <span class="woocommerce-Price-amount amount">` +
+      `    <bdi><span class="woocommerce-Price-currencySymbol">$</span>${price}</bdi>` +
+      `  </span> ` +
+      `  <span class="subscription-details">/ month + $${fee} one time fee</span>` +
+      `</h3>`;
+  }
+
+  // Toggle between Monthly and Annual
+  document.querySelectorAll('.price-tab').forEach(tab => {
+    tab.addEventListener('click', function(e) {
+      e.preventDefault();
+      freq = this.dataset.wTab;
+      document.querySelectorAll('.price-tab').forEach(t => t.classList.remove('w--current'));
+      this.classList.add('w--current');
+      userNumberInput.dispatchEvent(new Event('input'));
+    });
+  });
+
+  // Update pricing on employee number input
+  userNumberInput.addEventListener('input', function() {
+    const val = this.value.trim();
+    if (!val) {
+      // No input: show starting price
+      pickerLink.href = freq === 'Monthly' ? monthlyBase : annualBase;
+      pickerLink.textContent = 'Buy Now';
+      pickerLink.style.opacity = '0.5';
+      if (freq === 'Monthly') {
+        priceMessage.innerHTML =
+          `<p class="price highlight txt"><span class="from">Starting at: </span>` +
+          `<span class="woocommerce-Price-amount amount"><bdi><span class="woocommerce-Price-currencySymbol">$</span>99</bdi></span>` +
+          `<span class="subscription-details">/ month</span></p>`;
+      } else {
+        priceMessage.innerHTML =
+          `<p class="price highlight txt"><span class="from">Starting at: </span>` +
+          `<span class="woocommerce-Price-amount amount"><bdi><span class="woocommerce-Price-currencySymbol">$</span>1069</bdi></span>` +
+          `<span class="subscription-details">/ year</span></p>`;
+      }
+      return;
     }
 
-    // Set default message ($99/month, with no sign‑up fee)
-    priceMessage.innerHTML = `<p class="price highlight txt"><span class="from">Starting at: </span>
-        <span class="woocommerce-Price-amount amount">
-            <bdi><span class="woocommerce-Price-currencySymbol">$</span>99</bdi>
-        </span> <span class="subscription-details">/ month</span></p>`;
-    // Set default button text and opacity.
-    pickerLink.textContent = "Buy Now";
-    pickerLink.style.opacity = '0.5';
+    const n = parseInt(val, 10);
+    if (n > 500) {
+      // Custom quote for >500
+      pickerLink.href = contactURL;
+      pickerLink.textContent = 'Get A Quote';
+      pickerLink.style.opacity = '1';
+      priceMessage.innerHTML =
+        `<p class="price highlight txt"><span class="from">` +
+        `<a href="${contactURL}" class="highlight txt">Please contact us for a custom quote</a>` +
+        `</span></p>`;
+      return;
+    }
 
-    // Listen for changes in the input field.
-    userNumberInput.addEventListener('input', function() {
-        const inputVal = userNumberInput.value.trim();
-        if (inputVal === '') {
-            // No input: revert to default state.
-            pickerLink.href = baseProductURL;
-            pickerLink.textContent = "Buy Now";
-            pickerLink.style.opacity = '0.5';
-            priceMessage.innerHTML = `<p class="price highlight txt"><span class="from">Starting at: </span>
-        <span class="woocommerce-Price-amount amount">
-            <bdi><span class="woocommerce-Price-currencySymbol">$</span>99</bdi>
-        </span> <span class="subscription-details">/ month</span></p>`;
-            return;
-        }
-        let numberValue = parseInt(inputVal, 10);
-        
-        // If the entered value is greater than 500, show the custom quote state.
-        if (numberValue > 500) {
-            pickerLink.href = contactURL;
-            pickerLink.textContent = "Get A Quote";
-            pickerLink.style.opacity = '1';
-            priceMessage.innerHTML = `<p><a href="/contact-allmyhr/" class="highlight txt">Please contact us for a custom quote</a></p>`;
-            return;
-        }
-        
-        // Otherwise, if the number is between 1 and 500, try to find a matching range.
-        let matchedRange = ranges.find(range => numberValue >= range.min && numberValue <= range.max);
-        if (matchedRange) {
-            pickerLink.href = baseProductURL +
-                '?add-to-cart=' + product_id +
-                '&variation_id=' + matchedRange.variation_id +
-                '&attribute_employees=' + encodeURIComponent(matchedRange.slug);
-            pickerLink.textContent = "Buy Now";
-            pickerLink.style.opacity = '1';
-            updatePriceMessage(matchedRange.monthly, matchedRange.signup);
-        } else {
-            // For any invalid input (shouldn't happen here), revert to default.
-            pickerLink.href = baseProductURL;
-            pickerLink.textContent = "Buy Now";
-            pickerLink.style.opacity = '0.5';
-            priceMessage.innerHTML = `<p class="price highlight txt"><span class="from">Starting at: </span>
-        <span class="woocommerce-Price-amount amount">
-            <bdi><span class="woocommerce-Price-currencySymbol">$</span>99</bdi>
-        </span> <span class="subscription-details">/ month</span></p>`;
-        }
-    });
+    // Determine correct range set and update
+    const setBase    = freq === 'Monthly' ? monthlyRanges : annualRanges;
+    const baseURL    = freq === 'Monthly' ? monthlyBase    : annualBase;
+    const productID  = freq === 'Monthly' ? monthlyID      : annualID;
+    const matchRange = setBase.find(r => n >= r.min && n <= r.max);
 
-    // When the #picker link is clicked, if no value is entered, display a pop-up message.
-    pickerLink.addEventListener('click', function(e) {
-        if (!userNumberInput.value.trim()) {
-            e.preventDefault();
-            alert("Please enter the number of employees your company has...");
-        }
-    });
+    if (matchRange) {
+      pickerLink.href =
+        `${baseURL}?add-to-cart=${productID}` +
+        `&variation_id=${matchRange.variation_id}` +
+        `&attribute_employees=${matchRange.slug}`;
+      pickerLink.textContent = 'Buy Now';
+      pickerLink.style.opacity = '1';
+
+      if (freq === 'Monthly') {
+        updateMonthly(matchRange.price, matchRange.signup);
+      } else {
+        priceMessage.innerHTML =
+          `<h3 class="price"><span class="woocommerce-Price-amount amount">` +
+          `<bdi><span class="woocommerce-Price-currencySymbol">$</span>${matchRange.price}</bdi>` +
+          `</span> <span class="subscription-details">/ year + $${matchRange.signup} one time fee</span></h3>` +
+          `<p class="savings highlight txt" style="margin:0">Save $${matchRange.save} when you purchase an annual plan!</p>`;
+      }
+    }
+  });
+
+  // Prevent link click if no number entered
+  pickerLink.addEventListener('click', function(e) {
+    if (!userNumberInput.value.trim()) {
+      e.preventDefault();
+      alert("Please enter the number of employees your company has...");
+    }
+  });
+
+  // Initialize starting price on load
+  userNumberInput.dispatchEvent(new Event('input'));
 });
 </script>
+
+
+
+
+
+
+
+
 
 <?php
 /*get_sidebar();*/

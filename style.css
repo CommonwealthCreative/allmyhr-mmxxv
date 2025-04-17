@@ -645,6 +645,8 @@ textarea {
 # Components
 --------------------------------------------------------------*/
 
+
+
 /* Navigation
 --------------------------------------------- */
 .main-navigation {
@@ -977,6 +979,16 @@ body {
 	line-height: 2rem;
   }
 
+  p.savings {margin-bottom: 0px;}
+
+	input#user_number {
+		padding: 6px;
+		border-radius: 8px;
+		margin:10px 0px;
+		min-width: 400px;
+		text-align: center;
+	}
+
 
  /* Corrections */
  
@@ -1131,6 +1143,22 @@ a:visited {
 	
 
   /* WooCommerce */
+
+  .slider-card .cardpricing, .slider-card .spaced {
+	color: #000 !important;
+	text-align: center!important;
+  }
+
+  .slider-card .tab-text.simple-nav-link.active {
+	color: #000;
+  }
+
+
+
+  .wc-block-cart__empty-cart__title.with-empty-cart-icon:before {
+	mask-image: url('../allmyhr-mmxxv/images/allmyhr-logo.svg') !important;
+  }
+  
 
   .wc-block-components-notice-banner.wc-block-components-notice-snackbar, .wc-block-components-notice-snackbar-list .wc-block-components-notice-banner {
 	z-index: 99;

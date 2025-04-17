@@ -35,10 +35,16 @@ get_header();
       </div>
     </div>
     <div class="container service">
+
+
       <div style="-webkit-transform:translate3d(0, 0, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-moz-transform:translate3d(0, 0, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-ms-transform:translate3d(0, 0, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);transform:translate3d(0, 0, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0)" class="bg-glow highlight"></div>
       <div class="bg-highlight highlight"></div>
       <div data-current="Monthly" data-easing="ease" data-duration-in="300" data-duration-out="100" class="pricing-tabs w-tabs">
-        <div class="toggle-btn w-tab-menu">
+        <div class="slider-card plans w-tab-content">
+          <div data-w-tab="Monthly" class="w-tab-pane w--tab-active">
+          <div data-w-id="01359f47-5257-5e6d-ef23-984a4434e930" class="card lite w-inline-block"><div class="w-layout-hflex phrases hr"><a class="card-tab-title highlight txt" href="http://localhost:8000/services/allmyhr-monthly-subscription/"><img loading="lazy" src="/wp-content/themes/allmyhr-mmxxv/images/allmyhr-logo.svg" alt="" class="headlineicon"><h2>AllMyHR – Complete Subscription</h2></a><h3 class="fa move highlight txt" style="transform: translate3d(0px, 0px, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg); transform-style: preserve-3d; opacity: 0;">➜</h3></div><div class="crumb"><p>AllMyHR provides businesses with a complete HR compliance and management solution, combining expert guidance, up-to-date labor law resources, and essential HR tools in one platform. It helps organizations streamline HR processes, reduce compliance risks, and stay informed with the latest regulatory updates.</p></div><div class="hr"><div class="w-layout-hflex bullet"><div class="crumb"><span class="fa highlight blu txt"></span></div><h4 class="crumb"><b>All-in-One HR Management Platform</b> – Streamline employee management, policies, and documentation with a centralized, user-friendly system.</h4></div><div class="w-layout-hflex bullet"><div class="crumb"><span class="fa highlight blu txt"></span></div><h4 class="crumb"><b>Comprehensive HR Compliance &amp; Support</b> – Access expert guidance, labor law updates, and compliance tools to mitigate risks and ensure regulatory adherence.</h4></div><div class="w-layout-hflex bullet"><div class="crumb"><span class="fa highlight blu txt"></span></div><h4 class="crumb"><b>Continuous Updates &amp; Expert Insights</b> – Stay ahead of HR regulations with real-time updates, training resources, and expert-backed insights.</h4></div></div></div>
+
+          <div class="toggle-btn w-tab-menu">
           <a data-w-tab="Monthly" class="price-tab w-inline-block w-tab-link w--current">
             <div class="tab-text simple-nav-link">Monthly</div>
             <div class="toggle-contain w-clearfix">
@@ -54,24 +60,29 @@ get_header();
             <div class="tab-text simple-nav-link">Annually</div>
           </a>
         </div>
-        <div class="slider-card plans w-tab-content">
-          <div data-w-tab="Monthly" class="w-tab-pane w--tab-active">
-          <?php do_action( 'mmxxv_product_tab_card_hook', 401 ); ?>
-          </div>
-          <div data-w-tab="Annually" class="w-tab-pane">
-          <?php do_action( 'mmxxv_product_tab_card_hook', 400 ); ?>
+        <div class="cardpricing">
+        <div class="number-input-container center" style="display: flex;">
+              <!--<label for="user_number" class="crumb">Instant Pricing:</label>-->
+              <input type="number" id="user_number" name="user_number" placeholder="Enter # of Employees for Instant Pricing" min="1" max="500">
+              </div>
+              <div id="price-message"></div>
+              <!-- pricing frequency toggle -->
+        <div class="spaced">
+      <a href="/services/allmyhr-monthly-subscription/" id="picker" class="btn w-button">Sign Up Now</a>
+        <a href="https://calendly.com/sjacksonallmyhr/10-minute-walkthrough?month=2025-04" class="btn w-button">Schedule A Demo</a>
+        <a href="https://calendly.com/sjacksonallmyhr/10-minute-walkthrough?month=2025-04" class="btn w-button">Schedule A Call</a>
+      </div>
           </div>
         </div>
       </div>
-    </div>
-    <a href="#quote" class="highlight txt">More Than 500 Employees? Ask Us For A Custom Quote.</a>
+    </div> <!-- container service -->
   </section>
   <section id="ondemand" class="content-section bg-dkblue bg-gradientblack">
     <div class="container features">
     <div class="container h-content">
     <h2 data-w-id="9d2d1334-04f7-1727-2bde-ab46a553ce11" style="opacity:0" class="center"><span class="highlight txt">On-Demand HR Services</span><br>Reduce Compliance Risks, Boost Efficiency, and Streamline Administration</h2>
-        <a href="#quote" class="btn wht w-button">Schedule A Demo</a>
-        <a href="/contact-allmyhr/" class="btn clear w-button">Contact Us Today</a>
+        <a href="/services/allmyhr-monthly-subscription/" id="picker" class="btn wht w-button">Schedule A Demo</a>
+        <a href="/services/allmyhr-monthly-subscription/" id="picker" class="btn clear w-button">Contact Us Today</a>
       </div>
       <div id="w-node-_728995ad-174f-d62c-3c5c-78d5b987a086-b987a086" class="w-layout-layout wf-layout-layout">
       <?php
@@ -115,4 +126,126 @@ endif;
   <?php get_template_part('template-parts/content', 'faqs'); ?>
 	<?php get_template_part('template-parts/content', 'quoteform'); ?>
   </section>
+  <script>
+// Pricing toggle and dynamic link script with annual savings
+
+document.addEventListener('DOMContentLoaded', function() {
+  let freq = 'Monthly';
+  const monthlyBase = '/services/allmyhr-monthly-subscription/';
+  const annualBase  = '/services/allmyhr-annual-subscription/';
+  const contactURL  = '/contact-allmyhr/';
+  const monthlyID   = 401;
+  const annualID    = 400;
+
+  const monthlyRanges = [
+    { min: 1,   max: 24,  slug: '1-24', variation_id: 408, price: '99.00',  signup: '250.00' },
+    { min: 25,  max: 50,  slug: '25-50', variation_id: 409, price: '149.00', signup: '250.00' },
+    { min: 51,  max: 100, slug: '51-100', variation_id: 410, price: '199.00', signup: '250.00' },
+    { min: 101, max: 250, slug: '101-250', variation_id: 411, price: '249.00', signup: '500.00' },
+    { min: 251, max: 500, slug: '250-500', variation_id: 412, price: '299.00', signup: '500.00' }
+  ];
+
+  const annualRanges = [
+    { min: 1,   max: 24,  slug: '1-24',  variation_id: 406, price: '1069.00', signup: '250.00', save: '119' },
+    { min: 25,  max: 50,  slug: '25-50', variation_id: 407, price: '1609.00', signup: '250.00', save: '179' },
+    { min: 51,  max: 100, slug: '51-100',variation_id: 403, price: '2149.00', signup: '250.00', save: '239' },
+    { min: 101, max: 250, slug: '101-250',variation_id: 404, price: '2689.00', signup: '500.00', save: '299' },
+    { min: 251, max: 500, slug: '250-500',variation_id: 402, price: '3229.00', signup: '500.00', save: '359' }
+  ];
+
+  const userNumberInput = document.getElementById('user_number');
+  const pickerLink      = document.getElementById('picker');
+  const priceMessage    = document.getElementById('price-message');
+
+  function updateMonthly(price, fee) {
+    priceMessage.innerHTML =
+      `<h3 class="price">` +
+      `  <span class="woocommerce-Price-amount amount">` +
+      `    <bdi><span class="woocommerce-Price-currencySymbol">$</span>${price}</bdi>` +
+      `  </span> ` +
+      `  <span class="subscription-details">/ month + $${fee} one time fee</span>` +
+      `</h3>`;
+  }
+
+  // Toggle between Monthly and Annual
+  document.querySelectorAll('.price-tab').forEach(tab => {
+    tab.addEventListener('click', function(e) {
+      e.preventDefault();
+      freq = this.dataset.wTab;
+      document.querySelectorAll('.price-tab').forEach(t => t.classList.remove('w--current'));
+      this.classList.add('w--current');
+      userNumberInput.dispatchEvent(new Event('input'));
+    });
+  });
+
+  // Update pricing on employee number input
+  userNumberInput.addEventListener('input', function() {
+    const val = this.value.trim();
+    if (!val) {
+      // No input: revert to start
+      pickerLink.href = freq === 'Monthly' ? monthlyBase : annualBase;
+      pickerLink.textContent = 'Buy Now';
+      pickerLink.style.opacity = '0.5';
+      if (freq === 'Monthly') {
+        priceMessage.innerHTML =
+          `<p class="price highlight txt"><span class="from">Starting at: </span>` +
+          `<span class="woocommerce-Price-amount amount"><bdi><span class="woocommerce-Price-currencySymbol">$</span>99</bdi></span>` +
+          `<span class="subscription-details">/ month</span></p>`;
+      } else {
+        priceMessage.innerHTML =
+          `<p class="price highlight txt"><span class="from">Starting at: </span>` +
+          `<span class="woocommerce-Price-amount amount"><bdi><span class="woocommerce-Price-currencySymbol">$</span>1069</bdi></span>` +
+          `<span class="subscription-details">/ year</span></p>`;
+      }
+      return;
+    }
+
+    const n = parseInt(val, 10);
+    if (n > 500) {
+      pickerLink.href = contactURL;
+      pickerLink.textContent = 'Get A Quote';
+      pickerLink.style.opacity = '1';
+      priceMessage.innerHTML =
+        `<p><a href="${contactURL}" class="highlight txt">Please contact us for a custom quote</a></p>`;
+      return;
+    }
+
+    const setBase   = freq === 'Monthly' ? monthlyRanges : annualRanges;
+    const baseURL   = freq === 'Monthly' ? monthlyBase     : annualBase;
+    const productID = freq === 'Monthly' ? monthlyID       : annualID;
+    const mRange    = setBase.find(r => n >= r.min && n <= r.max);
+
+    if (mRange) {
+      pickerLink.href =
+        `${baseURL}?add-to-cart=${productID}` +
+        `&variation_id=${mRange.variation_id}` +
+        `&attribute_employees=${mRange.slug}`;
+      pickerLink.textContent = 'Buy Now';
+      pickerLink.style.opacity = '1';
+
+      if (freq === 'Monthly') {
+        updateMonthly(mRange.price, mRange.signup);
+      } else {
+        priceMessage.innerHTML =
+          `<h3 class="price"><span class="woocommerce-Price-amount amount">` +
+          `<bdi><span class="woocommerce-Price-currencySymbol">$</span>${mRange.price}</bdi>` +
+          `</span> <span class="subscription-details">/ year + $${mRange.signup} one time fee</span></h3>` +
+          `<p class="savings highlight txt" style="margin:0">Save $${mRange.save} when you purchase an annual plan!</p>`;
+      }
+    }
+  });
+
+  // Prevent link click if no number entered
+  pickerLink.addEventListener('click', function(e) {
+    if (!userNumberInput.value.trim()) {
+      e.preventDefault();
+      alert("Please enter the number of employees your company has...");
+    }
+  });
+
+  // Initialize starting price on load
+  userNumberInput.dispatchEvent(new Event('input'));
+});
+</script>
+
 <?php get_footer( 'shop' );

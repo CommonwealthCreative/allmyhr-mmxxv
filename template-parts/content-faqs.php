@@ -13,8 +13,8 @@
       <div data-w-id="c0ffce76-e5dd-c509-ab7e-9285bfa38631" class="container h-content center">
         <h2 class="center">Comprehensive HR Solutions From <span class="highlight txt">Your Dedicated Team.</span></h2>
         <p>Get expert HR guidance from a dedicated team that understands your business, ensures compliance, and helps you manage your workforce with confidence.</p>
-        <a href="/services/" class="btn dk w-button">Sign Up Now</a>
-        <a href="/contact-allmyhr/" class="btn dk w-button">Get My Demo</a>
+        <a href="https://calendly.com/sjacksonallmyhr/10-minute-walkthrough?month=2025-04" target="_blank" class="btn dk w-button">Sign Up Now</a>
+        <a href="https://calendly.com/sjacksonallmyhr/10-minute-walkthrough?month=2025-04" target="_blank" class="btn dk w-button">Get My Demo</a>
         <div data-delay="3000" data-animation="slide" class="slider-wrapper w-slider" data-autoplay="false" data-easing="ease" data-hide-arrows="true" data-disable-swipe="false" data-w-id="c0ffce76-e5dd-c509-ab7e-9285bfa3863a" data-autoplay-limit="0" data-nav-spacing="3" data-duration="500" data-infinite="true">
           <div class="slider-wrapper-mask w-slider-mask">
             <div class="slide-item w-slide">

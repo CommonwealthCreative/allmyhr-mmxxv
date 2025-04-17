@@ -886,7 +886,6 @@ a {
   margin-left: auto;
   margin-right: auto;
   display: flex;
-  top: -30px;
 }
 
 .price-tab {
@@ -1192,7 +1191,6 @@ a {
 
   .toggle-btn {
     position: relative;
-    top: -30px;
   }
 
   .screen._4 {
@@ -1516,10 +1514,6 @@ a {
   .toggle-contain {
     margin-left: 15px;
     margin-right: 15px;
-  }
-
-  .toggle-btn {
-    margin-top: -10px;
   }
 
   .screen._4 {

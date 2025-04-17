@@ -361,20 +361,6 @@ function mmxxv_product_tab_card( $product_id ) {
 add_action( 'mmxxv_product_tab_card_hook', 'mmxxv_product_tab_card', 10, 1 );
 
 /**
- * Woocommerce Send to Cart
- */
-
- function mmxxv_redirect_to_checkout_on_add_to_cart( $url ) {
-    if ( WC()->cart ) {
-        remove_filter('woocommerce_add_to_cart_redirect', '__return_false'); // Prevent WooCommerce from overriding redirect behavior
-        return wc_get_checkout_url(); // Redirect to checkout while keeping cart items
-    }
-    return $url;
-}
-add_filter( 'woocommerce_add_to_cart_redirect', 'mmxxv_redirect_to_checkout_on_add_to_cart' );
-
-
-/**
  * Woocommerce Cart Count
  */
 
@@ -443,32 +429,70 @@ add_filter( 'the_content', 'cc_insert_checkout_login_message', 1 );
 // Display alert at the top of the thank you page
 add_action( 'woocommerce_before_thankyou', 'allmyhr_thankyou_account_alert_top', 1 );
 function allmyhr_thankyou_account_alert_top( $order_id ) {
-	if ( ! $order_id ) return;
-	echo allmyhr_account_alert_html();
+    if ( ! $order_id ) return;
+    echo allmyhr_account_alert_html();
 }
 
 // Display alert at the bottom using output buffer on the thank you page
 add_filter( 'the_content', 'allmyhr_thankyou_account_alert_bottom' );
 function allmyhr_thankyou_account_alert_bottom( $content ) {
-	if ( ! is_order_received_page() ) return $content;
+    if ( ! is_order_received_page() ) return $content;
 
-	// Append alert only once
-	if ( strpos( $content, 'allmyhr-thankyou-bottom-alert' ) !== false ) return $content;
+    // Append alert only once
+    if ( strpos( $content, 'allmyhr-thankyou-bottom-alert' ) !== false ) return $content;
 
-	return $content . allmyhr_account_alert_html( true );
+    return $content . allmyhr_account_alert_html( true );
 }
 
-// The alert HTML used in both places
+// The alert HTML used in both places; bottom includes an image
 function allmyhr_account_alert_html( $is_bottom = false ) {
-	$classes = 'woocommerce-error allmyhr-thankyou-' . ( $is_bottom ? 'bottom' : 'top' ) . '-alert';
-	$message = 'Almost done. ';
-	$link_text = 'Click Here to complete your New Client Setup Form';
-	$link_url = 'https://allmyhr.com/account-set-up-form/';
+    $classes   = 'woocommerce-error allmyhr-thankyou-' . ( $is_bottom ? 'bottom' : 'top' ) . '-alert';
+    $message   = 'Almost done. ';
+    $link_text = 'Click Here to complete your New Client Setup Form';
+    $link_url  = 'https://allmyhr.com/account-set-up-form/';
 
-	return '<ul class="' . esc_attr( $classes ) . '" role="alert" style="margin: 2rem 0; list-style: none; font-size: 150%; color: red;">'
-	     . '<li><b>' . esc_html( $message ) . '<a href="' . esc_url( $link_url ) . '" style="color: red; text-decoration: underline;" target="_blank">' . esc_html( $link_text ) . '</a></b></li>'
-	     . '</ul>';
+    $img_html = '';
+    if ( $is_bottom ) {
+        $img_url  = get_template_directory_uri() . '/images/formsignup.jpg';
+        $img_html = '<p><img src="' . esc_url( $img_url ) . '" alt="Complete Setup Form"></p>';
+    }
+
+    $alert  = '<ul class="' . esc_attr( $classes ) . '" role="alert" style="margin:2rem 0;list-style:none;font-size:150%;color:red;">';
+    $alert .= '<li><b>' . esc_html( $message ) . '<a href="' . esc_url( $link_url ) . '" style="color:red;text-decoration:underline;" target="_blank">' . esc_html( $link_text ) . '</a></b></li>';
+    $alert .= '</ul>';
+
+    return $img_html . $alert;
 }
+
+// Force redirect to checkout when ?add-to-cart is used
+function mmxxv_force_checkout_redirect_for_add_to_cart_url() {
+    if ( is_admin() || is_ajax() ) {
+        return;
+    }
+
+    if ( isset( $_GET['add-to-cart'] ) && ! is_checkout() ) {
+        wp_safe_redirect( wc_get_checkout_url() );
+        exit;
+    }
+}
+add_action( 'template_redirect', 'mmxxv_force_checkout_redirect_for_add_to_cart_url', 20 );
+
+// Modify WooCommerce empty cart block message to include homepage link
+add_filter( 'render_block', 'allmyhr_custom_empty_cart_block', 10, 2 );
+function allmyhr_custom_empty_cart_block( $block_content, $block ) {
+    // Target the Cart block
+    if ( isset( $block['blockName'] ) && 'woocommerce/cart' === $block['blockName'] ) {
+        // Replace the empty-cart title H2
+        $pattern = '/<h2[^>]*wc-block-cart__empty-cart__title[^>]*>.*?<\/h2>/i';
+        $replacement = '<h2 class="wp-block-heading has-text-align-center with-empty-cart-icon wc-block-cart__empty-cart__title">'
+                     . 'Your cart is empty. Return to the <a href="' . esc_url( home_url() ) . '">homepage</a>.'
+                     . '</h2>';
+        $block_content = preg_replace( $pattern, $replacement, $block_content, 1 );
+    }
+    return $block_content;
+}
+
+
 
 
 
