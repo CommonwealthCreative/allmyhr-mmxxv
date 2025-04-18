@@ -88,30 +88,37 @@ get_header();
       <?php
 /**
  * Custom Loop to Display All Products Using template-parts/content-cards.php
- * No pagination or default wrappers are included.
+ * Excludes products in the "Uncategorized" category.
  */
 
-get_header('shop'); // Optionally load your shop header
+get_header('shop');
 
 $args = array(
     'post_type'      => 'product',
-    'posts_per_page' => -1, // Retrieve all products
+    'posts_per_page' => -1,
     'post_status'    => 'publish',
+    'tax_query'      => array(
+        array(
+            'taxonomy' => 'product_cat',
+            'field'    => 'slug',
+            'terms'    => array( 'uncategorized' ),
+            'operator' => 'NOT IN',
+        ),
+    ),
 );
 
 $all_products = new WP_Query( $args );
 
 if ( $all_products->have_posts() ) :
     while ( $all_products->have_posts() ) : $all_products->the_post();
-        // Load your custom product template part
         wc_get_template_part( 'woocommerce/product', 'cards' );
     endwhile;
     wp_reset_postdata();
 else :
     echo '<p>' . esc_html__( 'No products found.', 'your-text-domain' ) . '</p>';
 endif;
-
 ?>
+
 
 
       

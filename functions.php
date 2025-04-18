@@ -444,25 +444,38 @@ function allmyhr_thankyou_account_alert_bottom( $content ) {
     return $content . allmyhr_account_alert_html( true );
 }
 
-// The alert HTML used in both places; bottom includes an image
+// The alert HTML used in both places; bottom includes an image + anchor link
 function allmyhr_account_alert_html( $is_bottom = false ) {
     $classes   = 'woocommerce-error allmyhr-thankyou-' . ( $is_bottom ? 'bottom' : 'top' ) . '-alert';
     $message   = 'Almost done. ';
     $link_text = 'Click Here to complete your New Client Setup Form';
-    $link_url  = 'https://allmyhr.com/account-set-up-form/';
 
+    // Default to external link for top; for bottom, link to the image anchor
+    if ( $is_bottom ) {
+        $link_url    = '#account-setup-image';
+        $link_target = ''; // no target for on-page anchor
+    } else {
+        $link_url    = 'https://allmyhr.com/account-set-up-form/';
+        $link_target = ' target="_blank"';
+    }
+
+    // Build image HTML with an ID so we can scroll to it
     $img_html = '';
     if ( $is_bottom ) {
         $img_url  = get_template_directory_uri() . '/images/formsignup.jpg';
-        $img_html = '<p><img src="' . esc_url( $img_url ) . '" alt="Complete Setup Form"></p>';
+        $img_html = '<p><img id="account-setup-image" src="' . esc_url( $img_url ) . '" alt="Complete Setup Form"></p>';
     }
 
+    // Build the alert list
     $alert  = '<ul class="' . esc_attr( $classes ) . '" role="alert" style="margin:2rem 0;list-style:none;font-size:150%;color:red;">';
-    $alert .= '<li><b>' . esc_html( $message ) . '<a href="' . esc_url( $link_url ) . '" style="color:red;text-decoration:underline;" target="_blank">' . esc_html( $link_text ) . '</a></b></li>';
+    $alert .= '<li><b>' . esc_html( $message );
+    $alert .= '<a href="' . esc_url( $link_url ) . '" style="color:red;text-decoration:underline;"' . $link_target . '>';
+    $alert .= esc_html( $link_text ) . '</a></b></li>';
     $alert .= '</ul>';
 
     return $img_html . $alert;
 }
+
 
 // Force redirect to checkout when ?add-to-cart is used
 function mmxxv_force_checkout_redirect_for_add_to_cart_url() {
