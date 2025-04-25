@@ -141,23 +141,23 @@ document.addEventListener('DOMContentLoaded', function() {
   const monthlyBase = '/services/allmyhr-monthly-subscription/';
   const annualBase  = '/services/allmyhr-annual-subscription/';
   const contactURL  = '/contact-allmyhr/';
-  const monthlyID   = 401;
-  const annualID    = 400;
+  const monthlyID   = 29623;
+  const annualID    = 29622;  // updated
 
   const monthlyRanges = [
-    { min: 1,   max: 24,  slug: '1-24', variation_id: 408, price: '99.00',  signup: '250.00' },
-    { min: 25,  max: 50,  slug: '25-50', variation_id: 409, price: '149.00', signup: '250.00' },
-    { min: 51,  max: 100, slug: '51-100', variation_id: 410, price: '199.00', signup: '250.00' },
-    { min: 101, max: 250, slug: '101-250', variation_id: 411, price: '249.00', signup: '500.00' },
-    { min: 251, max: 500, slug: '250-500', variation_id: 412, price: '299.00', signup: '500.00' }
+    { min: 1,   max: 24,  slug: '1-25',  variation_id: 29629, price: '99.00',  signup: '250.00' },
+    { min: 25,  max: 50,  slug: '26-50', variation_id: 29630, price: '149.00', signup: '250.00' },
+    { min: 51,  max: 100, slug: '51-100',variation_id: 29631, price: '199.00', signup: '250.00' },
+    { min: 101, max: 250, slug: '101-250',variation_id: 29632, price: '249.00', signup: '500.00' },
+    { min: 251, max: 500, slug: '251-500',variation_id: 29633, price: '299.00', signup: '500.00' }
   ];
 
   const annualRanges = [
-    { min: 1,   max: 24,  slug: '1-24',  variation_id: 406, price: '1069.00', signup: '250.00', save: '119' },
-    { min: 25,  max: 50,  slug: '25-50', variation_id: 407, price: '1609.00', signup: '250.00', save: '179' },
-    { min: 51,  max: 100, slug: '51-100',variation_id: 403, price: '2149.00', signup: '250.00', save: '239' },
-    { min: 101, max: 250, slug: '101-250',variation_id: 404, price: '2689.00', signup: '500.00', save: '299' },
-    { min: 251, max: 500, slug: '250-500',variation_id: 402, price: '3229.00', signup: '500.00', save: '359' }
+    { min: 1,   max: 24,  slug: '1-25',  variation_id: 29626, price: '1069.00', signup: '250.00', save: '119' },
+    { min: 25,  max: 50,  slug: '26-50',variation_id: 29627, price: '1609.00', signup: '250.00', save: '179' },
+    { min: 51,  max: 100,slug: '51-100',variation_id: 29624, price: '2149.00', signup: '250.00', save: '239' },
+    { min: 101, max: 250,slug: '101-250',variation_id: 29625, price: '2689.00', signup: '500.00', save: '299' },
+    { min: 251, max: 500,slug: '251-500',variation_id: 29628, price: '3229.00', signup: '500.00', save: '359' }
   ];
 
   const userNumberInput = document.getElementById('user_number');
@@ -189,7 +189,7 @@ document.addEventListener('DOMContentLoaded', function() {
   userNumberInput.addEventListener('input', function() {
     const val = this.value.trim();
     if (!val) {
-      // No input: revert to start
+      // No input: show starting price
       pickerLink.href = freq === 'Monthly' ? monthlyBase : annualBase;
       pickerLink.textContent = 'Buy Now';
       pickerLink.style.opacity = '0.5';
@@ -209,35 +209,39 @@ document.addEventListener('DOMContentLoaded', function() {
 
     const n = parseInt(val, 10);
     if (n > 500) {
+      // Custom quote for >500
       pickerLink.href = contactURL;
       pickerLink.textContent = 'Get A Quote';
       pickerLink.style.opacity = '1';
       priceMessage.innerHTML =
-        `<p><a href="${contactURL}" class="highlight txt">Please contact us for a custom quote</a></p>`;
+        `<p class="price highlight txt"><span class="from">` +
+        `<a href="${contactURL}" class="highlight txt">Please contact us for a custom quote</a>` +
+        `</span></p>`;
       return;
     }
 
-    const setBase   = freq === 'Monthly' ? monthlyRanges : annualRanges;
-    const baseURL   = freq === 'Monthly' ? monthlyBase     : annualBase;
-    const productID = freq === 'Monthly' ? monthlyID       : annualID;
-    const mRange    = setBase.find(r => n >= r.min && n <= r.max);
+    // Determine correct range set and update
+    const setBase    = freq === 'Monthly' ? monthlyRanges : annualRanges;
+    const baseURL    = freq === 'Monthly' ? monthlyBase    : annualBase;
+    const productID  = freq === 'Monthly' ? monthlyID      : annualID;
+    const matchRange = setBase.find(r => n >= r.min && n <= r.max);
 
-    if (mRange) {
+    if (matchRange) {
       pickerLink.href =
         `${baseURL}?add-to-cart=${productID}` +
-        `&variation_id=${mRange.variation_id}` +
-        `&attribute_employees=${mRange.slug}`;
+        `&variation_id=${matchRange.variation_id}` +
+        `&attribute_employees=${matchRange.slug}`;
       pickerLink.textContent = 'Buy Now';
       pickerLink.style.opacity = '1';
 
       if (freq === 'Monthly') {
-        updateMonthly(mRange.price, mRange.signup);
+        updateMonthly(matchRange.price, matchRange.signup);
       } else {
         priceMessage.innerHTML =
           `<h3 class="price"><span class="woocommerce-Price-amount amount">` +
-          `<bdi><span class="woocommerce-Price-currencySymbol">$</span>${mRange.price}</bdi>` +
-          `</span> <span class="subscription-details">/ year + $${mRange.signup} one time fee</span></h3>` +
-          `<p class="savings highlight txt" style="margin:0">Save $${mRange.save} when you purchase an annual plan!</p>`;
+          `<bdi><span class="woocommerce-Price-currencySymbol">$</span>${matchRange.price}</bdi>` +
+          `</span> <span class="subscription-details">/ year + $${matchRange.signup} one time fee</span></h3>` +
+          `<p class="savings highlight txt" style="margin:0">Save $${matchRange.save} when you purchase an annual plan!</p>`;
       }
     }
   });

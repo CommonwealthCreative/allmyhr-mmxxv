@@ -184,23 +184,23 @@ document.addEventListener('DOMContentLoaded', function() {
   const monthlyBase = '/services/allmyhr-monthly-subscription/';
   const annualBase  = '/services/allmyhr-annual-subscription/';
   const contactURL  = '/contact-allmyhr/';
-  const monthlyID   = 401;
-  const annualID    = 400;
+  const monthlyID   = 29623;
+  const annualID    = 29622;  // updated
 
   const monthlyRanges = [
-    { min: 1,   max: 24,  slug: '1-24', variation_id: 408, price: '99.00',  signup: '250.00' },
-    { min: 25,  max: 50,  slug: '25-50', variation_id: 409, price: '149.00', signup: '250.00' },
-    { min: 51,  max: 100, slug: '51-100', variation_id: 410, price: '199.00', signup: '250.00' },
-    { min: 101, max: 250, slug: '101-250', variation_id: 411, price: '249.00', signup: '500.00' },
-    { min: 251, max: 500, slug: '250-500', variation_id: 412, price: '299.00', signup: '500.00' }
+    { min: 1,   max: 24,  slug: '1-25',  variation_id: 29629, price: '99.00',  signup: '250.00' },
+    { min: 25,  max: 50,  slug: '26-50', variation_id: 29630, price: '149.00', signup: '250.00' },
+    { min: 51,  max: 100, slug: '51-100',variation_id: 29631, price: '199.00', signup: '250.00' },
+    { min: 101, max: 250, slug: '101-250',variation_id: 29632, price: '249.00', signup: '500.00' },
+    { min: 251, max: 500, slug: '251-500',variation_id: 29633, price: '299.00', signup: '500.00' }
   ];
 
   const annualRanges = [
-    { min: 1,   max: 24,  slug: '1-24',  variation_id: 406, price: '1069.00', signup: '250.00', save: '119' },
-    { min: 25,  max: 50,  slug: '25-50', variation_id: 407, price: '1609.00', signup: '250.00', save: '179' },
-    { min: 51,  max: 100, slug: '51-100',variation_id: 403, price: '2149.00', signup: '250.00', save: '239' },
-    { min: 101, max: 250, slug: '101-250',variation_id: 404, price: '2689.00', signup: '500.00', save: '299' },
-    { min: 251, max: 500, slug: '250-500',variation_id: 402, price: '3229.00', signup: '500.00', save: '359' }
+    { min: 1,   max: 24,  slug: '1-25',  variation_id: 29626, price: '1069.00', signup: '250.00', save: '119' },
+    { min: 25,  max: 50,  slug: '26-50',variation_id: 29627, price: '1609.00', signup: '250.00', save: '179' },
+    { min: 51,  max: 100,slug: '51-100',variation_id: 29624, price: '2149.00', signup: '250.00', save: '239' },
+    { min: 101, max: 250,slug: '101-250',variation_id: 29625, price: '2689.00', signup: '500.00', save: '299' },
+    { min: 251, max: 500,slug: '251-500',variation_id: 29628, price: '3229.00', signup: '500.00', save: '359' }
   ];
 
   const userNumberInput = document.getElementById('user_number');
@@ -301,13 +301,6 @@ document.addEventListener('DOMContentLoaded', function() {
   userNumberInput.dispatchEvent(new Event('input'));
 });
 </script>
-
-
-
-
-
-
-
 
 
 <?php

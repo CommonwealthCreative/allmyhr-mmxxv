@@ -426,7 +426,7 @@ function cc_insert_checkout_login_message( $content ) {
 }
 add_filter( 'the_content', 'cc_insert_checkout_login_message', 1 );
 
-// Display alert at the top of the thank you page
+// Display alert at the top using WooCommerce hook
 add_action( 'woocommerce_before_thankyou', 'allmyhr_thankyou_account_alert_top', 1 );
 function allmyhr_thankyou_account_alert_top( $order_id ) {
     if ( ! $order_id ) return;
@@ -437,43 +437,33 @@ function allmyhr_thankyou_account_alert_top( $order_id ) {
 add_filter( 'the_content', 'allmyhr_thankyou_account_alert_bottom' );
 function allmyhr_thankyou_account_alert_bottom( $content ) {
     if ( ! is_order_received_page() ) return $content;
-
-    // Append alert only once
     if ( strpos( $content, 'allmyhr-thankyou-bottom-alert' ) !== false ) return $content;
-
     return $content . allmyhr_account_alert_html( true );
 }
 
-// The alert HTML used in both places; bottom includes an image + anchor link
+// The alert HTML used in both places; bottom includes the Gravity Form shortcode
 function allmyhr_account_alert_html( $is_bottom = false ) {
     $classes   = 'woocommerce-error allmyhr-thankyou-' . ( $is_bottom ? 'bottom' : 'top' ) . '-alert';
     $message   = 'Almost done. ';
     $link_text = 'Click Here to complete your New Client Setup Form';
 
-    // Default to external link for top; for bottom, link to the image anchor
     if ( $is_bottom ) {
         $link_url    = '#account-setup-image';
-        $link_target = ''; // no target for on-page anchor
+        $link_target = '';
+        $extra_html  = do_shortcode( '[gravityform id="10" description="false"]' );
     } else {
         $link_url    = 'https://allmyhr.com/account-set-up-form/';
         $link_target = ' target="_blank"';
+        $extra_html  = '';
     }
 
-    // Build image HTML with an ID so we can scroll to it
-    $img_html = '';
-    if ( $is_bottom ) {
-        $img_url  = get_template_directory_uri() . '/images/formsignup.jpg';
-        $img_html = '<p><img id="account-setup-image" src="' . esc_url( $img_url ) . '" alt="Complete Setup Form"></p>';
-    }
-
-    // Build the alert list
     $alert  = '<ul class="' . esc_attr( $classes ) . '" role="alert" style="margin:2rem 0;list-style:none;font-size:150%;color:red;">';
     $alert .= '<li><b>' . esc_html( $message );
     $alert .= '<a href="' . esc_url( $link_url ) . '" style="color:red;text-decoration:underline;"' . $link_target . '>';
     $alert .= esc_html( $link_text ) . '</a></b></li>';
     $alert .= '</ul>';
 
-    return $img_html . $alert;
+    return $extra_html . $alert;
 }
 
 
