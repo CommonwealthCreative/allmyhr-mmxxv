@@ -39,6 +39,6 @@
 </div>
 <div class="container center">
 <h2 class=""><span class="highlight txt">Save Time, Cut Costs, and Keep Your HR Running Flawlessly</span></h2>
-      <a href="https://calendly.com/sjacksonallmyhr/10-minute-walkthrough?month=2025-04" target="_blank" class="btn wht w-button">Sign Up Now</a>
+      <a href="/#page" class="btn wht w-button">Purchase Now</a>
         <a href="https://calendly.com/sjacksonallmyhr/10-minute-walkthrough?month=2025-04" target="_blank" class="btn clear w-button">Get My Demo</a>
 </div>

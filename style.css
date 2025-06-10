@@ -1144,6 +1144,14 @@ a:visited {
 
   /* WooCommerce */
 
+#billing-country {
+	display: none;
+}
+
+  .wc-block-components-order-summary__content .wc-block-components-order-summary-item__total-price, .wc-block-components-order-summary__content .wc-block-components-product-details__employees {
+	display: none;
+  }
+
   .slider-card .cardpricing, .slider-card .spaced {
 	color: #000 !important;
 	text-align: center!important;

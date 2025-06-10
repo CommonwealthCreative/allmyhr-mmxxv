@@ -495,6 +495,53 @@ function allmyhr_custom_empty_cart_block( $block_content, $block ) {
     return $block_content;
 }
 
+add_action( 'wp_footer', 'cc_replace_subscription_labels_js', 25 );
+function cc_replace_subscription_labels_js() {
+    if ( ! function_exists( 'is_checkout' ) || ! is_checkout() ) {
+        return;
+    }
+    ?>
+    <script>
+    ( () => {
+        // Walk an element’s text nodes and swap only the raw “every month”/“every year” text.
+        const replaceInTextNodes = (el) => {
+            el.childNodes.forEach(node => {
+                if ( node.nodeType === Node.TEXT_NODE ) {
+                    const updated = node.textContent
+                        .replace(/\bevery month\b/gi, 'Monthly')
+                        .replace(/\bevery year\b/gi,  'Annually');
+                    if ( updated !== node.textContent ) {
+                        node.textContent = updated;
+                    }
+                } else if ( node.nodeType === Node.ELEMENT_NODE ) {
+                    replaceInTextNodes(node);
+                }
+            });
+        };
+
+        // Target the places we know “every month”/“every year” shows up
+        const replaceAll = () => {
+            document.querySelectorAll(
+                '.wc-block-components-order-summary-item__individual-prices, ' +
+                '.wc-block-components-order-summary-item__total-price, ' +
+                '.wc-block-components-totals-item__label'
+            ).forEach(el => replaceInTextNodes(el));
+        };
+
+        // Run once on load…
+        document.addEventListener('DOMContentLoaded', replaceAll);
+        // …and again whenever Blocks re-renders parts of the sidebar
+        new MutationObserver(replaceAll)
+            .observe(document.body, { childList: true, subtree: true });
+    })();
+    </script>
+    <?php
+}
+
+
+
+
+
 
 
 

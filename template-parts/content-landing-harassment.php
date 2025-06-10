@@ -76,101 +76,84 @@
     <script>
 document.addEventListener('DOMContentLoaded', function() {
   const userNumberInput = document.getElementById('user_number');
-  const pickerLink = document.getElementById('picker');
-  const priceMessage = document.getElementById('price-message');
+  const pickerLink       = document.getElementById('picker');
+  const priceMessage     = document.getElementById('price-message');
 
-  const defaultPricingMsg = "$6 Annually per Employee (Minimum of $180 Annually up to 30 employees)";
-  const defaultBuyLink = "/?add-to-cart=27941";
-
-  priceMessage.innerHTML = `<p class="price highlight txt">${defaultPricingMsg}</p>`;
-  pickerLink.textContent = "Buy Now";
-  pickerLink.style.opacity = '0.5';
-  pickerLink.href = defaultBuyLink;
+  const perEmployeeProductId = 24798;
+  const defaultPricingMsg    = "$6 Annually per Employee";
+  
+  // Initialize
+  priceMessage.innerHTML    = `<p class="price highlight txt">${defaultPricingMsg}</p>`;
+  pickerLink.textContent    = "Buy Now";
+  pickerLink.style.opacity  = '0.5';
   pickerLink.setAttribute('data-mode', 'default');
 
+  // Listen for changes
   userNumberInput.addEventListener('input', function() {
-    const inputVal = userNumberInput.value.trim();
-    if (inputVal === '') {
-      priceMessage.innerHTML = `<p class="price highlight txt">${defaultPricingMsg}</p>`;
-      pickerLink.textContent = "Buy Now";
+    const val = userNumberInput.value.trim();
+    const n   = parseInt(val, 10);
+
+    // No valid number → reset
+    if (!val || isNaN(n) || n < 1) {
+      priceMessage.innerHTML   = `<p class="price highlight txt">${defaultPricingMsg}</p>`;
       pickerLink.setAttribute('data-mode', 'default');
       pickerLink.style.opacity = '0.5';
       return;
     }
 
-    let numberValue = parseInt(inputVal, 10);
-
-    if (numberValue >= 1 && numberValue <= 30) {
-      priceMessage.innerHTML = `<p class="price highlight txt">$180 Total cost of Harassment Training</p>`;
-      pickerLink.textContent = "Buy Now";
-      pickerLink.setAttribute('data-mode', 'direct');
-      pickerLink.style.opacity = '1';
-    } else if (numberValue >= 31 && numberValue <= 300) {
-      const additionalEmployees = numberValue - 30;
-      const totalCost = 180 + 6 * additionalEmployees;
-      priceMessage.innerHTML = `<p class="price highlight txt">$${totalCost} Total cost of Harassment Training</p>`;
-      pickerLink.textContent = "Buy Now";
+    // Up to 300 employees → calculate total
+    if (n <= 300) {
+      const totalCost = 6 * n;
+      priceMessage.innerHTML   = `<p class="price highlight txt">$${totalCost} Total cost of Harassment Training</p>`;
       pickerLink.setAttribute('data-mode', 'ajax');
-      pickerLink.setAttribute('data-additional', additionalEmployees);
+      pickerLink.setAttribute('data-quantity', n);
       pickerLink.style.opacity = '1';
-    } else if (numberValue >= 301) {
-      priceMessage.innerHTML = `<p><a href="/contact-allmyhr/" class="highlight txt">Please contact us for a custom quote</a></p>`;
-      pickerLink.href = "/contact-allmyhr/";
-      pickerLink.textContent = "Get A Quote";
+    }
+    // 301+ → custom quote
+    else {
+      priceMessage.innerHTML    = `<p><a href="/contact-allmyhr/" class="highlight txt">Please contact us for a custom quote</a></p>`;
+      pickerLink.href           = "/contact-allmyhr/";
+      pickerLink.textContent    = "Get A Quote";
       pickerLink.setAttribute('data-mode', 'quote');
-      pickerLink.style.opacity = '1';
-    } else {
-      priceMessage.innerHTML = `<p class="price highlight txt">${defaultPricingMsg}</p>`;
-      pickerLink.textContent = "Buy Now";
-      pickerLink.setAttribute('data-mode', 'default');
-      pickerLink.style.opacity = '0.5';
+      pickerLink.style.opacity  = '1';
     }
   });
 
+  // Ajax add-to-cart helper
   function addProductToCart(productId, quantity) {
-    const formData = new FormData();
-    formData.append('product_id', productId);
-    formData.append('quantity', quantity);
+    const form = new FormData();
+    form.append('product_id', productId);
+    form.append('quantity', quantity);
     return fetch('/?wc-ajax=add_to_cart', {
       method: 'POST',
       credentials: 'same-origin',
-      body: formData
-    }).then(response => response.json());
+      body: form
+    }).then(res => res.json());
   }
 
+  // Button click handler
   pickerLink.addEventListener('click', function(e) {
     const mode = pickerLink.getAttribute('data-mode');
-    const inputVal = userNumberInput.value.trim();
-
-    if (!inputVal || mode === 'default') {
+    if (mode === 'default') {
       e.preventDefault();
       alert("Please enter the number of employees your company has...");
       return;
     }
 
-    if (mode === 'direct') {
-      e.preventDefault();
-      window.location.href = "/?add-to-cart=27941";
-      return;
-    }
-
     if (mode === 'ajax') {
       e.preventDefault();
-      const additionalEmployees = parseInt(pickerLink.getAttribute('data-additional'), 10);
-      addProductToCart(27941, 1)           // Base package for 1–30 employees
-        .then(() => addProductToCart(24798, additionalEmployees)) // Per-employee addon
-        .then(() => {
-          window.location.href = "/cart/";
-        })
-        .catch(error => {
-          console.error("Error adding products:", error);
+      const qty = parseInt(pickerLink.getAttribute('data-quantity'), 10);
+      addProductToCart(perEmployeeProductId, qty)
+        .then(() => window.location.href = "/cart/")
+        .catch(err => {
+          console.error("Add to cart error:", err);
           alert("There was an error adding products to your cart. Please try again.");
         });
       return;
     }
-
-    // Let quote link redirect normally
+    // mode === 'quote' → let the default link (Get A Quote) navigate
   });
 });
 </script>
+
 
