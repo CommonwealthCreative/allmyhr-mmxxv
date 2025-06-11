@@ -43,6 +43,7 @@ get_header();
       </div>
       <div>
         <h2>Complete HR Confidence With One Simple Plan</h2>
+        <h3>All Included In Your AllMyHR Membership</h3>
       <p class="crumbs highlight blu txt" style="margin-bottom:0px;">No Long Term Contracts / 30 Day Money Back Guarantee</p>
       <div id="w-node-_78bab3d5-6256-b993-9747-3ffbacfcaf8e-fbd4393f" class="w-layout-layout toggles wf-layout-layout">
         <div class="w-layout-cell">
@@ -50,12 +51,12 @@ get_header();
             <div class="faq-question">
               <div class="w-layout-hflex phrases">
                 <div class="fa highlight blu txt"></div>
-                <h4>Save Hours and Stay Fully Compliant</h4>
+                <h4>Save Time and Stay Fully Compliant</h4>
               </div>
               <div data-is-ix2-target="1" class="faq-arrow" data-w-id="78bab3d5-6256-b993-9747-3ffbacfcaf95" data-animation-type="lottie" data-src="/wp-content/themes/allmyhr-mmxxv/documents/Animation---1740434329510.json" data-loop="1" data-direction="1" data-autoplay="0" data-renderer="svg" data-default-duration="0" data-duration="1"></div>
             </div>
             <div style="height:0PX" class="faq-answer">
-              <p class="faq-paragraph">Automate routine paperwork and audit‐ready checks so you never miss a deadline—and you’re always prepared for inspections. <a href="/contact-allmyhr/" target="_blank" class="highlight blu txt">Learn More.</a>
+              <p class="faq-paragraph">Your Living Handbook can be created in less than an hour and kept compliant with a click of your mouse. <a href="/contact-allmyhr/" target="_blank" class="highlight blu txt">Learn More.</a>
               </p>
             </div>
           </div>
@@ -63,12 +64,12 @@ get_header();
             <div class="faq-question">
               <div class="w-layout-hflex phrases">
                 <div class="fa highlight blu txt"></div>
-                <h4>Never Second-Guess HR Decisions</h4>
+                <h4>Develop Talent Internally</h4>
               </div>
               <div data-is-ix2-target="1" class="faq-arrow" data-w-id="d9c079cd-7fab-52f2-34d3-752a612cbb81" data-animation-type="lottie" data-src="/wp-content/themes/allmyhr-mmxxv/documents/Animation---1740434329510.json" data-loop="1" data-direction="1" data-autoplay="0" data-renderer="svg" data-default-duration="0" data-duration="1"></div>
             </div>
             <div style="height:0PX" class="faq-answer">
-              <p class="faq-paragraph">Get clear, policy-backed guidance the moment you need it, so you’re always confident in hiring, promotions, or terminations. <a href="/contact-allmyhr/" target="_blank" class="highlight blu txt">Learn More.</a>
+              <p class="faq-paragraph">LMS designed for efficiency, >350 courses, certificates and easy tracking. <a href="/contact-allmyhr/" target="_blank" class="highlight blu txt">Learn More.</a>
               </p>
             </div>
           </div>
@@ -76,12 +77,12 @@ get_header();
             <div class="faq-question">
               <div class="w-layout-hflex phrases">
                 <div class="fa highlight blu txt"></div>
-                <h4>Elevate Employee Satisfaction</h4>
+                <h4>Accurate Answers At Your Fingertips</h4>
               </div>
               <div data-is-ix2-target="1" class="faq-arrow" data-w-id="c6f4563f-5f0d-1b6f-a210-27610186609c" data-animation-type="lottie" data-src="/wp-content/themes/allmyhr-mmxxv/documents/Animation---1740434329510.json" data-loop="1" data-direction="1" data-autoplay="0" data-renderer="svg" data-default-duration="0" data-duration="1"></div>
             </div>
             <div style="height:0PX" class="faq-answer">
-              <p class="faq-paragraph">Collect real-time feedback and send personalized recognition that makes your people feel heard, valued, and motivated to stay. <a href="/contact-allmyhr/" target="_blank" class="highlight blu txt">Learn More.</a>
+              <p class="faq-paragraph">Your Private Compliance Portal is your new trusted source.  <a href="/contact-allmyhr/" target="_blank" class="highlight blu txt">Learn More.</a>
               </p>
             </div>
           </div>
@@ -91,12 +92,12 @@ get_header();
             <div class="faq-question">
               <div class="w-layout-hflex phrases">
                 <div class="fa highlight blu txt"></div>
-                <h4>Supercharge HR Efficiency</h4>
+                <h4>No More HR Guesswork</h4>
               </div>
               <div data-is-ix2-target="1" class="faq-arrow" data-w-id="09d921a1-d2f5-0ad4-f301-97c581119e1f" data-animation-type="lottie" data-src="/wp-content/themes/allmyhr-mmxxv/documents/Animation---1740434329510.json" data-loop="1" data-direction="1" data-autoplay="0" data-renderer="svg" data-default-duration="0" data-duration="1"></div>
             </div>
             <div style="height:0PX" class="faq-answer">
-              <p class="faq-paragraph">Consolidate recruiting, onboarding, and performance reviews into one intuitive dashboard—eliminating manual steps so you can do more with less. <a href="/contact-allmyhr/" target="_blank" class="highlight blu txt">Learn More.</a>
+              <p class="faq-paragraph">Unlimited Phone, email or chat with your team of Accredited HR Advisors. <a href="/contact-allmyhr/" target="_blank" class="highlight blu txt">Learn More.</a>
               </p>
             </div>
           </div>
@@ -109,7 +110,7 @@ get_header();
               <div data-is-ix2-target="1" class="faq-arrow" data-w-id="0e24b523-12e8-000b-2a3c-2a5f80b3670a" data-animation-type="lottie" data-src="/wp-content/themes/allmyhr-mmxxv/documents/Animation---1740434329510.json" data-loop="1" data-direction="1" data-autoplay="0" data-renderer="svg" data-default-duration="0" data-duration="1"></div>
             </div>
             <div style="height:0PX" class="faq-answer">
-              <p class="faq-paragraph">Find policies, templates, and best-practice advice in seconds—no more digging through folders or waiting on specialists. <a href="/contact-allmyhr/" target="_blank" class="highlight blu txt">Learn More.</a>
+              <p class="faq-paragraph">Find policies, forms, templates, best-practice advice in seconds. <a href="/contact-allmyhr/" target="_blank" class="highlight blu txt">Learn More.</a>
               </p>
             </div>
           </div>
@@ -117,12 +118,12 @@ get_header();
             <div class="faq-question">
               <div class="w-layout-hflex phrases">
                 <div class="fa highlight blu txt"></div>
-                <h4>Automate HR Updates & Training</h4>
+                <h4>Maximize Your Time</h4>
               </div>
               <div data-is-ix2-target="1" class="faq-arrow" data-w-id="d8bb6ffe-a56b-1c2f-1376-3e377225814d" data-animation-type="lottie" data-src="/wp-content/themes/allmyhr-mmxxv/documents/Animation---1740434329510.json" data-loop="1" data-direction="1" data-autoplay="0" data-renderer="svg" data-default-duration="0" data-duration="1"></div>
             </div>
             <div style="height:0PX" class="faq-answer">
-              <p class="faq-paragraph">Receive live regulatory alerts and interactive learning modules that keep your team current on the latest laws and best practices. <a href="/contact-allmyhr/" target="_blank" class="highlight blu txt">Learn More.</a>
+              <p class="faq-paragraph">Instantly find all your favorite services on your personalized Dashboard. No More searching. <a href="/contact-allmyhr/" target="_blank" class="highlight blu txt">Learn More.</a>
               </p>
             </div>
           </div>
