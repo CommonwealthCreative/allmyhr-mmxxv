@@ -86,7 +86,6 @@
 });
 </script>
 
-
 </div><!-- #page -->
 
 <?php wp_footer(); ?>

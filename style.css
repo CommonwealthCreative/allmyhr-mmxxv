@@ -972,6 +972,15 @@ textarea {
 
 /* XXMMV */
 
+.wc-block-components-product-details__one-time-fee .wc-block-components-product-details__name{
+	font-size: 0px;
+}
+.wc-block-components-product-details__one-time-fee .wc-block-components-product-details__name::before {
+    content: "Set Up Fee:";
+	font-size: 16px;
+	display: inline;
+}
+
 body {
 	color: #252525;
 	font-family: Nunito, sans-serif;

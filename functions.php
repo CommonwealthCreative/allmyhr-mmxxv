@@ -538,6 +538,31 @@ function cc_replace_subscription_labels_js() {
     <?php
 }
 
+add_filter( 'gettext', 'custom_rename_signup_fee_text', 20, 3 );
+function custom_rename_signup_fee_text( $translated_text, $text, $domain ) {
+    if ( 'woocommerce-subscriptions' === $domain && trim( $text ) === 'Sign-up fee' ) {
+        return 'Setup Fee';
+    }
+
+    // Fallback for other domains or capitalizations
+    if ( trim( $text ) === 'Sign-up fee' || trim( $text ) === 'Sign up fee' ) {
+        return 'Setup Fee';
+    }
+
+    return $translated_text;
+}
+
+add_filter( 'woocommerce_subscriptions_product_price_string', function( $price_string, $product ) {
+    if ( strpos( $price_string, 'Sign-up fee' ) !== false ) {
+        $price_string = str_replace( 'Sign-up fee', 'Setup Fee', $price_string );
+    } elseif ( strpos( $price_string, 'Sign up fee' ) !== false ) {
+        $price_string = str_replace( 'Sign up fee', 'Setup Fee', $price_string );
+    }
+    return $price_string;
+}, 20, 2 );
+
+
+
 
 
 

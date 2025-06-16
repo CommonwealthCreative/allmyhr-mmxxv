@@ -219,7 +219,7 @@ document.addEventListener('DOMContentLoaded', function() {
       `  <span class="woocommerce-Price-amount amount">` +
       `    <bdi><span class="woocommerce-Price-currencySymbol">$</span>${price}</bdi>` +
       `  </span> ` +
-      `  <span class="subscription-details">/ month + $${fee} one time fee</span>` +
+      `  <span class="subscription-details">/ month + $${fee} setup fee</span>` +
       `</h3>`;
   }
 
@@ -289,7 +289,7 @@ document.addEventListener('DOMContentLoaded', function() {
         priceMessage.innerHTML =
           `<h3 class="price"><span class="woocommerce-Price-amount amount">` +
           `<bdi><span class="woocommerce-Price-currencySymbol">$</span>${matchRange.price}</bdi>` +
-          `</span> <span class="subscription-details">/ year + $${matchRange.signup} one time fee</span></h3>` +
+          `</span> <span class="subscription-details">/ year + $${matchRange.signup} set up fee</span></h3>` +
           `<p class="savings highlight txt" style="margin:0">Save $${matchRange.save} when you purchase an annual plan!</p>`;
       }
     }
