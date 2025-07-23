@@ -48,7 +48,7 @@ get_header();
         <div class="w-layout-cell">
           <div class="w-layout-hflex phrases">
             <div class="fa highlight blu txt"></div>
-            <h4><strong>Get unlimited HR support by phone, chat, or email—anytime you need it.</strong></h4>
+            <h4><strong>Get unlimited HR support by phone, chat, or email.</strong></h4>
           </div>
         </div>
         <div class="w-layout-cell">
@@ -60,7 +60,7 @@ get_header();
         <div class="w-layout-cell">
           <div class="w-layout-hflex phrases">
             <div class="fa highlight blu txt"></div>
-            <h4><strong>25+ certified HR pros with PHR, SPHR, or SHRM credentials on standby.</strong></h4>
+            <h4><strong>50+ certified HR SME’s with PHR, SPHR, or SHRM credentials available.</strong></h4>
           </div>
         </div>
         <div class="w-layout-cell">
@@ -72,7 +72,7 @@ get_header();
         <div class="w-layout-cell">
           <div class="w-layout-hflex phrases">
             <div class="fa highlight blu txt"></div>
-            <h4><strong>11-hour daily availability, Monday–Friday (8AM–7PM EST / 6AM–5PM PST)</strong></h4>
+            <h4><strong>12 Hour per day availability:<br>Mon - Fri 5am - 5pm PT</strong></h4>
           </div>
         </div>
         <div class="w-layout-cell">
