@@ -1023,6 +1023,13 @@ body {
 	padding-top:50px;
   }
 
+  .page-template-landing-orange .site-main {
+	padding-top: 0px;
+  }
+
+ .page-template-landing-orange .trusted-container .center {
+	display: none;}
+
   .form-container {
 	align-items: center;
 	padding: 20px
