@@ -1027,7 +1027,7 @@ body {
 	padding-top: 0px;
   }
 
- .page-template-landing-orange .trusted-container .center {
+ .page-template-landing-orange .trusted-container .center, .page-template-landing-lh-demo .trusted-container .center {
 	display: none;}
 
   .form-container {
