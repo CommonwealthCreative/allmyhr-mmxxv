@@ -39,6 +39,23 @@
 </div>
 <div class="container center">
 <h2 class=""><span class="highlight txt">Save Time, Cut Costs, and Keep Your HR Running Flawlessly</span></h2>
-      <a href="/#page" class="btn wht w-button">Purchase Now</a>
-        <a href="https://calendly.com/sjacksonallmyhr/10-minute-walkthrough?month=2025-04" target="_blank" class="btn clear w-button">Get My Demo</a>
+        <?php if ( is_front_page() || is_home() ) : ?>
+    <a href="/#page" class="btn wht w-button">Purchase Now</a>
+<a href="https://calendly.com/sjacksonallmyhr/10-minute-walkthrough?month=2025-04" target="_blank" class="btn clear w-button">Get My Demo</a>
+<?php else : ?>
+    <div class="spaced">
+        <a href="https://calendly.com/sjacksonallmyhr/10-minute-walkthrough?month=2025-04" class="btn w-button">Schedule A Demo</a>
+        <a href="https://calendly.com/sjacksonallmyhr/10-minute-walkthrough?month=2025-04" class="btn wht w-button">Schedule A Call</a>
+    </div>
+    <div class="w-layout-hflex landing-flex-hero">
+          <div class="w-layout-hflex phrases">
+            <div class="fa _20-10-margin"></div>
+            <h4><strong>30 Day Money Back Guarantee</strong></h4>
+          </div>
+          <div class="w-layout-hflex phrases">
+            <div class="fa _20-10-margin"></div>
+            <h4><strong>No Long Term Contracts </strong></h4>
+          </div>
+        </div>
+<?php endif; ?>
 </div>

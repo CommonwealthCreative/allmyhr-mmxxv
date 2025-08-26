@@ -1023,11 +1023,11 @@ body {
 	padding-top:50px;
   }
 
-  .page-template-landing-orange .site-main {
-	padding-top: 0px;
+  .page-template-landing-orange .site-main, .page-template-landing-orange-full .site-main {
+	padding-top: 0px!important;
   }
 
- .page-template-landing-orange .trusted-container .center, .page-template-landing-lh-demo .trusted-container .center, .page-template-landing-lh-purchase .trusted-container .center {
+ .page-template-landing-orange .trusted-container .center,  .page-template-landing-orange-full .trusted-container .center, .page-template-landing-lh-demo .trusted-container .center, .page-template-landing-lh-purchase .trusted-container .center {
 	display: none;}
 
   .form-container {
@@ -1239,13 +1239,22 @@ a:visited {
 	}
 
 	.bg-highlight.highlight {
-		height: 86%;
+		height: 95%;
+		margin-top: 30px;
 	}
 
 	.bg-glow.highlight {
-		height: 89%;
+		height: 95%;
+		 margin-top: 18px;
 	}
 
+	.container.service {
+		padding-bottom: 20px;
+	}
+
+	.toggle-btn {
+		top:0px;
+	}
 	.limited-subscription-notice.notice {
 		color: red
 	}
