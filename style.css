@@ -1023,11 +1023,11 @@ body {
 	padding-top:50px;
   }
 
-  .page-template-landing-orange .site-main, .page-template-landing-orange-full .site-main {
+  .page-template-landing-orange .site-main, .page-template-landing-orange-full .site-main, .page-template-landing-orange-full-dollar .site-main, .page-template-landing-orange-full-99 .site-main {
 	padding-top: 0px!important;
   }
 
- .page-template-landing-orange .trusted-container .center,  .page-template-landing-orange-full .trusted-container .center, .page-template-landing-lh-demo .trusted-container .center, .page-template-landing-lh-purchase .trusted-container .center {
+ .page-template-landing-orange .trusted-container .center, .page-template-landing-orange-full-dollar .trusted-container .center,  .page-template-landing-orange-full-99 .trusted-container .center, .page-template-landing-lh-demo .trusted-container .center, .page-template-landing-lh-purchase .trusted-container .center {
 	display: none;}
 
   .form-container {

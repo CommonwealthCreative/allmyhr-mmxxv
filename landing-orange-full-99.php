@@ -1,6 +1,6 @@
 <?php
 /**
- * Template Name:Landing Full Service
+ * Template Name:Landing Full Service - Ninty Nine
  *
  *
  * @package allmyhr-mmxxv
@@ -14,40 +14,9 @@ get_header();
     <div id="w-node-b40d9ebe-6b1c-f715-0e38-d4ad2c1fd2f5-5e7a721a" class="w-layout-layout landing-hero wf-layout-layout">
       <div class="w-layout-cell"><img src="/wp-content/themes/allmyhr-mmxxv/images/allmyhr-badge_fullaccess.webp" loading="lazy" sizes="(max-width: 1500px) 100vw, 1500px"  alt=""></div>
       <div class="w-layout-cell center landing">
-        <h1 data-w-id="48c48bed-58bc-bb54-89d7-9fdeb30513f3" style="opacity:0"><span>Complete HR Confidence With One Simple Plan</span></h1>
-        <p>Managing HR in-house drains time and budget, especially for small and mid-sized companies. AllMyHR provides a smarter alternative with one simple subscription, you reduce overhead, eliminate risk, and free your team to focus on growth instead of paperwork.</p>
-<div class="toggle-btn w-tab-menu">
-
-          <a data-w-tab="Monthly" class="price-tab w-inline-block w-tab-link w--current">
-            <div class="tab-text simple-nav-link">Monthly</div>
-            <div class="toggle-contain w-clearfix">
-              <div class="toggle-dot right"></div>
-            </div>
-            <div class="tab-text simple-nav-link active">Annually</div>
-          </a>
-          <a data-w-tab="Annually" class="price-tab w-inline-block w-tab-link">
-            <div class="tab-text simple-nav-link active">Monthly</div>
-            <div class="toggle-contain">
-              <div class="toggle-dot"></div>
-            </div>
-            <div class="tab-text simple-nav-link">Annually</div>
-          </a>
-        </div>
-        <div>
-              <div class="number-input-container center" style="display: flex;">
-              <!--<label for="user_number" class="crumb">Instant Pricing:</label>-->
-              <input type="number" id="user_number" name="user_number" placeholder="Enter # of Employees for Instant Pricing" min="1" max="500">
-              </div>
-              <div id="price-message"></div> 
-              <!-- pricing frequency toggle -->
-        </div>
-        
-  
-      <div class="spaced">
-      <a href="/services/allmyhr-monthly-subscription/" id="picker" class="btn w-button">Sign Up Now</a>
-        <a href="https://calendly.com/sjacksonallmyhr/10-minute-walkthrough?month=2025-04" class="btn clear w-button">Schedule A Demo</a>
-        <a href="https://calendly.com/sjacksonallmyhr/10-minute-walkthrough?month=2025-04" class="btn wht w-button">Schedule A Call</a>
-      </div>
+        <h1 data-w-id="48c48bed-58bc-bb54-89d7-9fdeb30513f3" style="opacity:0"><span> HR Confidence With One Simple Plan</span></h1>
+        <p>Now available for <b>just $99/month with no setup fee</b>, with a 2 year rate Guarantee! This plan delivers the same robust features as comparable subscriptions that cost over $2,500 more per year. That means you keep thousands of dollars in your business while still getting HR protection and peace of mind in one powerful subscription.</p>
+        <a href="/?add-to-cart=30692&variation_id=30698" class="btn wht w-button" target="_blank">Start Today For Only $99</a>
         <div class="w-layout-hflex landing-flex-hero">
           <div class="w-layout-hflex phrases">
             <div class="fa _20-10-margin"></div>
@@ -169,8 +138,8 @@ echo '<div class="center faq-card video-embed" style="position:relative;padding-
       </div>
       <div class="center">
        <div class="spaced">
-        <a href="https://calendly.com/sjacksonallmyhr/10-minute-walkthrough?month=2025-04" class="btn w-button">Schedule A Demo</a>
-        <a href="https://calendly.com/sjacksonallmyhr/10-minute-walkthrough?month=2025-04" class="btn dk w-button">Schedule A Call</a>
+        <a href="/?add-to-cart=30692&variation_id=30698"class="btn w-button">Start For Only $99</a>
+        <a href="https://calendly.com/sjacksonallmyhr/10-minute-walkthrough?month=2025-04" class="btn dk w-button">Schedule A Demo</a>
       </div>
         <div class="w-layout-hflex landing-flex-hero">
           <div class="w-layout-hflex phrases">
@@ -204,8 +173,8 @@ echo '<div class="center faq-card video-embed" style="position:relative;padding-
       </div>
       <div class="center">
                <div class="spaced">
-        <a href="https://calendly.com/sjacksonallmyhr/10-minute-walkthrough?month=2025-04" class="btn w-button">Schedule A Demo</a>
-        <a href="https://calendly.com/sjacksonallmyhr/10-minute-walkthrough?month=2025-04" class="btn wht w-button">Schedule A Call</a>
+        <a href="/?add-to-cart=30692&variation_id=30698"class="btn w-button">Start For Only $99</a>
+        <a href="https://calendly.com/sjacksonallmyhr/10-minute-walkthrough?month=2025-04" class="btn wht w-button">Schedule A Demo</a>
       </div>
         <div class="w-layout-hflex landing-flex-hero">
           <div class="w-layout-hflex phrases">
@@ -221,150 +190,6 @@ echo '<div class="center faq-card video-embed" style="position:relative;padding-
     </div>
   </section>
 	</main><!-- #main -->
-<script>
-// Pricing toggle and dynamic link script with annual savings
 
-document.addEventListener('DOMContentLoaded', function() {
-  let freq = 'Monthly';
-  const monthlyBase = '/services/allmyhr-monthly-subscription/';
-  const annualBase  = '/services/allmyhr-annual-subscription/';
-  const contactURL  = '/contact-allmyhr/';
-  const monthlyID   = 29623;
-  const annualID    = 29622;  // updated
-
-  const monthlyRanges = [
-    { min: 1,   max: 24,  slug: '1-25',  variation_id: 29629, price: '99.00',  signup: '250.00' },
-    { min: 25,  max: 50,  slug: '26-50', variation_id: 29630, price: '149.00', signup: '250.00' },
-    { min: 51,  max: 100, slug: '51-100',variation_id: 29631, price: '199.00', signup: '250.00' },
-    { min: 101, max: 250, slug: '101-250',variation_id: 29632, price: '249.00', signup: '500.00' },
-    { min: 251, max: 500, slug: '251-500',variation_id: 29633, price: '299.00', signup: '500.00' }
-  ];
-
-  const annualRanges = [
-    { min: 1,   max: 24,  slug: '1-25',  variation_id: 29626, price: '1069.00', signup: '250.00', save: '119' },
-    { min: 25,  max: 50,  slug: '26-50',variation_id: 29627, price: '1609.00', signup: '250.00', save: '179' },
-    { min: 51,  max: 100,slug: '51-100',variation_id: 29624, price: '2149.00', signup: '250.00', save: '239' },
-    { min: 101, max: 250,slug: '101-250',variation_id: 29625, price: '2689.00', signup: '500.00', save: '299' },
-    { min: 251, max: 500,slug: '251-500',variation_id: 29628, price: '3229.00', signup: '500.00', save: '359' }
-  ];
-
-  const userNumberInput = document.getElementById('user_number');
-  const pickerLink      = document.getElementById('picker');
-  const priceMessage    = document.getElementById('price-message');
-
-  function updateMonthly(price, fee) {
-    priceMessage.innerHTML =
-      `<h3 class="price">` +
-      `  <span class="woocommerce-Price-amount amount">` +
-      `    <bdi><span class="woocommerce-Price-currencySymbol">$</span>${price}</bdi>` +
-      `  </span> ` +
-      `  <span class="subscription-details">/ month + $${fee} setup fee</span>` +
-      `</h3>`;
-  }
-
-  // Toggle between Monthly and Annual
-  document.querySelectorAll('.price-tab').forEach(tab => {
-    tab.addEventListener('click', function(e) {
-      e.preventDefault();
-      freq = this.dataset.wTab;
-      document.querySelectorAll('.price-tab').forEach(t => t.classList.remove('w--current'));
-      this.classList.add('w--current');
-      userNumberInput.dispatchEvent(new Event('input'));
-    });
-  });
-
-  // Update pricing on employee number input
-  userNumberInput.addEventListener('input', function() {
-    const val = this.value.trim();
-    if (!val) {
-      // No input: show starting price
-      pickerLink.href = freq === 'Monthly' ? monthlyBase : annualBase;
-      pickerLink.textContent = 'Buy Now';
-      pickerLink.style.opacity = '0.5';
-      if (freq === 'Monthly') {
-        priceMessage.innerHTML =
-          `<p class="price highlight txt"><span class="from">Starting at: </span>` +
-          `<span class="woocommerce-Price-amount amount"><bdi><span class="woocommerce-Price-currencySymbol">$</span>99</bdi></span>` +
-          `<span class="subscription-details">/ month</span></p>`;
-      } else {
-        priceMessage.innerHTML =
-          `<p class="price highlight txt"><span class="from">Starting at: </span>` +
-          `<span class="woocommerce-Price-amount amount"><bdi><span class="woocommerce-Price-currencySymbol">$</span>1069</bdi></span>` +
-          `<span class="subscription-details">/ year</span></p>`;
-      }
-      return;
-    }
-
-    const n = parseInt(val, 10);
-    if (n > 500) {
-      // Custom quote for >500
-      pickerLink.href = contactURL;
-      pickerLink.textContent = 'Get A Quote';
-      pickerLink.style.opacity = '1';
-      priceMessage.innerHTML =
-        `<p class="price highlight txt"><span class="from">` +
-        `<a href="${contactURL}" class="highlight txt">Please contact us for a custom quote</a>` +
-        `</span></p>`;
-      return;
-    }
-
-    // Determine correct range set and update
-    const setBase    = freq === 'Monthly' ? monthlyRanges : annualRanges;
-    const baseURL    = freq === 'Monthly' ? monthlyBase    : annualBase;
-    const productID  = freq === 'Monthly' ? monthlyID      : annualID;
-    const matchRange = setBase.find(r => n >= r.min && n <= r.max);
-
-    if (matchRange) {
-      pickerLink.href =
-        `${baseURL}?add-to-cart=${productID}` +
-        `&variation_id=${matchRange.variation_id}` +
-        `&attribute_employees=${matchRange.slug}`;
-      pickerLink.textContent = 'Buy Now';
-      pickerLink.style.opacity = '1';
-
-      if (freq === 'Monthly') {
-        updateMonthly(matchRange.price, matchRange.signup);
-      } else {
-        priceMessage.innerHTML =
-          `<h3 class="price"><span class="woocommerce-Price-amount amount">` +
-          `<bdi><span class="woocommerce-Price-currencySymbol">$</span>${matchRange.price}</bdi>` +
-          `</span> <span class="subscription-details">/ year + $${matchRange.signup} set up fee</span></h3>` +
-          `<p class="savings highlight txt" style="margin:0">Save $${matchRange.save} when you purchase an annual plan!</p>`;
-      }
-    }
-  });
-
-  // Prevent link click if no number entered
-  pickerLink.addEventListener('click', function(e) {
-    if (!userNumberInput.value.trim()) {
-      e.preventDefault();
-      alert("Please enter the number of employees your company has...");
-    }
-  });
-
-  // Initialize starting price on load
-  userNumberInput.dispatchEvent(new Event('input'));
-});
-</script>
-<script src="https://www.youtube.com/iframe_api"></script>
-<script>
-  let ytPlayer;
-  function onYouTubeIframeAPIReady() {
-    ytPlayer = new YT.Player('yt-player');
-  }
-
-  // Unmute and play on first interaction
-  function enableAudio() {
-    if (ytPlayer && ytPlayer.unMute) {
-      ytPlayer.unMute();
-      ytPlayer.playVideo();
-      document.removeEventListener('click', enableAudio);
-      document.removeEventListener('keydown', enableAudio);
-    }
-  }
-
-  document.addEventListener('click', enableAudio);
-  document.addEventListener('keydown', enableAudio);
-</script>
 <?php
 get_footer();
