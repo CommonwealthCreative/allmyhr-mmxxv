@@ -40,16 +40,17 @@ get_header();
       
 <?php
 echo '<div class="center faq-card video-embed" style="position:relative;padding-bottom:56.25%;height:0;overflow:hidden;max-width:1150px;margin-left:auto;margin-right:auto;">
-  <iframe
-    id="yt-player"
-    src="https://www.youtube.com/embed/dsB5dDl_9rE?start=2&autoplay=1&mute=1&enablejsapi=1&playsinline=1&rel=0&modestbranding=1"
-    title="YouTube video"
-    frameborder="0"
-    allow="autoplay; accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-    allowfullscreen
-    loading="eager"
-    style="position:absolute;top:0;left:0;width:100%;height:100%;"
-  ></iframe>
+<iframe
+  id="yt-player"
+  src="https://www.youtube.com/embed/MsLReBq4ziU?start=2&autoplay=1&mute=1&enablejsapi=1&playsinline=1&rel=0&modestbranding=1"
+  title="YouTube video"
+  frameborder="0"
+  allow="autoplay; accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+  allowfullscreen
+  loading="eager"
+  style="position:absolute;top:0;left:0;width:100%;height:100%;"
+></iframe>
+
 </div>';
 ?>
 

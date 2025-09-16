@@ -20,14 +20,15 @@ get_header();
 ?>
  <div data-w-id="8a799611-cf86-bde8-7da8-eb88c679e185" style="display:none" class="videomodal">
     <div style="padding-top:56.17021276595745%" class="video w-video w-embed"><iframe class="embedly-embed" 
-  src="https://cdn.embedly.com/widgets/media.html?src=https%3A%2F%2Fwww.youtube.com%2Fembed%2F3TqL8dvFafY%3Ffeature%3Doembed%26autoplay%3D1%26mute%3D1%26rel%3D0&display_name=YouTube&url=https%3A%2F%2Fwww.youtube.com%2Fwatch%3Fv%3D3TqL8dvFafY&image=https%3A%2F%2Fi.ytimg.com%2Fvi%2F3TqL8dvFafY%2Fhqdefault.jpg&type=text%2Fhtml&schema=youtube" 
+  src="https://cdn.embedly.com/widgets/media.html?src=https%3A%2F%2Fwww.youtube.com%2Fembed%2FMsLReBq4ziU%3Ffeature%3Doembed%26autoplay%3D1%26mute%3D1%26rel%3D0&display_name=YouTube&url=https%3A%2F%2Fwww.youtube.com%2Fwatch%3Fv%3DMsLReBq4ziU&image=https%3A%2F%2Fi.ytimg.com%2Fvi%2FMsLReBq4ziU%2Fhqdefault.jpg&type=text%2Fhtml&schema=youtube" 
   width="940" 
   height="528" 
   scrolling="no" 
   allowfullscreen 
   allow="autoplay; encrypted-media" 
-  title="The Benefits & Features of tryHRIS">
+  title="The Benefits & Features of tryHRIS"> 
 </iframe>
+
 
       </div>
   </div>
