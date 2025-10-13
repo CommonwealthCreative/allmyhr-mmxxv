@@ -10,6 +10,7 @@
  */
 
 ?>
+		<?php get_template_part('template-parts/exit'); ?>
 <section class="content-section bg-dkblue bg-gradientblack footer">
     <div class="container">
       <div id="w-node-a5ca248d-812d-b134-dbd9-8fc3b593d55e-b593d55c" class="w-layout-layout wf-layout-layout">
