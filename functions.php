@@ -615,6 +615,26 @@ add_action('wp_footer', function () {
     <?php
 });
 
+// functions.php
+add_action('wp_footer', function () {
+    if (is_admin()) return;
+    if (wp_doing_ajax()) return;
+    if (defined('REST_REQUEST') && REST_REQUEST) return;
+
+    $path = wp_parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
+    $path = rtrim($path ?: '', '/');
+
+    // Match URL segments /cart or /checkout (incl. subpaths like /checkout/order-received)
+    if (preg_match('~/(cart|checkout)(/|$)~i', $path)) {
+        return;
+    }
+
+    get_template_part('template-parts/exit');
+}, 9999);
+
+
+
+
 
 
 

@@ -62,7 +62,7 @@
 }
 
     </style>
-<div class="modal-exit">
+<div class="modal-exit" style="display: none;">
 <div class="fa close-btn"></div>
 <div class=" modal-content">
   <h1>Limited Time Offer</h1>
