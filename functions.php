@@ -561,6 +561,60 @@ add_filter( 'woocommerce_subscriptions_product_price_string', function( $price_s
     return $price_string;
 }, 20, 2 );
 
+add_action('wp_footer', function () {
+    if (! (is_cart() || is_checkout())) return;
+
+    $targets = [];
+    if (WC()->cart) {
+        foreach (WC()->cart->get_cart() as $ci) {
+            if ((int) $ci['product_id'] === 30702) {
+                $targets[] = wp_strip_all_tags($ci['data']->get_name());
+            }
+        }
+    }
+    if (empty($targets)) return;
+
+    ?>
+    <style>
+      .cc-hide-30702 .wc-block-components-order-summary-item__individual-prices { display:none !important; }
+      .cc-hide-30702 .wc-block-components-product-details__free-trial,
+      .cc-hide-30702 .wc-block-components-product-details__setup-fee { display:none !important; }
+    </style>
+    <script>
+      (function(){
+        var targetNames = <?php echo wp_json_encode(array_values(array_unique($targets))); ?>;
+
+        function norm(t){ return (t || '').replace(/\s+/g,' ').trim(); }
+
+        function flagRows(){
+          document.querySelectorAll('.wc-block-components-order-summary-item').forEach(function(row){
+            var nameEl = row.querySelector('.wc-block-components-product-name');
+            if (!nameEl) return;
+            var name = norm(nameEl.textContent);
+            if (targetNames.some(function(n){ return norm(n) === name; })) {
+              row.classList.add('cc-hide-30702');
+
+              var ind = row.querySelector('.wc-block-components-order-summary-item__individual-prices');
+              if (ind) ind.remove();
+
+              row.querySelectorAll('.wc-block-components-product-details__free-trial, .wc-block-components-product-details__setup-fee')
+                 .forEach(function(li){ li.remove(); });
+            }
+          });
+        }
+
+        if (document.readyState === 'loading') {
+          document.addEventListener('DOMContentLoaded', flagRows);
+        } else {
+          flagRows();
+        }
+
+        new MutationObserver(flagRows).observe(document.body, {childList:true, subtree:true});
+      })();
+    </script>
+    <?php
+});
+
 
 
 
