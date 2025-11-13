@@ -11,17 +11,11 @@
 
 <div class="container" id="quote">
       <div class="container h-content center">
-      <?php if ( is_singular( array( 'post', 'page' ) ) ) : ?>
-          <h1 class="center"><?php the_title(); ?></h1>
-          <p>Get a custom quote tailored to your needs or see our solutions in action with a personalized demonstration. 
-                  <span class="highlight txt">Let’s find the right fit for all of your HR requirements.</span>
-              </p>
-          <?php else : ?>
               <h2 class="center">Are HR challenges slowing down your business?</h2>
               <p>Get a custom quote tailored to your needs or see our solutions in action with a personalized demonstration. 
                   <span class="highlight txt">Let’s find the right fit for all of your HR requirements.</span>
               </p>
-      <?php endif; ?>
+
 
       </div>
       <div data-w-id="4f60b1d7-dcab-3003-4ae4-0c135a644011" class="container card bg-dkblue">
@@ -54,9 +48,9 @@
             </div>
           </div>
           <div class="w-layout-cell form-container">
-  
-          <?php echo do_shortcode('[gravityform id="6" title="false" description="false"]'); ?>
-
+ 
+          <?php echo do_shortcode('[gravityform id="1" title="false" description="false"]'); ?>
+ 
 
           </div>
         </div>

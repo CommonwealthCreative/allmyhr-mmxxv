@@ -13,34 +13,6 @@
       <div data-w-id="c0ffce76-e5dd-c509-ab7e-9285bfa38631" class="container h-content center">
         <h2 class="center">Comprehensive HR Solutions From <span class="highlight txt">Your Dedicated Team.</span></h2>
         <p>Get expert HR guidance from a dedicated team that understands your business, ensures compliance, and helps you manage your workforce with confidence.</p>
-<?php if ( is_front_page() || is_home() ) : ?>
-    <a href="/#page" class="btn dk w-button">Purchase Now</a>
-    <a href="https://calendly.com/sjacksonallmyhr/10-minute-walkthrough?month=2025-04" target="_blank" class="btn dk w-button">Get My Demo</a>
-
-<?php elseif ( is_page_template( 'landing-orange-full-dollar.php' ) ) : ?>
-    <a href="/?add-to-cart=30702" class="btn w-button">Start For Only $1</a>
-    <a href="https://calendly.com/sjacksonallmyhr/10-minute-walkthrough?month=2025-04" class="btn dk w-button">Schedule A Demo</a>
-
-<?php elseif ( is_page_template( 'landing-orange-full-99.php' ) ) : ?>
-    <a href="/?add-to-cart=30692&variation_id=30698" class="btn w-button">Start For Only $99</a>
-    <a href="https://calendly.com/sjacksonallmyhr/10-minute-walkthrough?month=2025-04" class="btn dk w-button">Schedule A Demo</a>
-
-<?php else : ?>
-    <div class="spaced">
-        <a href="https://calendly.com/sjacksonallmyhr/10-minute-walkthrough?month=2025-04" class="btn w-button">Schedule A Demo</a>
-        <a href="https://calendly.com/sjacksonallmyhr/10-minute-walkthrough?month=2025-04" class="btn dk w-button">Schedule A Call</a>
-    </div>
-    <div class="w-layout-hflex landing-flex-hero">
-        <div class="w-layout-hflex phrases">
-            <div class="fa _20-10-margin"></div>
-            <h4><strong>30 Day Money Back Guarantee</strong></h4>
-        </div>
-        <div class="w-layout-hflex phrases">
-            <div class="fa _20-10-margin"></div>
-            <h4><strong>No Long Term Contracts</strong></h4>
-        </div>
-    </div>
-<?php endif; ?>
 
         <div data-delay="3000" data-animation="slide" class="slider-wrapper w-slider" data-autoplay="false" data-easing="ease" data-hide-arrows="true" data-disable-swipe="false" data-w-id="c0ffce76-e5dd-c509-ab7e-9285bfa3863a" data-autoplay-limit="0" data-nav-spacing="3" data-duration="500" data-infinite="true">
           <div class="slider-wrapper-mask w-slider-mask">
@@ -197,5 +169,19 @@
           </div>
           <div class="slider-indicators w-slider-nav w-slider-nav-invert w-round"></div>
         </div>
+
       </div>
+        <div class="start alt">
+            <?php echo do_shortcode('[gravityform id="12" title="false" description="false"]'); ?>
+            <div class="w-layout-hflex landing-flex-hero">
+              <div class="w-layout-hflex phrases">
+              <div class="fa _20-10-margin"></div>
+              <h4><strong>30 Day Money Back Guarantee</strong></h4>
+              </div>
+              <div class="w-layout-hflex phrases">
+              <div class="fa _20-10-margin"></div>
+              <h4><strong>No Long Term Contracts </strong></h4>
+              </div>
+            </div>
+        </div>
     </div>

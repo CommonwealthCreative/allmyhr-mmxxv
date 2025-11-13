@@ -198,6 +198,15 @@ img {
 /* Forms
 	 ========================================================================== */
 
+.start.alt .gform_fields{border: 1px solid #0879f8;
+    border-radius: 8px; padding: 30px 5px; background: #fff;    }
+.start .gform_fields { margin: auto;
+    justify-content: center;
+    display: flex!important;
+max-width: 600px; min-width: 482px;}
+.start .gfield_required {display: none!important;}
+
+.hero-headline .start .gform_fields {justify-content:left!important;}
 /**
  * 1. Change the font styles in all browsers.
  * 2. Remove the margin in Firefox and Safari.
@@ -644,7 +653,8 @@ textarea {
 /*--------------------------------------------------------------
 # Components
 --------------------------------------------------------------*/
-
+.hero-headline {text-align: left;}
+.hero-video {justify-content: center; align-items: center;}
 
 
 /* Navigation
@@ -1080,7 +1090,7 @@ a:visited {
 	color: inherit;
 }
 
-.btn, .woocommerce div.product form.cart .button, .button, .woocommerce ul.products li.product .button, .wc-block-grid__product-add-to-cart.wp-block-button .wp-block-button__link, .card-tab-variations .single_add_to_cart_button, .wp-element-button {
+.btn, .woocommerce div.product form.cart .button, .button, .woocommerce ul.products li.product .button, .wc-block-grid__product-add-to-cart.wp-block-button .wp-block-button__link, .card-tab-variations .single_add_to_cart_button, .wp-element-button, .start .gform-button {
 	color: #fff;
 	letter-spacing: -.5px;
 	background-color: #0495c9;
@@ -1101,7 +1111,7 @@ a:visited {
 	text-decoration: none;
   }
 
-  .btn:hover, .woocommerce div.product form.cart .button:hover, .button:hover, .woocommerce ul.products li.product .button:hover, .wc-block-grid__product-add-to-cart.wp-block-button:hover .wp-block-button__link:hover, button.single_add_to_cart_button button.alt {
+  .btn:hover, .woocommerce div.product form.cart .button:hover, .button:hover, .woocommerce ul.products li.product .button:hover, .wc-block-grid__product-add-to-cart.wp-block-button:hover .wp-block-button__link:hover, button.single_add_to_cart_button button.alt, .start .gform-button:hover {
 	border-color: #fff;
 	transform: translate(0, -2px);
 	color: #fff;
@@ -1259,6 +1269,16 @@ a:visited {
 		color: red
 	}
   @media screen and (max-width: 991px) {
+
+	.hero-headline .start .gform_fields {justify-content: center!important;}
+
+	.hero-headline .start {width: 100%;}
+
+	.start .gform_fields, .hero-headline { 
+		min-width: auto;
+	}
+	
+	.hero-headline {text-align: center;}
 
 	.mo-openid-app-icons {
 		display: inline!important;

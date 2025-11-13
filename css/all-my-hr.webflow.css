@@ -270,6 +270,7 @@ a {
 .container.features {
   text-align: center;
   padding-top: 100px;
+      margin-top:40px;
 }
 
 .container.card.bg-dkblue {
@@ -440,6 +441,7 @@ a {
   display: flex;
   position: relative;
   inset: auto 0% 0%;
+  padding-bottom:40px;
 }
 
 .crumb {
@@ -1105,8 +1107,8 @@ a {
 }
 
 .lottie-animation {
-  width: 150px;
-  height: 100px;
+  width: 300px;
+  height: 180px;
 }
 
 .spaced {
