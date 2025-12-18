@@ -15,7 +15,7 @@
 	<?php 
 			if ( is_home() || is_page_template( 'homealt.php' )) { echo 'data-wf-page="67b4f78ed1034a4efbd4393f"'; } 
 			if ( is_search() ) { echo 'data-wf-page="67741e41160207547be4c674"'; } 
-			if ( is_page_template( array('landing-orange.php', 'landing-orange-full-dollar.php', 'landing-orange-full-99.php', 'landing-lh-demo.php', 'landing-lh-product.php', 'landing-lh-purchase.php',
+			if ( is_page_template( array('landing-orange.php', 'landing-orange-full-dollar.php', 'landing-orange-full-99.php', 'landing-lh-demo.php', 'landing-lh-product.php', 'landing-lh-purchase.php'
 ) ) ) {
     echo 'data-wf-page="6880fcf901584b475e7a721a"';
 }
