@@ -43,30 +43,24 @@ get_header();
 					</div>
 				<?php endif; ?>
 
-				<!-- Gravity Form -->
-				<div style="margin-top: 30px; margin-bottom: 30px;">
-					<?php echo do_shortcode( '[gravityform id="12" title="false" description="false"]' ); ?>
+				<!-- CTA Buttons -->
+				<div class="spaced">
+					<a href="/?add-to-cart=31784&variation_id=31797" class="btn w-button">Join Today For $24 / mo</a>
+					<a href="https://calendly.com/sjacksonallmyhr/10-minute-walkthrough?month=2025-04" class="btn wht w-button" target="_blank">Demo Your Dashboard</a>
 				</div>
 
 				<!-- Product Tour Link -->
 				<div style="text-align: left;">
 					<a href="https://calendly.com/allmyhr10/allmyhr-product-demo" style="display: inline-flex; align-items: center; gap: 10px; color: #1d55a7; text-decoration: none; font-size: 16px; font-weight: 600;">
 						<span style="font-size: 20px;">→</span>
-						<span>Schedule a demo to learn more.</span>
+						<span>Details about AllMyHR Professional Memberships.</span>
 					</a>
 				</div>
 			</div>
 		</div>
 
 		<!-- RIGHT COLUMN: Comparison Table (Dark Background) -->
-		<div style="background: #f5f5f5; padding: 60px 40px; display: flex; flex-direction: column; justify-content: center; position: relative;">
-			<!-- Banner Graphic -->
-			<div style="position: absolute; top: 0; left: 0; width: 200px; height: 200px; overflow: hidden;">
-				<div style="position: absolute; top: -50px; left: -50px; width: 300px; height: 300px; background: linear-gradient(135deg, #fbcf18 0%, #e24a41 100%); transform: rotate(45deg); display: flex; align-items: center; justify-content: center;">
-					<span style="transform: rotate(-45deg); font-size: 24px; font-weight: 700; color: #000; text-align: center; width: 150px; line-height: 1.2;">See The Difference</span>
-				</div>
-			</div>
-
+		<div style="background: #f5f5f5; padding: 60px 40px; display: flex; flex-direction: column; justify-content: center;">
 			<div class="container" style="max-width: 100%; padding: 0;">
 			<!-- Company Headers -->
 			<div style="display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 20px; margin-bottom: 40px; align-items: flex-start;">
