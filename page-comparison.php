@@ -45,13 +45,13 @@ get_header();
 
 				<!-- CTA Buttons -->
 				<div class="spaced">
-					<a href="/?add-to-cart=31784&variation_id=31797" class="btn w-button">Join Today For $24 / mo</a>
+					<a href="/?add-to-cart=30702" class="btn w-button">Join Today For $24 / mo</a>
 					<a href="https://calendly.com/sjacksonallmyhr/10-minute-walkthrough?month=2025-04" class="btn wht w-button" target="_blank">Demo Your Dashboard</a>
 				</div>
 
 				<!-- Product Tour Link -->
 				<div style="text-align: left;">
-					<a href="https://calendly.com/allmyhr10/allmyhr-product-demo" style="display: inline-flex; align-items: center; gap: 10px; color: #1d55a7; text-decoration: none; font-size: 16px; font-weight: 600;">
+					<a href="/product/allmyhr-professional-membership/" style="display: inline-flex; align-items: center; gap: 10px; color: #1d55a7; text-decoration: none; font-size: 16px; font-weight: 600;">
 						<span style="font-size: 20px;">→</span>
 						<span>Details about AllMyHR Professional Memberships.</span>
 					</a>
