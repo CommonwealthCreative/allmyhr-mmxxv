@@ -9,7 +9,7 @@ get_header();
 ?>
 
 <main id="primary" class="site-main">
-	<section style="display: grid; grid-template-columns: 1fr 1fr; min-height: 100vh;" class="comparison-section">
+	<section style="display: grid; grid-template-columns: 1fr; min-height: auto;" class="comparison-section">
 		<!-- LEFT COLUMN: Form Section (Featured Image Background) -->
 		<div style="position: relative; padding: 60px 40px; display: flex; flex-direction: column; padding-top: 15vh;">
 			<?php
@@ -45,7 +45,7 @@ get_header();
 
 				<!-- CTA Buttons -->
 				<div class="spaced">
-					<a href="/?add-to-cart=30702" class="btn w-button">Join Today For $24 / mo</a>
+					<a href="/?add-to-cart=31784&variation_id=31797" class="btn w-button">Join Today For $24 / mo</a>
 					<a href="https://calendly.com/sjacksonallmyhr/10-minute-walkthrough?month=2025-04" class="btn wht w-button" target="_blank">Demo Your Dashboard</a>
 				</div>
 
