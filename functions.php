@@ -173,6 +173,39 @@ function allmyhr_mmxxv_scripts() {
 add_action('wp_enqueue_scripts', 'allmyhr_mmxxv_scripts');
 
 /**
+ * Enqueue Aries template scripts and localize data
+ */
+function allmyhr_enqueue_aries_scripts() {
+    // Only load on pages using the Aries template
+    if ( is_page_template( 'aries.php' ) ) {
+        wp_enqueue_script(
+            'aries-js',
+            get_template_directory_uri() . '/js/aries.js',
+            array( 'jquery' ),
+            _S_VERSION,
+            true
+        );
+
+        // Localize script with REST API data
+        wp_localize_script( 'aries-js', 'ariesData', array(
+            'restUrl' => rest_url( 'allmyhr/v1/aries-chat' ),
+            'nonce'   => wp_create_nonce( 'wp_rest' ),
+        ) );
+    }
+}
+add_action( 'wp_enqueue_scripts', 'allmyhr_enqueue_aries_scripts' );
+
+/**
+ * Aries REST API endpoints for ChatGPT integration.
+ */
+require get_template_directory() . '/inc/aries-rest-api.php';
+
+/**
+ * Aries admin settings page.
+ */
+require get_template_directory() . '/inc/aries-settings.php';
+
+/**
  * Implement the Custom Header feature.
  */
 require get_template_directory() . '/inc/custom-header.php';

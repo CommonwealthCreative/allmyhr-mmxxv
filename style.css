@@ -1392,3 +1392,199 @@ a:visited {
 	transform: translate(0, -2px) !important;
 	color: #fff !important;
 }
+
+/* ==========================================================================
+   Aries Template Styles
+   ========================================================================== */
+
+.aries-form-card {
+	max-width: 800px;
+	margin: 0 auto;
+	padding: 30px;
+	background: #fff;
+	border: 1px solid #e0e0e0;
+	border-radius: 8px;
+}
+
+.aries-header-row {
+	justify-content: space-between;
+	align-items: center;
+	margin-bottom: 20px;
+	flex-wrap: wrap;
+	gap: 15px;
+}
+
+.aries-label {
+	align-items: center;
+	gap: 10px;
+}
+
+.aries-user-icon {
+	font-size: 24px;
+	color: #0495c9;
+}
+
+.aries-label h3 {
+	margin: 0;
+	font-size: 20px;
+}
+
+.aries-state-select {
+	padding: 10px 15px;
+	border: 1px solid #ccc;
+	border-radius: 8px;
+	font-size: 16px;
+	min-width: 200px;
+}
+
+.aries-input-row {
+	gap: 15px;
+	margin-bottom: 15px;
+	flex-wrap: wrap;
+}
+
+.aries-question-input {
+	flex: 1;
+	min-width: 250px;
+	padding: 12px 15px;
+	border: 1px solid #ccc;
+	border-radius: 8px;
+	font-size: 16px;
+}
+
+.aries-submit-btn {
+	margin: 0 !important;
+}
+
+.aries-footer-row {
+	flex-direction: column;
+	gap: 10px;
+	padding-top: 10px;
+	border-top: 1px solid #e0e0e0;
+}
+
+.aries-char-counter {
+	font-size: 14px;
+	color: #666;
+	transition: color 0.3s ease;
+}
+
+.aries-char-counter.warning {
+	color: #e86a16;
+}
+
+.aries-char-counter.danger {
+	color: #dc3545;
+}
+
+.aries-hipaa-disclaimer {
+	font-size: 12px;
+	color: #888;
+	margin: 0;
+	line-height: 1.4;
+}
+
+/* AI Response Container */
+.aries-response-container {
+	margin-top: 20px;
+	padding: 20px;
+	background: #f8f9fa;
+	border-radius: 8px;
+	border-left: 4px solid #0495c9;
+}
+
+.aries-response-header {
+	display: flex;
+	align-items: center;
+	gap: 10px;
+	margin-bottom: 15px;
+}
+
+.aries-ai-icon {
+	font-size: 20px;
+	color: #0495c9;
+}
+
+.aries-response-header h4 {
+	margin: 0;
+	color: #252525;
+}
+
+.aries-response-text {
+	line-height: 1.6;
+	color: #333;
+}
+
+.aries-error-message {
+	color: #dc3545;
+	padding: 10px;
+	background: #f8d7da;
+	border-radius: 4px;
+	margin-top: 10px;
+}
+
+/* Loading Spinner */
+.aries-loading {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	gap: 15px;
+	padding: 30px;
+	color: #666;
+}
+
+.aries-spinner {
+	width: 24px;
+	height: 24px;
+	border: 3px solid #e0e0e0;
+	border-top-color: #0495c9;
+	border-radius: 50%;
+	animation: aries-spin 1s linear infinite;
+}
+
+@keyframes aries-spin {
+	to { transform: rotate(360deg); }
+}
+
+/* Step 2 Form */
+.aries-step2-form {
+	margin-top: 20px;
+	padding-top: 20px;
+	border-top: 1px solid #e0e0e0;
+}
+
+.aries-step2-form h4 {
+	margin-top: 0;
+	margin-bottom: 10px;
+}
+
+/* Responsive Styles */
+@media screen and (max-width: 768px) {
+	.aries-form-card {
+		padding: 20px;
+		margin: 0 10px;
+	}
+
+	.aries-header-row {
+		flex-direction: column;
+		align-items: flex-start;
+	}
+
+	.aries-state-select {
+		width: 100%;
+		min-width: unset;
+	}
+
+	.aries-input-row {
+		flex-direction: column;
+	}
+
+	.aries-question-input {
+		width: 100%;
+		min-width: unset;
+	}
+
+	.aries-submit-btn {
+		width: 100%;
+	}
+}

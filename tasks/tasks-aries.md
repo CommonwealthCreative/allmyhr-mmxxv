@@ -1,3 +1,25 @@
+# Tasks: Aries Page Template
+
+## Relevant Files
+
+- `aries.php` - Main page template file with hero section and form card markup
+- `js/aries.js` - Frontend JavaScript for character counter, AJAX, multi-step form, GA tracking
+- `inc/aries-settings.php` - Admin settings page for AI prompt context configuration
+- `inc/aries-rest-api.php` - REST API endpoint registration and ChatGPT integration logic
+- `functions.php` - Include new files and enqueue aries.js conditionally
+- `style.css` - Additional CSS for Aries-specific styling (character counter colors, loading states)
+- `/Users/mattbookpro/Desktop/webdev2024/allmyhr-docker/docker-compose.yml` - Add OPENAI_API_KEY environment variable
+- `/Users/mattbookpro/Desktop/webdev2024/allmyhr-docker/.env` - Create with OPENAI_API_KEY value
+
+### Notes
+- Gravity Form ID 12 must be configured manually in WordPress admin (hidden fields cannot be created via code)
+- The `.env` file should NOT be committed to version control
+- Test at `http://localhost:8000/` after Docker restart
+
+## Instructions for Completing Tasks
+
+IMPORTANT: As you complete each task, you must check it off in this markdown file by changing `- [ ]` to `- [x]`.
+
 ## Tasks
 
 - [x] 0.0 Create feature branch
@@ -54,12 +76,12 @@
 
 - [ ] 5.0 Configure Gravity Form and environment
   - [x] 5.1 Update `docker-compose.yml` to pass `OPENAI_API_KEY` environment variable
-  - [ ] 5.2 Create `.env` file with placeholder for `OPENAI_API_KEY` ⚠️ MANUAL
-  - [ ] 5.3 Restart Docker containers to load new environment variable ⚠️ MANUAL
-  - [ ] 5.4 Configure Gravity Form ID 12: add hidden field for "Question" ⚠️ MANUAL
-  - [ ] 5.5 Configure Gravity Form ID 12: add hidden field for "State" ⚠️ MANUAL
-  - [ ] 5.6 Configure Gravity Form ID 12: add hidden field for "AI Response" ⚠️ MANUAL
-  - [ ] 5.7 Ensure Name and Email fields are required with validation ⚠️ MANUAL
-  - [ ] 5.8 Set form confirmation to redirect to `/thank-you` ⚠️ MANUAL
-  - [ ] 5.9 Create test page in WordPress using Aries template ⚠️ MANUAL
-  - [ ] 5.10 End-to-end test: submit question → receive AI response → submit lead → redirect ⚠️ MANUAL
+  - [ ] 5.2 Create `.env` file with placeholder for `OPENAI_API_KEY` ⚠️ MANUAL: Create `/allmyhr-docker/.env` with `OPENAI_API_KEY=sk-your-key`
+  - [ ] 5.3 Restart Docker containers to load new environment variable ⚠️ MANUAL: Run `docker-compose down && docker-compose up -d`
+  - [ ] 5.4 Configure Gravity Form ID 12: add hidden field for "Question" ⚠️ MANUAL: WordPress Admin
+  - [ ] 5.5 Configure Gravity Form ID 12: add hidden field for "State" ⚠️ MANUAL: WordPress Admin
+  - [ ] 5.6 Configure Gravity Form ID 12: add hidden field for "AI Response" ⚠️ MANUAL: WordPress Admin
+  - [ ] 5.7 Ensure Name and Email fields are required with validation ⚠️ MANUAL: WordPress Admin
+  - [ ] 5.8 Set form confirmation to redirect to `/thank-you` ⚠️ MANUAL: WordPress Admin
+  - [ ] 5.9 Create test page in WordPress using Aries template ⚠️ MANUAL: WordPress Admin
+  - [ ] 5.10 End-to-end test: submit question → receive AI response → submit lead → redirect ⚠️ MANUAL: Browser test

@@ -1,35 +1,67 @@
 # Agent Execution Context
 
 ## Project Type
-TBD
+WordPress Theme
 
 ## Primary Language(s)
-TBD
+- PHP
+- JavaScript
+- CSS
 
 ## Frameworks / Platforms
-TBD
+- WordPress 6.7+
+- WooCommerce
+- Gravity Forms
+- Docker (local development)
 
 ## Package / Dependency Manager
-TBD
+None actively used (npm/Composer configs exist but not required for development)
 
 ## How to Run the Project
-TBD
+
+1. Navigate to Docker directory:
+   ```bash
+   cd /Users/mattbookpro/Desktop/webdev2024/allmyhr-docker
+   ```
+
+2. Start the Docker environment:
+   ```bash
+   docker-compose up -d
+   ```
+
+3. Access the site at: `http://localhost:8000/`
+
+4. Stop the environment:
+   ```bash
+   docker-compose down
+   ```
 
 ## How to Run Tests
-TBD
+- No automated tests currently configured
 
-## Linting / Formatting (if applicable)
-TBD
+## Linting / Formatting
+- Not actively used
+- Legacy configs exist (`phpcs.xml.dist`, `package.json` scripts) but are optional
 
-## Build / Compile (if applicable)
-TBD
+## Build / Compile
+- Not required - CSS/JS are served directly
+- Theme uses pre-built Webflow CSS (`/css/all-my-hr.webflow.css`)
 
 ## Environment Notes
-- Required env var names (no values): TBD
+Required environment variable names (no values):
+- `OPENAI_API_KEY` (for Aries template ChatGPT integration)
+
+Docker environment variables (defined in `docker-compose.yml`):
+- `WORDPRESS_DB_HOST`
+- `WORDPRESS_DB_USER`
+- `WORDPRESS_DB_PASSWORD`
+- `WORDPRESS_DB_NAME`
 
 ## Branching Rules
-feature/[feature-name]
+- Current branch: `chat-demo`
+- Feature branches: `feature/[feature-name]`
 
 ## Constraints
-TBD
-
+Files/directories that must NOT be modified:
+- `/vendor/` - Composer dependencies (if installed)
+- `/node_modules/` - npm dependencies (if installed)
