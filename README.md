@@ -1,7 +1,204 @@
-[![Build Status](https://travis-ci.org/Automattic/_s.svg?branch=master)](https://travis-ci.org/Automattic/_s)
+# AI Dev Workflow Starter
 
-_s
-===
+This repository defines a structured, AI-assisted development workflow designed to be used inside Cursor (or a similar AI-enabled editor).
+
+It is not a codebase by itself.
+It is a process for turning vague ideas into:
+1) clear requirements
+2) executable task plans
+3) deterministic, step-by-step implementation
+
+This workflow is designed to reduce ambiguity, prevent scope creep, and make AI-assisted development predictable and reviewable.
+
+---
+
+## What This Repo Is (and Is Not)
+
+### This repo is:
+- a set of prompt contracts and rules
+- a repeatable workflow for features or full applications
+- a control system for AI behavior across planning and execution
+
+### This repo is not:
+- a framework
+- a CLI tool
+- something you "run"
+- a place where AI automatically reads files without instruction
+
+You will copy and paste prompts from this repo into Cursor Chat or Agent mode.
+
+---
+
+## Prerequisites
+
+- You are using Cursor
+- You can use Cursor Chat or Agent mode
+- You are comfortable copying/pasting prompts
+- You understand basic Git workflows
+
+---
+
+## Workflow (Start Here)
+
+Do not skip steps.
+
+Phase 0   → Generate PRD (what & why)  
+Phase 0.5 → Generate AGENT.md (how this repo runs)  
+Phase 1   → Generate Tasks (what needs to be done)  
+Phase 2   → Execute Tasks (one step at a time)
+
+Each phase produces a file artifact that becomes the input to the next phase.
+
+---
+
+## Phase 0 — Generate a PRD (What & Why)
+
+### Purpose
+Clarify the feature or project before planning or coding.
+
+### How to do it
+1. Open `.ai/create-prd.prompt.md`
+2. Copy the entire file
+3. Paste it into Cursor Chat
+4. Append one line at the bottom:
+
+   Initial prompt: <describe the feature or project>
+
+5. Send the message
+6. Answer the clarifying questions (use the letter/number options)
+7. When the AI outputs a PRD:
+   - copy it
+   - save it as `/tasks/prd-[feature-name].md`
+
+Do not start coding yet.
+
+---
+
+## Phase 0.5 — Generate AGENT.md (How This Repo Works)
+
+### Purpose
+Define how to run, test, lint, build, and work in this specific repository.
+This prevents the execution loop from guessing commands.
+
+### How to do it
+1. Open `.ai/generate-agent.prompt.md`
+2. Copy the entire file
+3. Paste it into Cursor Chat
+4. Append:
+
+   Initial prompt: This repo is <brief description>
+
+5. Answer the clarifying questions
+6. Save the output as `.ai/AGENT.md`
+
+This file is required before execution begins.
+
+---
+
+## Phase 1 — Generate Tasks (What Needs to Be Done)
+
+### Purpose
+Create a clear, ordered, executable task list.
+
+### How to do it
+1. Open `.ai/generate-tasks.prompt.md`
+2. Copy the entire file
+3. Paste it into Cursor Chat
+4. Append:
+
+   Use the following requirements: /tasks/prd-[feature-name].md
+
+5. The AI will generate high-level parent tasks only
+6. Review them
+7. Reply with:
+
+   Go
+
+8. The AI will generate:
+   - a full task list with sub-tasks
+   - a list of relevant files
+9. Save:
+   - `/tasks/tasks-[feature-name].md`
+   - `@fix_plan.md` (created by copying ONLY the `## Tasks` section)
+
+Do not implement anything yet.
+
+---
+
+## Phase 2 — Execute Tasks (One Step at a Time)
+
+### Purpose
+Implement the feature deterministically, without redesign or scope creep.
+
+### How to do it
+1. Open `.ai/execution-loop.prompt.md`
+2. Copy the entire file
+3. Paste it into Cursor Chat
+
+From this point forward, the AI must:
+- read the PRD
+- read the task list
+- execute one sub-task at a time
+- check off tasks as they are completed
+- mirror progress in `@fix_plan.md`
+
+If ambiguity is encountered, the AI must stop and ask.
+
+---
+
+## Important Rules
+
+- never skip phases
+- never regenerate tasks during execution
+- always check off tasks as they are completed
+- never redesign scope during execution
+- if a decision is required, stop and clarify
+
+---
+
+## Mental Model
+
+- PRD = intent (what & why)
+- Tasks = plan (what to do)
+- Execution loop = obedience (how it's done)
+
+Each phase narrows ambiguity instead of increasing it.
+
+---
+
+## Cursor Snippets
+
+This repo includes Cursor/VS Code snippets at:
+`.vscode/ai-dev-workflow.code-snippets`
+
+Type these in the editor to insert run instructions:
+- `ai:prd`
+- `ai:agent`
+- `ai:tasks`
+- `ai:exec`
+
+---
+
+## Repo Structure
+
+.ai/
+  create-prd.prompt.md
+  generate-agent.prompt.md
+  generate-tasks.prompt.md
+  execution-loop.prompt.md
+  AGENT.md
+
+tasks/
+  prd-[feature-name].md
+  tasks-[feature-name].md
+
+@fix_plan.md
+
+---
+
+# _s (Underscores Theme)
+
+[![Build Status](https://travis-ci.org/Automattic/_s.svg?branch=master)](https://travis-ci.org/Automattic/_s)
 
 Hi. I'm a starter theme called `_s`, or `underscores`, if you like. I'm a theme meant for hacking so don't use me as a Parent Theme. Instead try turning me into the next, most awesome, WordPress theme out there. That's what I'm here for.
 
