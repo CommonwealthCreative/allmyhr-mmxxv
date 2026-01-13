@@ -1,3 +1,20 @@
+## Relevant Files
+
+- `index.php` - Homepage template; add the on-demand section after trusted container (line 138)
+- `template-parts/content-ondemand-card.php` (new) - Product card template with Buy Now button for homepage
+- `functions.php` - Add helper functions for buyable URL logic and flash notification system
+- `woocommerce/archive-product.php` - Reference file for section structure (do not modify)
+- `woocommerce/product-cards.php` - Reference file for existing product card structure (do not modify)
+
+### Notes
+- No automated tests configured for this project
+- Test manually in local Docker environment before deploying to production
+- The existing `mmxxv_force_checkout_redirect_for_add_to_cart_url()` function in `functions.php` already handles checkout redirect for `?add-to-cart` URLs
+
+## Instructions for Completing Tasks
+
+IMPORTANT: As you complete each task, you must check it off in this markdown file by changing `- [ ]` to `- [x]`.
+
 ## Tasks
 
 - [ ] 0.0 Create feature branch
@@ -32,6 +49,7 @@
   - [ ] 3.4 Hook display function to `woocommerce_before_checkout_form` action
   - [ ] 3.5 Clear the session variable after displaying the message
   - [ ] 3.6 Style the flash message to match WooCommerce notices or site aesthetic
+
 - [ ] 4.0 Test and verify all functionality
   - [ ] 4.1 Verify on-demand section displays correctly after trusted container on homepage
   - [ ] 4.2 Verify all non-uncategorized products appear in the section

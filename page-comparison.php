@@ -9,7 +9,7 @@ get_header();
 ?>
 
 <main id="primary" class="site-main">
-	<section style="display: grid; grid-template-columns: 1fr; min-height: auto;" class="comparison-section">
+	<section style="display: grid; grid-template-columns: 1fr 1fr; min-height: 100vh;" class="comparison-section">
 		<!-- LEFT COLUMN: Form Section (Featured Image Background) -->
 		<div style="position: relative; padding: 60px 40px; display: flex; flex-direction: column; padding-top: 15vh;">
 			<?php
