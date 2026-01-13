@@ -64,7 +64,7 @@ get_header();
       <div id="w-node-_550baef3-6bff-bff4-8e38-614c2cbe1a39-2cbe1a38" class="w-layout-layout wf-layout-layout">
         <div class="w-layout-cell hero-headline">
         <h1 data-w-id="5ff76c14-9535-a666-9770-4405304ca541" style="opacity:0"><span class="highlight txt">Streamline </span>Your Company’s HR</h1>
-                        <p data-w-id="280c230b-7b91-4e93-726f-9132bd035b07" style="opacity:0; padding-top:30px;">The Most Cost-Effective HR Solutions for Small &amp; Mid-Sized Employers. </p>
+                        <p data-w-id="280c230b-7b91-4e93-726f-9132bd035b07" style="opacity:0; padding-top:30px;">Everything you need to manage people, stay compliant, and scale your business — all included in one simple, affordable HR solution.</p>
                                  <div class="start">
           <?php echo do_shortcode('[gravityform id="12" title="false" description="false"]'); ?>
           </div>

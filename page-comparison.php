@@ -111,6 +111,16 @@ get_header();
 								'company2' => false,
 							),
 							array(
+								'feature' => 'Employee Calculator',
+								'company1' => true,
+								'company2' => false,
+							),
+							array(
+								'feature' => 'Community',
+								'company1' => true,
+								'company2' => false,
+							),
+							array(
 								'feature' => 'Monthly Law Alerts (Federal & State)',
 								'company1' => true,
 								'company2' => false,
@@ -126,7 +136,22 @@ get_header();
 								'company2' => false,
 							),
 							array(
+								'feature' => 'Compliance Library',
+								'company1' => true,
+								'company2' => false,
+							),
+							array(
 								'feature' => 'Job Description Builders',
+								'company1' => true,
+								'company2' => false,
+							),
+							array(
+								'feature' => 'Mineral Experts',
+								'company1' => true,
+								'company2' => false,
+							),
+							array(
+								'feature' => 'Mineral Intelligence',
 								'company1' => true,
 								'company2' => false,
 							),
@@ -144,6 +169,11 @@ get_header();
 								'feature' => 'Minimum Wage Maps',
 								'company1' => true,
 								'company2' => false,
+							),
+							array(
+								'feature' => 'Webinars',
+								'company1' => true,
+								'company2' => true,
 							),
 							array(
 								'feature' => 'Ask an Advisor / HR Hotline',
@@ -165,6 +195,7 @@ get_header();
 								'company1' => true,
 								'company2' => true,
 							),
+							
 						);
 
 						foreach ( $comparison_items as $index => $item ) :
