@@ -2,6 +2,38 @@
 
 All notable changes to the AllMyHR MMXXV theme will be documented in this file.
 
+## [1.2.0] - 2026-01-13
+
+### Added
+- **Ask AllMyHR** - AI-powered HR Q&A chatbox page template
+  - Users can select Federal or any US State jurisdiction
+  - Submit HR-related questions (256 char limit)
+  - Receive AI-generated responses via OpenAI ChatGPT API
+  - Legal disclaimer appended to all responses
+  - Session-based rate limiting (3 questions per session)
+  - Gravity Form integration (ID 12) for lead capture
+  - Hidden fields auto-populated with question, jurisdiction, and AI response
+  - Redirect to `/confirmation-page` on form submission
+
+### New Files
+- `ask-aries.php` - Page template
+- `template-parts/content-ask-aries.php` - Chat interface markup
+- `js/ask-aries.js` - Frontend JavaScript (AJAX, validation, character counter)
+
+### Technical
+- OpenAI API integration with server-side requests (wp_remote_post)
+- WordPress AJAX handlers for secure API communication
+- Nonce verification for security
+- Input sanitization and validation
+- PHP session management for rate limiting
+
+### Security
+- API key stored as `ALLMYHR_OPENAI_API_KEY` constant in wp-config.php
+- Server-side API calls only (key never exposed to frontend)
+- Rate limiting prevents API abuse
+
+---
+
 ## [1.1.0] - 2026-01-13
 
 ### Added

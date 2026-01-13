@@ -1,3 +1,24 @@
+# Tasks: ASK ARIES - AI-Powered HR Q&A Chatbox
+
+## Relevant Files
+
+- `ask-aries.php` - New WordPress page template (CREATE)
+- `template-parts/content-ask-aries.php` - Chat interface HTML markup (CREATE)
+- `js/ask-aries.js` - Frontend JavaScript for AJAX, validation, character counter (CREATE)
+- `functions.php` - Add AJAX handlers, script enqueue, session management (MODIFY)
+- `style.css` - Add ASK ARIES-specific styles (MODIFY)
+- `wp-config.php` - Add `ALLMYHR_OPENAI_API_KEY` constant (MODIFY - manual step)
+
+### Notes
+- No automated tests exist in this project per AGENT.md
+- Do NOT modify Webflow-exported CSS files (`css/all-my-hr.webflow.css`, `css/webflow.css`)
+- Update version in `style.css` and `_S_VERSION` in `functions.php` when complete
+- Document changes in `CHANGELOG.md`
+
+## Instructions for Completing Tasks
+
+IMPORTANT: As you complete each task, you must check it off in this markdown file by changing `- [ ]` to `- [x]`.
+
 ## Tasks
 
 - [x] 0.0 Create feature branch

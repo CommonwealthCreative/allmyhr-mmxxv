@@ -9,7 +9,7 @@
 
 if ( ! defined( '_S_VERSION' ) ) {
 	// Replace the version number of the theme on each release.
-	define( '_S_VERSION', '1.1.0' );
+	define( '_S_VERSION', '1.2.0' );
 }
 
 /**
@@ -164,6 +164,17 @@ function allmyhr_mmxxv_scripts() {
 
     // Enqueue scripts
     wp_enqueue_script('webflow-js', get_template_directory_uri() . '/js/webflow.js', array('jquery'), '1.0.0', true);
+
+    // Enqueue ASK ARIES script only on the ask-aries template
+    if (is_page_template('ask-aries.php')) {
+        wp_enqueue_script('ask-aries-js', get_template_directory_uri() . '/js/ask-aries.js', array('jquery'), '1.0.0', true);
+        
+        // Localize script with AJAX URL and nonce
+        wp_localize_script('ask-aries-js', 'askAriesData', array(
+            'ajaxUrl' => admin_url('admin-ajax.php'),
+            'nonce' => wp_create_nonce('ask_aries_nonce')
+        ));
+    }
 
     // Enqueue comment-reply script if needed
     if (is_singular() && comments_open() && get_option('thread_comments')) {
@@ -769,6 +780,190 @@ add_action('save_post_product', 'allmyhr_clear_homepage_product_cache');
 function allmyhr_clear_homepage_product_cache($post_id) {
     delete_transient('allmyhr_homepage_products');
 }
+
+/**
+ * ASK ARIES - AI-powered HR Q&A Chatbox
+ * =============================================================================
+ */
+
+/**
+ * Initialize PHP session for ASK ARIES rate limiting
+ * Must be called before any output is sent
+ */
+function allmyhr_ask_aries_init_session() {
+    if (session_status() === PHP_SESSION_NONE && !headers_sent()) {
+        session_start();
+    }
+}
+add_action('init', 'allmyhr_ask_aries_init_session', 1);
+
+/**
+ * Check if OpenAI API key is configured
+ * 
+ * @return bool Whether the API key is available
+ */
+function allmyhr_ask_aries_has_api_key() {
+    return defined('ALLMYHR_OPENAI_API_KEY') && !empty(ALLMYHR_OPENAI_API_KEY);
+}
+
+/**
+ * Handle ASK ARIES AJAX query
+ * Processes the user's HR question and returns an AI-generated response
+ */
+function allmyhr_handle_ask_aries_query() {
+    // Verify nonce for security
+    if (!isset($_POST['nonce']) || !wp_verify_nonce($_POST['nonce'], 'ask_aries_nonce')) {
+        wp_send_json_error(array('message' => 'Security check failed. Please refresh the page and try again.'));
+        return;
+    }
+
+    // Sanitize and validate inputs
+    $jurisdiction = isset($_POST['jurisdiction']) ? sanitize_text_field($_POST['jurisdiction']) : '';
+    $question = isset($_POST['question']) ? sanitize_text_field($_POST['question']) : '';
+
+    // Validate jurisdiction
+    $valid_jurisdictions = array(
+        'Federal', 'Alabama', 'Alaska', 'Arizona', 'Arkansas', 'California', 'Colorado', 
+        'Connecticut', 'Delaware', 'Florida', 'Georgia', 'Hawaii', 'Idaho', 'Illinois', 
+        'Indiana', 'Iowa', 'Kansas', 'Kentucky', 'Louisiana', 'Maine', 'Maryland', 
+        'Massachusetts', 'Michigan', 'Minnesota', 'Mississippi', 'Missouri', 'Montana', 
+        'Nebraska', 'Nevada', 'New Hampshire', 'New Jersey', 'New Mexico', 'New York', 
+        'North Carolina', 'North Dakota', 'Ohio', 'Oklahoma', 'Oregon', 'Pennsylvania', 
+        'Rhode Island', 'South Carolina', 'South Dakota', 'Tennessee', 'Texas', 'Utah', 
+        'Vermont', 'Virginia', 'Washington', 'West Virginia', 'Wisconsin', 'Wyoming'
+    );
+
+    if (empty($jurisdiction) || !in_array($jurisdiction, $valid_jurisdictions)) {
+        wp_send_json_error(array('message' => 'Please select a valid jurisdiction.'));
+        return;
+    }
+
+    // Validate question
+    if (empty($question)) {
+        wp_send_json_error(array('message' => 'Please enter your question.'));
+        return;
+    }
+
+    if (strlen($question) > 256) {
+        wp_send_json_error(array('message' => 'Question must be 256 characters or less.'));
+        return;
+    }
+
+    // Check API key is configured
+    if (!allmyhr_ask_aries_has_api_key()) {
+        wp_send_json_error(array('message' => 'Service temporarily unavailable. Please try again later.'));
+        return;
+    }
+
+    // Rate limiting check (3 questions per session)
+    $rate_limit = 3;
+    if (!isset($_SESSION['ask_aries_count'])) {
+        $_SESSION['ask_aries_count'] = 0;
+    }
+
+    if ($_SESSION['ask_aries_count'] >= $rate_limit) {
+        wp_send_json_error(array(
+            'message' => "You've reached the maximum number of questions for this session. Please provide your information below to continue.",
+            'rate_limited' => true
+        ));
+        return;
+    }
+
+    // Build OpenAI API request
+    $system_prompt = "You are an AI-powered HR compliance assistant for AllMyHR. You provide helpful, professional guidance on human resources questions.
+
+IMPORTANT CONTEXT:
+- The user is asking about HR regulations in: " . $jurisdiction . "
+- If the jurisdiction is 'Federal', focus on federal employment laws (FLSA, FMLA, ADA, Title VII, etc.)
+- If a specific state is selected, include relevant state-specific employment laws and regulations in addition to federal requirements.
+
+RESPONSE GUIDELINES:
+- Keep your response under 500 words
+- Be professional, helpful, and informative
+- Provide practical guidance when possible
+- When discussing laws or regulations, be accurate but note that specific situations may vary
+- Do not provide specific legal advice - you are providing general HR guidance
+- If a question is outside HR/employment topics, politely redirect to HR-related matters";
+
+    $messages = array(
+        array(
+            'role' => 'system',
+            'content' => $system_prompt
+        ),
+        array(
+            'role' => 'user',
+            'content' => $question
+        )
+    );
+
+    $request_body = array(
+        'model' => 'gpt-4-turbo-preview',
+        'messages' => $messages,
+        'max_tokens' => 800,
+        'temperature' => 0.7
+    );
+
+    // Make API request to OpenAI
+    $response = wp_remote_post('https://api.openai.com/v1/chat/completions', array(
+        'timeout' => 60,
+        'headers' => array(
+            'Authorization' => 'Bearer ' . ALLMYHR_OPENAI_API_KEY,
+            'Content-Type' => 'application/json'
+        ),
+        'body' => wp_json_encode($request_body)
+    ));
+
+    // Check for WordPress HTTP errors
+    if (is_wp_error($response)) {
+        wp_send_json_error(array('message' => 'Something went wrong. Please try again.'));
+        return;
+    }
+
+    // Parse the response body
+    $response_code = wp_remote_retrieve_response_code($response);
+    $response_body = wp_remote_retrieve_body($response);
+    $data = json_decode($response_body, true);
+
+    // Check for API errors
+    if ($response_code !== 200) {
+        wp_send_json_error(array('message' => 'Something went wrong. Please try again.'));
+        return;
+    }
+
+    // Extract the AI response content
+    if (!isset($data['choices'][0]['message']['content'])) {
+        wp_send_json_error(array('message' => 'Something went wrong. Please try again.'));
+        return;
+    }
+
+    $ai_response = $data['choices'][0]['message']['content'];
+
+    // Increment rate limit counter on successful response
+    $_SESSION['ask_aries_count']++;
+
+    // Return success with the AI response
+    wp_send_json_success(array(
+        'response' => $ai_response,
+        'jurisdiction' => $jurisdiction,
+        'question' => $question,
+        'questions_remaining' => $rate_limit - $_SESSION['ask_aries_count']
+    ));
+}
+
+// Register AJAX actions for logged-in and guest users
+add_action('wp_ajax_ask_aries_query', 'allmyhr_handle_ask_aries_query');
+add_action('wp_ajax_nopriv_ask_aries_query', 'allmyhr_handle_ask_aries_query');
+
+/**
+ * Redirect Gravity Form ID 12 (ASK ARIES) to confirmation page on submission
+ */
+function allmyhr_ask_aries_form_confirmation($confirmation, $form, $entry, $ajax) {
+    if ($form['id'] == 12) {
+        $confirmation = array('redirect' => home_url('/confirmation-page'));
+    }
+    return $confirmation;
+}
+add_filter('gform_confirmation_12', 'allmyhr_ask_aries_form_confirmation', 10, 4);
 
 
 

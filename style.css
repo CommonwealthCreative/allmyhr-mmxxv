@@ -4,7 +4,7 @@ Theme URI: https://thecommonwealthcreative.com
 Author: Matthew Thomas Small
 Author URI: https://thecommonwealthcreative.com
 Description: AllMyHR eCommerce WordPress Theme
-Version: 1.1.0
+Version: 1.2.0
 Tested up to: 6.7
 Requires PHP: 5.6
 License: GNU General Public License v2 or later
@@ -1440,4 +1440,262 @@ a:visited {
 
 .card.products .text-arrow {
 	margin-top: auto;
+}
+
+/*--------------------------------------------------------------
+# Ask AllMyHR - AI-powered HR Q&A Chatbox
+--------------------------------------------------------------*/
+
+/* Main Card Container */
+.ask-aries-card {
+	background: #fff;
+	border-radius: 12px;
+	box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+	padding: 2rem;
+	max-width: 800px;
+	margin: 2rem auto;
+}
+
+/* Input Area */
+.ask-aries-input-area {
+	display: flex;
+	flex-direction: column;
+	gap: 1rem;
+}
+
+/* Header Row with Label and Dropdown */
+.ask-aries-header-row {
+	display: flex;
+	align-items: center;
+	flex-wrap: wrap;
+	gap: 1rem;
+}
+
+.ask-aries-label {
+	display: flex;
+	align-items: center;
+	gap: 0.5rem;
+	font-weight: 600;
+	color: #252525;
+}
+
+.ask-aries-icon {
+	font-size: 1.25rem;
+	color: #666;
+}
+
+.ask-aries-select {
+	padding: 0.75rem 1rem;
+	border: 1px solid #ddd;
+	border-radius: 8px;
+	font-size: 1rem;
+	font-family: inherit;
+	background: #fff;
+	min-width: 280px;
+	cursor: pointer;
+}
+
+.ask-aries-select:focus {
+	outline: none;
+	border-color: #0879f8;
+	box-shadow: 0 0 0 3px rgba(8, 121, 248, 0.1);
+}
+
+/* Input Row with Question Field and Button */
+.ask-aries-input-row {
+	display: flex;
+	gap: 0.75rem;
+}
+
+.ask-aries-input {
+	flex: 1;
+	padding: 0.875rem 1rem;
+	border: 1px solid #ddd;
+	border-radius: 8px;
+	font-size: 1rem;
+	font-family: inherit;
+}
+
+.ask-aries-input:focus {
+	outline: none;
+	border-color: #0879f8;
+	box-shadow: 0 0 0 3px rgba(8, 121, 248, 0.1);
+}
+
+/* Ask button uses .nav-link.btn.ftr.w-button from Webflow */
+#ask-aries-submit {
+	white-space: nowrap;
+	min-width: 80px;
+}
+
+#ask-aries-submit:disabled {
+	opacity: 0.6;
+	cursor: not-allowed;
+}
+
+/* Footer Row with Counter and Warning */
+.ask-aries-footer-row {
+	display: flex;
+	align-items: center;
+	gap: 1.5rem;
+	font-size: 0.875rem;
+	color: #888;
+}
+
+.ask-aries-counter {
+	font-weight: 500;
+}
+
+.ask-aries-hipaa-warning {
+	font-style: italic;
+}
+
+/* Loading Spinner */
+.ask-aries-loading {
+	text-align: center;
+	padding: 2rem;
+	color: #666;
+}
+
+.ask-aries-spinner {
+	width: 40px;
+	height: 40px;
+	border: 4px solid rgba(8, 121, 248, 0.2);
+	border-top-color: #0879f8;
+	border-radius: 50%;
+	animation: ask-aries-spin 1s linear infinite;
+	margin: 0 auto 1rem;
+}
+
+@keyframes ask-aries-spin {
+	to { transform: rotate(360deg); }
+}
+
+/* Response Area */
+.ask-aries-response-area {
+	margin-top: 1.5rem;
+	padding: 1.5rem;
+	background: #f8f9fa;
+	border-radius: 8px;
+	border-left: 4px solid #0879f8;
+}
+
+.ask-aries-response-header {
+	display: flex;
+	align-items: center;
+	gap: 0.5rem;
+	font-weight: 600;
+	color: #0879f8;
+	margin-bottom: 1rem;
+}
+
+.ask-aries-bot-icon {
+	font-size: 1.25rem;
+}
+
+.ask-aries-response-content {
+	line-height: 1.7;
+	color: #333;
+}
+
+/* Disclaimer */
+.ask-aries-disclaimer {
+	margin-top: 1.5rem;
+	padding: 1rem;
+	background: #fff8e6;
+	border: 1px solid #f5a867;
+	border-radius: 6px;
+	font-size: 0.875rem;
+	color: #856404;
+}
+
+.ask-aries-disclaimer .fa {
+	color: #f5a867;
+	margin-right: 0.5rem;
+}
+
+.ask-aries-disclaimer em {
+	font-style: italic;
+}
+
+/* Error and Rate Limit Messages */
+.ask-aries-error,
+.ask-aries-rate-limit {
+	margin-top: 1.5rem;
+	padding: 1rem;
+	border-radius: 6px;
+	display: flex;
+	align-items: center;
+	gap: 0.75rem;
+}
+
+.ask-aries-error {
+	background: #fee;
+	border: 1px solid #f5c6cb;
+	color: #721c24;
+}
+
+.ask-aries-rate-limit {
+	background: #fff3cd;
+	border: 1px solid #ffc107;
+	color: #856404;
+}
+
+/* Form Area */
+.ask-aries-form-area {
+	margin-top: 2rem;
+	padding-top: 1.5rem;
+	border-top: 1px solid #eee;
+}
+
+.ask-aries-form-intro h3 {
+	margin-bottom: 1rem;
+	color: #252525;
+}
+
+/* Mobile Responsive Styles */
+@media screen and (max-width: 768px) {
+	.ask-aries-card {
+		padding: 1.25rem;
+		margin: 1rem;
+		border-radius: 8px;
+	}
+
+	.ask-aries-header-row {
+		flex-direction: column;
+		align-items: flex-start;
+	}
+
+	.ask-aries-select {
+		width: 100%;
+		min-width: unset;
+	}
+
+	.ask-aries-input-row {
+		flex-direction: column;
+	}
+
+	.ask-aries-input {
+		width: 100%;
+	}
+
+	#ask-aries-submit {
+		width: 100%;
+		/* Ensure touch-friendly tap target (min 44px) */
+		min-height: 48px;
+	}
+
+	.ask-aries-footer-row {
+		flex-direction: column;
+		align-items: flex-start;
+		gap: 0.5rem;
+	}
+
+	.ask-aries-response-area {
+		padding: 1rem;
+	}
+
+	.ask-aries-disclaimer {
+		padding: 0.875rem;
+	}
 }
