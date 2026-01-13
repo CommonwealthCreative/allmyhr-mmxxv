@@ -174,6 +174,7 @@ get_header();
 	<?php get_template_part('template-parts/content', 'trusted'); ?>
   </section>
   <section id="ondemand" class="content-section bg-dkblue bg-gradientblack">
+  <?php get_template_part('template-parts/content', 'testimonials'); ?>
     <div class="container features">
     <div class="container h-content">
     <h2 data-w-id="9d2d1334-04f7-1727-2bde-ab46a553ce11" class="center"><span class="highlight txt">On-Demand HR Services</span><br>Reduce Compliance Risks, Boost Efficiency, and Streamline Administration</h2>
@@ -235,7 +236,7 @@ endif;
         <div><strong>Buy Now</strong></div>
       </div>
     </div>
-    <?php get_template_part('template-parts/content', 'testimonials'); ?>
+
   </section>
     <section class="content-section bg-white">
       	<?php get_template_part('template-parts/content', 'faqs'); ?>

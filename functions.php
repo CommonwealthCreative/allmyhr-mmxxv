@@ -635,6 +635,84 @@ add_action('wp_footer', function () {
 }, 9999);
 
 /**
+ * Loading Overlay for Add-to-Cart Actions
+ * Shows visual feedback while redirecting to checkout (improves UX on slower hosting)
+ */
+add_action('wp_footer', 'allmyhr_loading_overlay', 50);
+function allmyhr_loading_overlay() {
+    if (is_admin()) return;
+    // Don't show on checkout page
+    if (function_exists('is_checkout') && is_checkout()) return;
+    ?>
+    <style>
+    .allmyhr-loading-overlay {
+        position: fixed;
+        inset: 0;
+        background: rgba(23, 23, 23, 0.95);
+        z-index: 99999;
+        display: none;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        color: #fff;
+    }
+    .allmyhr-loading-overlay.active {
+        display: flex;
+    }
+    .allmyhr-spinner {
+        width: 50px;
+        height: 50px;
+        border: 4px solid rgba(255,255,255,0.2);
+        border-top-color: #0879f8;
+        border-radius: 50%;
+        animation: allmyhr-spin 1s linear infinite;
+        margin-bottom: 20px;
+    }
+    @keyframes allmyhr-spin {
+        to { transform: rotate(360deg); }
+    }
+    .allmyhr-loading-text {
+        font-size: 1.25rem;
+        text-align: center;
+    }
+    .allmyhr-loading-subtext {
+        font-size: 0.9rem;
+        opacity: 0.7;
+        margin-top: 8px;
+    }
+    </style>
+    
+    <div class="allmyhr-loading-overlay">
+        <div class="allmyhr-spinner"></div>
+        <div class="allmyhr-loading-text">Adding to cart...</div>
+        <div class="allmyhr-loading-subtext">Please wait while we prepare your checkout</div>
+    </div>
+    
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        var overlay = document.querySelector('.allmyhr-loading-overlay');
+        
+        // Intercept all add-to-cart links (Buy Now buttons)
+        document.addEventListener('click', function(e) {
+            var link = e.target.closest('a[href*="add-to-cart"]');
+            if (link && overlay) {
+                overlay.classList.add('active');
+            }
+        });
+        
+        // Also handle form submissions (single product page Add to Cart)
+        document.addEventListener('submit', function(e) {
+            var form = e.target.closest('form.cart');
+            if (form && overlay) {
+                overlay.classList.add('active');
+            }
+        });
+    });
+    </script>
+    <?php
+}
+
+/**
  * Deferred Analytics Scripts (FR-4)
  * Loads FullStory, GTM, and gtag in footer for better page performance
  */
