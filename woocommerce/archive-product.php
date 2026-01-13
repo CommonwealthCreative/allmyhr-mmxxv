@@ -81,8 +81,8 @@ get_header();
     <div class="container features">
     <div class="container h-content">
     <h2 data-w-id="9d2d1334-04f7-1727-2bde-ab46a553ce11" style="opacity:0" class="center"><span class="highlight txt">On-Demand HR Services</span><br>Reduce Compliance Risks, Boost Efficiency, and Streamline Administration</h2>
-        <a href="/services/allmyhr-monthly-subscription/" id="picker" class="btn wht w-button">Schedule A Demo</a>
-        <a href="/services/allmyhr-monthly-subscription/" id="picker" class="btn clear w-button">Contact Us Today</a>
+        <a href="https://calendly.com/allmyhr10/allmyhr-product-demo" id="picker" class="btn wht w-button">Schedule A Demo</a>
+        <a href="https://allmyhr.com/contact-allmyhr/" id="picker" class="btn clear w-button">Contact Us Today</a>
       </div>
       <div id="w-node-_728995ad-174f-d62c-3c5c-78d5b987a086-b987a086" class="w-layout-layout wf-layout-layout">
       <?php
