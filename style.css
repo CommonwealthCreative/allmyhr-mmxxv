@@ -4,7 +4,7 @@ Theme URI: https://thecommonwealthcreative.com
 Author: Matthew Thomas Small
 Author URI: https://thecommonwealthcreative.com
 Description: AllMyHR eCommerce WordPress Theme
-Version: 1.0.0
+Version: 1.1.0
 Tested up to: 6.7
 Requires PHP: 5.6
 License: GNU General Public License v2 or later
@@ -1391,4 +1391,53 @@ a:visited {
 	border-color: #fff !important;
 	transform: translate(0, -2px) !important;
 	color: #fff !important;
+}
+
+/* FAQ Arrow CSS Animation (FR-7) - Replaces Lottie */
+.faq-arrow-css {
+	display: inline-block;
+	font-size: 1.25rem;
+	transition: transform 0.3s ease-in-out;
+	transform: rotate(0deg);
+}
+
+.faq-arrow-css::before {
+	content: "\f078"; /* Font Awesome chevron-down */
+}
+
+.faq-card.open .faq-arrow-css,
+.faq-card[data-open="true"] .faq-arrow-css {
+	transform: rotate(180deg);
+}
+
+.faq-question {
+	cursor: pointer;
+}
+
+/* Buy Now Button Styles (FR-9) */
+.btn-buy-now {
+	display: inline-block;
+	font-weight: 600;
+	text-decoration: none;
+	transition: transform 0.2s ease, color 0.2s ease;
+}
+
+.btn-buy-now:hover {
+	transform: translateX(4px);
+}
+
+.card.products {
+	display: flex;
+	flex-direction: column;
+	height: 100%;
+}
+
+.card.products .card-link {
+	flex: 1;
+	text-decoration: none;
+	color: inherit;
+}
+
+.card.products .text-arrow {
+	margin-top: auto;
 }
