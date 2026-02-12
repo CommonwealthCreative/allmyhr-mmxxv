@@ -9,10 +9,12 @@
 
 ?>
 
-<section class="content-section">
-	<div class="container">
+
 		<!-- Ask AllMyHR Chat Card -->
-		<div class="card ask-aries-card">
+		<div class="ask-aries-wrapper">
+			<div class="bg-glow highlight"></div>
+			<div class="bg-highlight highlight"></div>
+			<div class="card ask-aries-card">
 			
 			<!-- Input Area -->
 			<div class="ask-aries-input-area">
@@ -85,13 +87,13 @@
 						id="ask-aries-question" 
 						name="question" 
 						class="ask-aries-input" 
-						placeholder="Ask AllMyHR..." 
+						placeholder="Your HR Question..." 
 						maxlength="256" 
 						required
 						aria-label="Enter your HR question"
 					>
 					<button type="button" id="ask-aries-submit" class="nav-link btn ftr w-button">
-						Submit Question
+						Get My Answer
 					</button>
 				</div>
 
@@ -121,6 +123,5 @@
 				<?php echo do_shortcode('[gravityform id="12" title="false" description="false" ajax="true"]'); ?>
 			</div>
 
-		</div>
-	</div>
-</section>
+			</div><!-- .ask-aries-card -->
+		</div><!-- .ask-aries-wrapper -->

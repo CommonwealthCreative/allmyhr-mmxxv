@@ -1,3 +1,24 @@
+# Tasks: AllMyHR Homepage 2026 Template
+
+## Relevant Files
+
+- `page-home-2026.php` - NEW: Main template file to be created
+- `index.php` - Reference for existing patterns and component structures
+- `template-parts/content-testimonials.php` - Reuse for social proof section
+- `template-parts/content-trusted.php` - Reuse for trusted logos carousel
+- `template-parts/content-quoteform.php` - Reuse for bottom CTA section
+
+### Notes
+
+- No test files required — this is a WordPress template file
+- No new CSS or JavaScript files — use existing styles and animations
+- Preserve all `data-w-id` attributes exactly as they appear in reference files
+- Reference PRD: `/tasks/prd-home-2026.md`
+
+## Instructions for Completing Tasks
+
+IMPORTANT: As you complete each task, you must check it off in this markdown file by changing `- [ ]` to `- [x]`.
+
 ## Tasks
 
 - [x] 0.0 Create feature branch

@@ -166,7 +166,7 @@ function allmyhr_mmxxv_scripts() {
     wp_enqueue_script('webflow-js', get_template_directory_uri() . '/js/webflow.js', array('jquery'), '1.0.0', true);
 
     // Enqueue ASK ARIES script only on the ask-aries template
-    if (is_page_template('ask-aries.php')) {
+    if (is_page_template('ask-aries.php') || is_page_template('homealt.php')) {
         wp_enqueue_script('ask-aries-js', get_template_directory_uri() . '/js/ask-aries.js', array('jquery'), '1.0.0', true);
         
         // Localize script with AJAX URL and nonce
@@ -954,16 +954,6 @@ RESPONSE GUIDELINES:
 add_action('wp_ajax_ask_aries_query', 'allmyhr_handle_ask_aries_query');
 add_action('wp_ajax_nopriv_ask_aries_query', 'allmyhr_handle_ask_aries_query');
 
-/**
- * Redirect Gravity Form ID 12 (ASK ARIES) to confirmation page on submission
- */
-function allmyhr_ask_aries_form_confirmation($confirmation, $form, $entry, $ajax) {
-    if ($form['id'] == 12) {
-        $confirmation = array('redirect' => home_url('/confirmation-page'));
-    }
-    return $confirmation;
-}
-add_filter('gform_confirmation_12', 'allmyhr_ask_aries_form_confirmation', 10, 4);
 
 
 

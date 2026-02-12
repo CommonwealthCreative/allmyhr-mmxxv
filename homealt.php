@@ -17,128 +17,301 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 get_header();
-?>
- <div data-w-id="8a799611-cf86-bde8-7da8-eb88c679e185" style="display:none" class="videomodal">
-    <div style="padding-top:56.17021276595745%" class="video w-video w-embed"><iframe class="embedly-embed" 
-  src="https://cdn.embedly.com/widgets/media.html?src=https%3A%2F%2Fwww.youtube.com%2Fembed%2FMsLReBq4ziU%3Ffeature%3Doembed%26autoplay%3D1%26mute%3D1%26rel%3D0&display_name=YouTube&url=https%3A%2F%2Fwww.youtube.com%2Fwatch%3Fv%3DMsLReBq4ziU&image=https%3A%2F%2Fi.ytimg.com%2Fvi%2FMsLReBq4ziU%2Fhqdefault.jpg&type=text%2Fhtml&schema=youtube" 
-  width="940" 
-  height="528" 
-  scrolling="no" 
-  allowfullscreen 
-  allow="autoplay; encrypted-media" 
-  title="The Benefits & Features of tryHRIS"> 
-</iframe>
-
-
-      </div>
+?> 
+<!-- Video Modal with Facade Pattern (FR-6) - iframe injected on click -->
+<div data-w-id="8a799611-cf86-bde8-7da8-eb88c679e185" style="display:none" class="videomodal">
+  <div style="padding-top:56.27659574468085%" class="video w-video w-embed" id="video-container" data-video-id="MsLReBq4ziU">
+    <!-- Iframe will be injected here when modal opens -->
   </div>
-  <section class="hero-section">
+</div>
+<script>
+(function() {
+  var videoContainer = document.getElementById('video-container');
+  var videoModal = document.querySelector('.videomodal');
+  var videoId = videoContainer ? videoContainer.getAttribute('data-video-id') : null;
+  var iframeLoaded = false;
+  
+  // Observer to detect when modal becomes visible
+  if (videoModal && videoId) {
+    var observer = new MutationObserver(function(mutations) {
+      mutations.forEach(function(mutation) {
+        if (mutation.attributeName === 'style') {
+          var isVisible = videoModal.style.display !== 'none';
+          if (isVisible && !iframeLoaded) {
+            var iframe = document.createElement('iframe');
+            iframe.width = '560';
+            iframe.height = '315';
+            iframe.src = 'https://www.youtube.com/embed/' + videoId + '?autoplay=1&mute=1&rel=0';
+            iframe.title = 'YouTube video player';
+            iframe.frameBorder = '0';
+            iframe.allow = 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share';
+            iframe.referrerPolicy = 'strict-origin-when-cross-origin';
+            iframe.allowFullscreen = true;
+            videoContainer.appendChild(iframe);
+            iframeLoaded = true;
+          }
+        }
+      });
+    });
+    observer.observe(videoModal, { attributes: true });
+  }
+})();
+</script>
+<section class="hero-section " style="padding-top: 5vh">
     <div class="lottie">
       <div class="lottie-hero" data-w-id="47cac669-4e2e-8e9f-d907-c742248ea198" data-animation-type="lottie" data-src="/wp-content/themes/allmyhr-mmxxv/documents/64b6c16282020c34caa0f1e1_lottie-third.lottie" data-loop="1" data-direction="1" data-autoplay="1" data-is-ix2-target="0" data-renderer="svg" data-default-duration="15.958333333333334" data-duration="0"></div>
       <div class="overlay-linear"></div>
       <div class="overlay-radial"></div>
     </div>
     <div class="container h-content">
-      <h1 data-w-id="5ff76c14-9535-a666-9770-4405304ca541" style="opacity:0"><span class="highlight txt">Streamline </span>Your Company’s HR</h1>
-      <div data-w-id="3093b0c5-b16f-c89b-2b6d-7abac541acfd" style="opacity:0" class="w-layout-hflex phrases hero-text">
-        <a href="#" class="video-thumb w-inline-block">
+        <div class="hero-stars">
+        <div class="stars">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="#FFD700" xmlns="http://www.w3.org/2000/svg"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87L18.18 22 12 18.27 5.82 22 7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="#FFD700" xmlns="http://www.w3.org/2000/svg"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87L18.18 22 12 18.27 5.82 22 7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="#FFD700" xmlns="http://www.w3.org/2000/svg"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87L18.18 22 12 18.27 5.82 22 7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="#FFD700" xmlns="http://www.w3.org/2000/svg"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87L18.18 22 12 18.27 5.82 22 7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="#FFD700" xmlns="http://www.w3.org/2000/svg"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87L18.18 22 12 18.27 5.82 22 7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+        </div>
+        <span>Trusted by 1,000+ small businesses</span>
+      </div>
+    <h1 data-w-id="5ff76c14-9535-a666-9770-4405304ca541" style="opacity:0"><span class="highlight txt">Your Complete </span>HR Compliance & Support System</h1>
+     <?php get_template_part( 'template-parts/content', 'ask-aries' ); ?>
+    <h2>Powered by: <span class="highlight txt">ARIES™, AI DIGITAL ASSISTANT</span> </h2>
+   
+                            <p data-w-id="280c230b-7b91-4e93-726f-9132bd035b07" style="opacity:0; padding-top:30px;">Stay compliant, solve employee issues fast, and get unlimited HR expert support — backed by AI‑driven insights and real HR professionals.</p>
+                                 <div class="start">
+                                 <a href="/create-account/"class="btn w-button">Get Instant Access</a>
+        <a href="https://calendly.com/sjacksonallmyhr/10-minute-walkthrough?month=2025-04" class="btn wht w-button">Schedule A Demo</a>
+
+      <div id="w-node-_550baef3-6bff-bff4-8e38-614c2cbe1a39-2cbe1a38" class="w-layout-layout wf-layout-layout">
+        <div class="w-layout-cell hero-headline">
+
+
+          </div>
+        </div>
+
+</div>
+
+    
+
+      <a href="#home-value" class="learn-more">
+        <span>Learn More</span>
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M6 9L12 15L18 9" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </a>
+
+    </div>
+
+</section>
+<section class="home-value" id="home-value">
+      <div class="container h-content">
+        <div class="value-icons">
+          <div class="value-icon">
+            <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+            <span>HR Experts</span>
+          </div>
+          <div class="value-icon">
+            <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>
+            <span>Compliance Tools</span>
+          </div>
+          <div class="value-icon">
+            <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a4 4 0 0 1 4 4v1a1 1 0 0 1-1 1H9a1 1 0 0 1-1-1V6a4 4 0 0 1 4-4z"/><path d="M9 8v1a3 3 0 0 0 6 0V8"/><rect x="3" y="13" width="18" height="8" rx="2"/><path d="M7 17h2"/><path d="M15 17h2"/><path d="M12 13v8"/></svg>
+            <span>AI-Powered</span>
+          </div>
+        </div>
+        <h2 data-w-id="5ff76c14-9535-a666-9770-4405304ca541" style="opacity:0">HR Confidence Starts Here</h2>
+        <p data-w-id="5ff76c14-9535-a666-9770-4405304ca541" style="opacity:0">AllMyHR combines certified HR experts, smart compliance tools, and ARIES AI / HR AI to help small businesses stay compliant, reduce risk, and handle HR challenges with clarity and confidence.</p>
+        <a href="/join-now/" class="btn wht w-button">Join AllMyHR Today</a>
+            </div>
+</section>
+
+
+<section class="bg-dkblue" style="margin-top: -60px; padding: 5vh 0;">
+  <div class="container features">
+    <div data-w-id="c0ffce76-e5dd-c509-ab7e-9285bfa38631" class="container h-content">
+    <h2 data-w-id="9d2d1334-04f7-1727-2bde-ab46a553ce11" class="center"><span class="highlight txt">What Do You Need Help With Today?</span><br>Choose your biggest HR challenge:</h2>
+      </div>
+      <div id="w-node-_728995ad-174f-d62c-3c5c-78d5b987a086-b987a086" class="w-layout-layout wf-layout-layout">
+      
+<div class="w-layout-cell">
+  <a data-w-id="728995ad-174f-d62c-3c5c-78d5b987a088" href="/create-account/?help=compliance" class="card products w-inline-block">
+    <div class="w-layout-hflex phrases">
+      <img loading="lazy" src="https://allmyhr.com/wp-content/uploads/2024/07/online-book-22-150x150.jpg" alt="AllMyHR's LMS" class="headlineicon">
+      <h3>Compliance & Risk Management</h3>
+    </div>
+    <div class="crumb">Stay ahead of every federal, state, and local change with ARIES AI / HR AI monitoring.</div>
+  </a>
+</div>
+
+<div class="w-layout-cell">
+  <a data-w-id="728995ad-174f-d62c-3c5c-78d5b987a088" href="/create-account/?help=employee-issues" class="card products w-inline-block">
+    <div class="w-layout-hflex phrases">
+      <img loading="lazy" src="https://allmyhr.com/wp-content/uploads/2023/05/allmyhr-AI-HR-Employee-Harassment-Training-150x150.jpg" alt="Employee Handbook Builder" class="headlineicon">
+      <h3>Employee Issues & Tough Situations</h3>
+    </div>
+    <div class="crumb">Get step‑by‑step guidance from HR experts and AI‑powered recommendations.</div>
+  </a>
+</div>
+
+<div class="w-layout-cell">
+  <a data-w-id="728995ad-174f-d62c-3c5c-78d5b987a088" href="/create-account/?help=handbooks" class="card products w-inline-block">
+    <div class="w-layout-hflex phrases">
+      <img loading="lazy" src="https://allmyhr.com/wp-content/uploads/2019/03/allmyhr-living-handbook-product-image-150x150.jpg" alt="Employee Handbook" class="headlineicon">
+      <h3>Handbooks & Policies</h3>
+    </div>
+    <div class="crumb">Build compliant, state‑specific handbooks in minutes..</div>
+  </a>
+</div>
+
+<div class="w-layout-cell">
+  <a data-w-id="728995ad-174f-d62c-3c5c-78d5b987a088" href="/create-account/?help=training" class="card products w-inline-block">
+    <div class="w-layout-hflex phrases">
+      <img loading="lazy" src="https://allmyhr.com/wp-content/uploads/2019/02/HR-Hotline-on-Call-2-150x150.jpg" alt="Purchase Wrap Document" class="headlineicon">
+      <h3>Training & Safety</h3>
+    </div>
+    <div class="crumb">Train your team with 300+ ready‑to‑use courses.</div>
+  </a>
+</div>
+
+<div class="w-layout-cell">
+  <a data-w-id="728995ad-174f-d62c-3c5c-78d5b987a088" href="/create-account/?help=hr-tools" class="card products w-inline-block">
+    <div class="w-layout-hflex phrases">
+      <img loading="lazy" src="https://allmyhr.com/wp-content/uploads/2019/02/hr-forms-150x150.jpg" alt="Purchase POP Plan Documents" class="headlineicon">
+      <h3>HR Tools, Templates & Resourcess</h3>
+    </div>
+    <div class="crumb">Access every form, checklist, and toolkit you need.</div>
+  </a>
+</div>
+
+<div class="w-layout-cell">
+  <a data-w-id="728995ad-174f-d62c-3c5c-78d5b987a088" href="/create-account/?help=memberships" class="card products w-inline-block">
+    <div class="w-layout-hflex phrases">
+      <img loading="lazy" src="https://allmyhr.com/wp-content/uploads/2025/12/allmyhr-professional-membership-featured--150x150.png" alt="Purchase Wrap Document" class="headlineicon">
+      <h3>Professional Memberships</h3>
+    </div>
+    <div class="crumb">Your most in-depth, cost-effective support network.</div>
+  </a>
+</div>
+
+      
+      </div>
+      <div class="bg-jumbo highlight blu txt">
+        <div><strong>Start Here</strong></div>
+      </div>
+    </div>
+        
+            </section>     
+            <section class="content-section bg-dkblue" id="benefits">
+<div id="faq" class="container">
+  <div data-w-id="c0ffce76-e5dd-c509-ab7e-9285bfa38631" class="w-layout-hflex"><img src="/wp-content/themes/allmyhr-mmxxv/images/allmyhr-certification.svg" loading="lazy" alt="" height="55" class="footer-icons"><img src="/wp-content/themes/allmyhr-mmxxv/images/allmyhr-gdpr.svg" loading="lazy" alt="" height="55" class="footer-icons"><img src="/wp-content/themes/allmyhr-mmxxv/images/allmyhr-hippa.svg" loading="lazy" alt="" height="55" class="footer-icons"></div>
+      <div data-w-id="c0ffce76-e5dd-c509-ab7e-9285bfa38631" class="container h-content center">
+        <h2 class="center">Comprehensive HR Solutions From <span class="highlight txt">Your Dedicated Team.</span></h2>
+        <p>Get expert HR guidance from a dedicated team that understands your business, ensures compliance, and helps you manage your workforce with confidence.</p>
+        <div class="w-layout-hflex landing-flex-hero">
+              <div class="w-layout-hflex phrases">
+              <div class="fa _20-10-margin"></div>
+              <h4><strong>30 Day Money Back Guarantee</strong></h4>
+              </div>
+              <div class="w-layout-hflex phrases">
+              <div class="fa _20-10-margin"></div>
+              <h4><strong>No Long Term Contracts </strong></h4>
+              </div>
+            </div>
+</div>
+
+ <div data-w-id="550baef3-6bff-bff4-8e38-614c2cbe1a38" class="container">
+      <div id="w-node-_550baef3-6bff-bff4-8e38-614c2cbe1a39-2cbe1a38" class="w-layout-layout wf-layout-layout">
+        <div class="w-layout-cell">
+          <div class="screens"><img src="/wp-content/themes/allmyhr-mmxxv/images/all-my-hr-portal-screen-5.svg" loading="lazy" alt="" class="screen _1"><img src="/wp-content/themes/allmyhr-mmxxv/images/all-my-hr-portal-screen-7.svg" loading="lazy" alt="" class="screen _4"><img src="/wp-content/themes/allmyhr-mmxxv/images/all-my-hr-portal-screen-6.svg" loading="lazy" alt="" class="screen _2"><img src="/wp-content/themes/allmyhr-mmxxv/images/all-my-hr-portal-screen-8.svg" loading="lazy" alt="" class="screen _3"></div>
+        </div>
+        <div class="w-layout-cell">
+         <div class="checklist-col">
+          <div class="checklist-item">
+            <div>
+              <strong>Unlimited HR Experts</strong>
+              <p>Real answers from certified HR professionals — whenever you need them.</p>
+            </div>
+            <span class="check-icon">✓</span>
+          </div>
+          <div class="checklist-item">
+            <div>
+              <strong>ARIES AI / HR AI Compliance Intelligence</strong>
+              <p>AI‑powered insights that scan laws, regulations, and HR best practices to keep you ahead of risk.</p>
+            </div>
+            <span class="check-icon">✓</span>
+          </div>
+          <div class="checklist-item">
+            <div>
+              <strong>Handbook Builder</strong>
+              <p>Create a compliant, state‑specific handbook in minutes — automatically updated.</p>
+            </div>
+            <span class="check-icon">✓</span>
+          </div>
+          <div class="checklist-item">
+            <div>
+              <strong>Training &amp; LMS</strong>
+              <p>300+ courses covering compliance, safety, leadership, and more.</p>
+            </div>
+            <span class="check-icon">✓</span>
+          </div>
+          <div class="checklist-item">
+            <div>
+              <strong>Compliance Alerts</strong>
+              <p>Instant updates on new laws, deadlines, and regulatory changes.</p>
+            </div>
+            <span class="check-icon">✓</span>
+          </div>
+          <div class="checklist-item">
+            <div>
+              <strong>HR Templates &amp; Toolkits</strong>
+              <p>Every document you need, ready to use.</p>
+            </div>
+            <span class="check-icon">✓</span>
+          </div>
+        </div>
+      </div>
+    </div>
+</div>
+</div>
+</section>
+<section class="content-section bg-dkblue bg-gradientblack">
+    <?php get_template_part('template-parts/content', 'testimonials'); ?>
+  	<?php get_template_part('template-parts/content', 'trusted'); ?>
+            </section>  
+              <section class="content-section bg-white">
+                      	<?php get_template_part('template-parts/content', 'whynow'); ?>
+</section>
+<section class="" id="home-video">
+      <div class="container h-content center">
+                      <h2>See How AllMyHR + ARIES AI / HR AI Works in 60 Seconds</h2>
+          <div id="w-node-_550baef3-6bff-bff4-8e38-614c2cbe1a39-2cbe1a38" class="w-layout-layout wf-layout-layout">
+            <div class="w-layout-cell hero-video">
+                  <a href="#" class="video-thumb w-inline-block">
           <div data-w-id="719366e5-82b9-18de-3851-f5d8d28718c2" class="lottie-animation" data-animation-type="lottie" data-src="/wp-content/themes/allmyhr-mmxxv/documents/Animation---1740613569953.json" data-loop="1" data-direction="1" data-autoplay="1" data-is-ix2-target="0" data-renderer="svg" data-default-duration="2" data-duration="0"></div>
         </a>
-        <p data-w-id="280c230b-7b91-4e93-726f-9132bd035b07" style="opacity:0; padding-top:30px;">The Most Cost-Effective HR Solutions for Small &amp; Mid-Sized Employers. </p>
-      </div>
-      <div>
-        <h2>Complete HR Confidence With One Simple Plan</h2>
-        <h3>All Included In Your AllMyHR Membership</h3>
-      <p class="crumbs highlight blu txt" style="margin-bottom:0px;">No Long Term Contracts / 30 Day Money Back Guarantee</p>
-      <div id="w-node-_78bab3d5-6256-b993-9747-3ffbacfcaf8e-fbd4393f" class="w-layout-layout toggles wf-layout-layout">
-        <div class="w-layout-cell">
-          <div data-w-id="78bab3d5-6256-b993-9747-3ffbacfcaf91" class="faq-card">
-            <div class="faq-question">
-              <div class="w-layout-hflex phrases">
-                <div class="fa highlight blu txt"></div>
-                <h4>Save Time and Stay Fully Compliant</h4>
-              </div>
-              <div data-is-ix2-target="1" class="faq-arrow" data-w-id="78bab3d5-6256-b993-9747-3ffbacfcaf95" data-animation-type="lottie" data-src="/wp-content/themes/allmyhr-mmxxv/documents/Animation---1740434329510.json" data-loop="1" data-direction="1" data-autoplay="0" data-renderer="svg" data-default-duration="0" data-duration="1"></div>
-            </div>
-            <div style="height:0PX" class="faq-answer">
-              <p class="faq-paragraph">Your Living Handbook can be created in less than an hour and kept compliant with a click of your mouse. <a href="/contact-allmyhr/" target="_blank" class="highlight blu txt">Learn More.</a>
-              </p>
-            </div>
-          </div>
-          <div data-w-id="d9c079cd-7fab-52f2-34d3-752a612cbb7a" class="faq-card">
-            <div class="faq-question">
-              <div class="w-layout-hflex phrases">
-                <div class="fa highlight blu txt"></div>
-                <h4>Develop Talent Internally</h4>
-              </div>
-              <div data-is-ix2-target="1" class="faq-arrow" data-w-id="d9c079cd-7fab-52f2-34d3-752a612cbb81" data-animation-type="lottie" data-src="/wp-content/themes/allmyhr-mmxxv/documents/Animation---1740434329510.json" data-loop="1" data-direction="1" data-autoplay="0" data-renderer="svg" data-default-duration="0" data-duration="1"></div>
-            </div>
-            <div style="height:0PX" class="faq-answer">
-              <p class="faq-paragraph">LMS designed for efficiency, >350 courses, certificates and easy tracking. <a href="/contact-allmyhr/" target="_blank" class="highlight blu txt">Learn More.</a>
-              </p>
-            </div>
-          </div>
-          <div data-w-id="c6f4563f-5f0d-1b6f-a210-276101866095" class="faq-card">
-            <div class="faq-question">
-              <div class="w-layout-hflex phrases">
-                <div class="fa highlight blu txt"></div>
-                <h4>Accurate Answers At Your Fingertips</h4>
-              </div>
-              <div data-is-ix2-target="1" class="faq-arrow" data-w-id="c6f4563f-5f0d-1b6f-a210-27610186609c" data-animation-type="lottie" data-src="/wp-content/themes/allmyhr-mmxxv/documents/Animation---1740434329510.json" data-loop="1" data-direction="1" data-autoplay="0" data-renderer="svg" data-default-duration="0" data-duration="1"></div>
-            </div>
-            <div style="height:0PX" class="faq-answer">
-              <p class="faq-paragraph">Your Private Compliance Portal is your new trusted source.  <a href="/contact-allmyhr/" target="_blank" class="highlight blu txt">Learn More.</a>
-              </p>
-            </div>
-          </div>
         </div>
-        <div class="w-layout-cell">
-          <div data-w-id="09d921a1-d2f5-0ad4-f301-97c581119e18" class="faq-card">
-            <div class="faq-question">
-              <div class="w-layout-hflex phrases">
-                <div class="fa highlight blu txt"></div>
-                <h4>No More HR Guesswork</h4>
-              </div>
-              <div data-is-ix2-target="1" class="faq-arrow" data-w-id="09d921a1-d2f5-0ad4-f301-97c581119e1f" data-animation-type="lottie" data-src="/wp-content/themes/allmyhr-mmxxv/documents/Animation---1740434329510.json" data-loop="1" data-direction="1" data-autoplay="0" data-renderer="svg" data-default-duration="0" data-duration="1"></div>
+            <div class="w-layout-cell hero-headline">
+                        <p data-w-id="280c230b-7b91-4e93-726f-9132bd035b07" style="opacity:0; padding-top:30px;">A quick walkthrough of how small businesses stay compliant and confident. ARIES uses conversational dialogue to deliver reliable answers and resources to your HR and compliance inquiries by tapping into our vast database of federal and state laws, Q&As, and compliance resources created by HR experts.</p>
             </div>
-            <div style="height:0PX" class="faq-answer">
-              <p class="faq-paragraph">Unlimited Phone, email or chat with your team of Accredited HR Advisors. <a href="/contact-allmyhr/" target="_blank" class="highlight blu txt">Learn More.</a>
-              </p>
-            </div>
-          </div>
-          <div data-w-id="0e24b523-12e8-000b-2a3c-2a5f80b36703" class="faq-card">
-            <div class="faq-question">
-              <div class="w-layout-hflex phrases">
-                <div class="fa highlight blu txt"></div>
-                <h4>Access Critical HR Info Instantly</h4>
-              </div>
-              <div data-is-ix2-target="1" class="faq-arrow" data-w-id="0e24b523-12e8-000b-2a3c-2a5f80b3670a" data-animation-type="lottie" data-src="/wp-content/themes/allmyhr-mmxxv/documents/Animation---1740434329510.json" data-loop="1" data-direction="1" data-autoplay="0" data-renderer="svg" data-default-duration="0" data-duration="1"></div>
-            </div>
-            <div style="height:0PX" class="faq-answer">
-              <p class="faq-paragraph">Find policies, forms, templates, best-practice advice in seconds. <a href="/contact-allmyhr/" target="_blank" class="highlight blu txt">Learn More.</a>
-              </p>
-            </div>
-          </div>
-          <div data-w-id="d8bb6ffe-a56b-1c2f-1376-3e3772258146" class="faq-card">
-            <div class="faq-question">
-              <div class="w-layout-hflex phrases">
-                <div class="fa highlight blu txt"></div>
-                <h4>Maximize Your Time</h4>
-              </div>
-              <div data-is-ix2-target="1" class="faq-arrow" data-w-id="d8bb6ffe-a56b-1c2f-1376-3e377225814d" data-animation-type="lottie" data-src="/wp-content/themes/allmyhr-mmxxv/documents/Animation---1740434329510.json" data-loop="1" data-direction="1" data-autoplay="0" data-renderer="svg" data-default-duration="0" data-duration="1"></div>
-            </div>
-            <div style="height:0PX" class="faq-answer">
-              <p class="faq-paragraph">Instantly find all your favorite services on your personalized Dashboard. No More searching. <a href="/contact-allmyhr/" target="_blank" class="highlight blu txt">Learn More.</a>
-              </p>
-            </div>
-          </div>
-        </div>
-      </div>
-      <hr>
-              <h2 class="highlight txt">Instant Pricing—Start Saving on HR Costs Immediately.</h2>
-                <p>Instantly view pricing options so you can choose the perfect plan for your team’s needs and budget.</p>
-      <div class="toggle-btn w-tab-menu">
+            
+</div>
+  </section>
+  <section class="content-section bg-dkblue">
+<div class="container h-content center">
+    <h2>Simple, Affordable Pricing</h2>
+    <p>Everything you need to stay compliant — for less than the cost of one HR mistake.</p>
+</div>
+<div class="container service">
+  
+      <div style="-webkit-transform:translate3d(0, 0, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-moz-transform:translate3d(0, 0, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-ms-transform:translate3d(0, 0, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);transform:translate3d(0, 0, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0)" class="bg-glow highlight"></div>
+      <div class="bg-highlight highlight"></div>
+      <div data-current="Monthly" data-easing="ease" data-duration-in="300" data-duration-out="100" class="pricing-tabs w-tabs">
+        <div class="slider-card plans w-tab-content">
+          <div data-w-tab="Monthly" class="w-tab-pane w--tab-active">
+          <div data-w-id="01359f47-5257-5e6d-ef23-984a4434e930" class="card lite w-inline-block"><div class="w-layout-hflex phrases hr"><a class="card-tab-title highlight txt" href="/services/allmyhr-monthly-subscription/"><img loading="lazy" src="/wp-content/themes/allmyhr-mmxxv/images/allmyhr-logo.svg" alt="" class="headlineicon"><h2>AllMyHR – Complete Subscription</h2></a><h3 class="fa move highlight txt" style="transform: translate3d(0px, 0px, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg); transform-style: preserve-3d; opacity: 0;">➜</h3></div><div class="crumb"><p>AllMyHR provides businesses with a complete HR compliance and management solution, combining expert guidance, up-to-date labor law resources, and essential HR tools in one platform. It helps organizations streamline HR processes, reduce compliance risks, and stay informed with the latest regulatory updates.</p></div><div class="hr"><div class="w-layout-hflex bullet"><div class="crumb"><span class="fa highlight blu txt"></span></div><h4 class="crumb"><b>All-in-One HR Management Platform</b> – Streamline employee management, policies, and documentation with a centralized, user-friendly system.</h4></div><div class="w-layout-hflex bullet"><div class="crumb"><span class="fa highlight blu txt"></span></div><h4 class="crumb"><b>Comprehensive HR Compliance &amp; Support</b> – Access expert guidance, labor law updates, and compliance tools to mitigate risks and ensure regulatory adherence.</h4></div><div class="w-layout-hflex bullet"><div class="crumb"><span class="fa highlight blu txt"></span></div><h4 class="crumb"><b>Continuous Updates &amp; Expert Insights</b> – Stay ahead of HR regulations with real-time updates, training resources, and expert-backed insights.</h4></div></div></div>
 
+          <div class="toggle-btn w-tab-menu">
           <a data-w-tab="Monthly" class="price-tab w-inline-block w-tab-link w--current">
             <div class="tab-text simple-nav-link">Monthly</div>
             <div class="toggle-contain w-clearfix">
@@ -154,40 +327,28 @@ get_header();
             <div class="tab-text simple-nav-link">Annually</div>
           </a>
         </div>
-        <div>
-              <div class="number-input-container center" style="display: flex;">
+        <div class="cardpricing">
+        <div class="number-input-container center" style="display: flex;">
               <!--<label for="user_number" class="crumb">Instant Pricing:</label>-->
               <input type="number" id="user_number" name="user_number" placeholder="Enter # of Employees for Instant Pricing" min="1" max="500">
               </div>
-              <div id="price-message"></div> 
+              <div id="price-message"></div>
               <!-- pricing frequency toggle -->
-        </div>
-        
-      </div>
-      <div class="spaced">
+        <div class="spaced">
       <a href="/services/allmyhr-monthly-subscription/" id="picker" class="btn w-button">Sign Up Now</a>
-        <a href="https://calendly.com/sjacksonallmyhr/10-minute-walkthrough?month=2025-04" class="btn clear w-button">Schedule A Demo</a>
-        <a href="https://calendly.com/sjacksonallmyhr/10-minute-walkthrough?month=2025-04" class="btn wht w-button">Schedule A Call</a>
       </div>
-             <hr>
+          </div>
+        </div>
+      </div>
+    </div> <!-- container service -->
+</section>
+<section class="content-section bg-dkblue">
+    <div class="container h-content center">
+    <h2>Need HR Help Right Now?</h2>
+    <p>Talk to an HR expert and get answers fast.</p>
+            <a href="https://calendly.com/sjacksonallmyhr/10-minute-walkthrough?month=2025-04" class="btn w-button">Get Support</a>
     </div>
-	<?php get_template_part('template-parts/content', 'trusted'); ?>
-  </section>
-  	<section class="content-section bg-dkblue">
-    <?php get_template_part('template-parts/content', 'benefits-jumbo'); ?>
-    <?php get_template_part('template-parts/content', 'build'); ?>
-
-  </section>
-  <section class="content-section bg-dkblue bg-gradientblack">
-    <?php get_template_part('template-parts/content', 'benefits-icons'); ?>
-    <?php get_template_part('template-parts/content', 'benefits-dashboard'); ?>
-		<?php get_template_part('template-parts/content', 'testimonials'); ?>
-  </section>
-  <section class="content-section bg-white">
-	<?php get_template_part('template-parts/content', 'faqs'); ?>
-	<?php get_template_part('template-parts/content', 'quoteform'); ?>
-  </section>
-  <script>
+<script>
 // Pricing toggle and dynamic link script with annual savings
 
 document.addEventListener('DOMContentLoaded', function() {
@@ -312,8 +473,5 @@ document.addEventListener('DOMContentLoaded', function() {
   userNumberInput.dispatchEvent(new Event('input'));
 });
 </script>
-
-
 <?php
-/*get_sidebar();*/
 get_footer();

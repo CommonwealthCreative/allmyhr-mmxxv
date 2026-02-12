@@ -198,6 +198,8 @@ img {
 /* Forms
 	 ========================================================================== */
 
+
+	 
 .start.alt .gform_fields{border: 1px solid #0879f8;
     border-radius: 8px; padding: 30px 5px; background: #fff;    }
 .start .gform_fields { margin: auto;
@@ -656,6 +658,175 @@ textarea {
 .hero-headline {text-align: left;}
 .hero-video {justify-content: center; align-items: center;}
 
+.learn-more {
+	display: inline-flex;
+	flex-direction: column;
+	align-items: center;
+	gap: 4px;
+	margin-top: 32px;
+	color: #fff;
+	text-decoration: none;
+	font-size: 14px;
+	letter-spacing: 1px;
+	text-transform: uppercase;
+	opacity: .8;
+	transition: opacity .3s ease;
+}
+.learn-more:hover {
+	opacity: 1;
+	color: #fff;
+}
+.learn-more svg {
+	animation: bounceArrow 2s ease infinite;
+}
+@keyframes bounceArrow {
+	0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+	40% { transform: translateY(8px); }
+	60% { transform: translateY(4px); }
+}
+
+.hero-stars {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	gap: 10px;
+	margin-top: 24px;
+	color: rgba(255, 255, 255, .85);
+	font-size: 14px;
+}
+.hero-stars .stars {
+	display: flex;
+	gap: 2px;
+}
+
+#home-video {
+	min-height: 100vh;
+	background: url('images/all-my-hr-home-video.jpg') center / cover no-repeat fixed;
+	display: flex;
+	align-items: center;
+	color: #fff;
+}
+#home-video h2 {
+	font-size: 200%;
+}
+.home-value {
+	min-height: 100vh;
+	background: url('images/all-my-hr-home-hero-cta.jpg') center / cover no-repeat fixed;
+	display: flex;
+	align-items: center;
+}
+.home-value .container {
+	text-align: left;
+	color: #fff;
+	font-size: 125%;
+}
+.home-value .container h2,
+.home-value .container p {
+	max-width: 50%;
+}
+.value-icons {
+	display: flex;
+	gap: 40px;
+	margin-bottom: 24px;
+}
+.value-icon {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	gap: 8px;
+	color: rgba(255, 255, 255, .9);
+	font-size: 13px;
+	text-transform: uppercase;
+	letter-spacing: 1px;
+}
+
+/* Benefits Checklist */
+.benefits-checklist .screens .screen {
+	will-change: transform;
+	animation-duration: 4s;
+	animation-timing-function: ease-in-out;
+	animation-iteration-count: infinite;
+	animation-direction: alternate;
+}
+.benefits-checklist .screen._1 {
+	animation-name: floatScreen1;
+}
+.benefits-checklist .screen._2 {
+	animation-name: floatScreen2;
+}
+.benefits-checklist .screen._3 {
+	animation-name: floatScreen3;
+}
+.benefits-checklist .screen._4 {
+	animation-name: floatScreen4;
+}
+@keyframes floatScreen1 {
+	0% { transform: translate3d(0, 0, 0); }
+	100% { transform: translate3d(20px, -20px, 0); }
+}
+@keyframes floatScreen2 {
+	0% { transform: translate3d(0, 0, 0); }
+	100% { transform: translate3d(20px, 20px, 0); }
+}
+@keyframes floatScreen3 {
+	0% { transform: translate3d(0, 0, 0); }
+	100% { transform: translate3d(-20px, 20px, 0); }
+}
+@keyframes floatScreen4 {
+	0% { transform: translate3d(0, 0, 0); }
+	100% { transform: translate3d(-20px, -20px, 0); }
+}
+.benefits-checklist {
+	display: flex;
+	gap: 40px;
+	margin-top: 40px;
+}
+.checklist-col {
+	flex: 1;
+}
+.checklist-item {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	padding: 16px 0;
+	border-bottom: 1px solid #e0e0e0;
+}
+.checklist-item:first-child {
+	border-top: 1px solid #e0e0e0;
+}
+.checklist-item strong {
+	font-size: 15px;
+}
+#benefits {
+	color: #fff;
+}
+#benefits .w-layout-hflex {
+	justify-content: center;
+	gap: 16px;
+	margin-bottom: 24px;
+}
+#benefits .w-layout-hflex .footer-icons {
+	height: 55px;
+	width: auto;
+}
+#benefits .checklist-item {
+	border-bottom-color: rgba(255, 255, 255, .2);
+}
+#benefits .checklist-item:first-child {
+	border-top-color: rgba(255, 255, 255, .2);
+}
+.checklist-item p {
+	margin: 4px 0 0;
+	font-size: 13px;
+	color: rgba(255, 255, 255, .7);
+	max-width: 100%;
+}
+.check-icon {
+	font-size: 24px;
+	color: #22c55e;
+	flex-shrink: 0;
+	margin-left: 16px;
+}
 
 /* Navigation
 --------------------------------------------- */
@@ -1280,6 +1451,16 @@ a:visited {
 	
 	.hero-headline {text-align: center;}
 
+	.home-value .container h2,
+	.home-value .container p {
+		max-width: 100%;
+	}
+
+	.benefits-checklist {
+		flex-direction: column;
+		gap: 0;
+	}
+
 	.mo-openid-app-icons {
 		display: inline!important;
 	}
@@ -1393,6 +1574,9 @@ a:visited {
 	color: #fff !important;
 }
 
+.start-form {max-width: 575px; margin-top: -70px;}
+#gform_submit_button_7, .gform_submit_button_12 {width: 100%; margin: 0px!important; padding: 13px!important;}
+
 /* FAQ Arrow CSS Animation (FR-7) - Replaces Lottie */
 .faq-arrow-css {
 	display: inline-block;
@@ -1414,6 +1598,18 @@ a:visited {
 	cursor: pointer;
 }
 
+/* Static cards override for home page */
+.toggles .faq-answer {
+	height: auto !important;
+	overflow: visible !important;
+}
+.toggles .faq-arrow-css {
+	display: none;
+}
+.toggles .faq-question {
+	cursor: default;
+}
+
 /* Buy Now Button Styles (FR-9) */
 .btn-buy-now {
 	display: inline-block;
@@ -1430,6 +1626,7 @@ a:visited {
 	display: flex;
 	flex-direction: column;
 	height: 100%;
+	min-height: 0;
 }
 
 .card.products .card-link {
@@ -1446,14 +1643,67 @@ a:visited {
 # Ask AllMyHR - AI-powered HR Q&A Chatbox
 --------------------------------------------------------------*/
 
+/* Ask Aries Wrapper with Glow */
+.ask-aries-wrapper {
+	position: relative;
+	max-width: 800px;
+	margin: 2rem auto;
+}
+
+.ask-aries-wrapper::before {
+	content: '';
+	position: absolute;
+	top: -6px;
+	left: -6px;
+	right: -6px;
+	bottom: -6px;
+	background: linear-gradient(135deg, #f7931e 0%, #ff6b35 20%, #e84a5f 45%, #8b5cf6 70%, #056ed0 100%);
+	border-radius: 18px;
+	z-index: 0;
+	filter: blur(10px);
+	opacity: 0.85;
+	transition: all 0.3s ease;
+}
+
+.ask-aries-wrapper:hover::before {
+	top: -10px;
+	left: -10px;
+	right: -10px;
+	bottom: -10px;
+	filter: blur(15px);
+	opacity: 0.95;
+}
+
+.ask-aries-wrapper .bg-glow.highlight,
+.ask-aries-wrapper .bg-highlight.highlight {
+	display: none;
+}
+
 /* Main Card Container */
 .ask-aries-card {
 	background: #fff;
 	border-radius: 12px;
 	box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
-	padding: 2rem;
-	max-width: 800px;
-	margin: 2rem auto;
+	padding: 2.5rem 2rem;
+	position: relative;
+	z-index: 1;
+}
+
+/* Ask Aries Submit Button - match theme buttons */
+#ask-aries-submit {
+	background-image: radial-gradient(circle at 0 0, #fbcf18 5%, #e24a41 55%, #007bff 95%);
+	color: #fff;
+	font-weight: 600;
+	border: none;
+	border-radius: 8px;
+	padding: 12px 24px;
+	cursor: pointer;
+	transition: all 0.3s ease;
+}
+
+#ask-aries-submit:hover {
+	transform: scale(1.02);
+	box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
 }
 
 /* Input Area */
@@ -1578,6 +1828,7 @@ a:visited {
 	background: #f8f9fa;
 	border-radius: 8px;
 	border-left: 4px solid #0879f8;
+	text-align: left;
 }
 
 .ask-aries-response-header {

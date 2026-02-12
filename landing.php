@@ -30,8 +30,9 @@ get_header();
 				endwhile; // End of the loop.
 				?>
 			<section class="content-section bg-dkblue bg-gradientblack">
-			<?php get_template_part('template-parts/content', 'trusted'); ?>
+
 		<?php get_template_part('template-parts/content', 'testimonials'); ?>
+					<?php get_template_part('template-parts/content', 'trusted'); ?>
   </section>
   <section class="content-section bg-white">
 	<?php get_template_part('template-parts/content', 'quoteform'); ?>
