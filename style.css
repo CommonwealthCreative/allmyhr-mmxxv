@@ -1950,3 +1950,259 @@ a:visited {
 		padding: 0.875rem;
 	}
 }
+
+/* Pricing Page (FR-pricing) */
+
+/* Horizontal Slider */
+.pricing-slider-wrapper {
+	position: relative;
+	width: 100vw;
+	left: 50%;
+	transform: translateX(-50%);
+	padding: 20px 0 30px;
+}
+
+.pricing-slider-track {
+	display: flex;
+	gap: 20px;
+	overflow-x: auto;
+	scroll-snap-type: x mandatory;
+	-webkit-overflow-scrolling: touch;
+	padding: 10px 60px;
+	scrollbar-width: none;
+}
+
+.pricing-slider-track::-webkit-scrollbar {
+	display: none;
+}
+
+.pricing-slider-track .pricing-tier-card {
+	flex: 0 0 260px;
+	width: 260px;
+	scroll-snap-align: center;
+}
+
+.pricing-slider-wrapper .pricing-slider-prev,
+.pricing-slider-wrapper .pricing-slider-next {
+	position: absolute;
+	top: 50%;
+	transform: translateY(-50%);
+	z-index: 2;
+	cursor: pointer;
+}
+
+.pricing-slider-wrapper .pricing-slider-prev {
+	left: 10px;
+}
+
+.pricing-slider-wrapper .pricing-slider-next {
+	right: 10px;
+}
+
+/* Pricing Cards */
+.pricing-tier-card {
+	text-align: center;
+	min-height: 280px;
+	justify-content: center;
+	align-items: center;
+	gap: 8px;
+	padding: 30px 20px;
+}
+
+.pricing-tier-card h4 {
+	margin-bottom: 5px;
+	font-size: 1.1rem;
+}
+
+.pricing-tier-card .pricing-price {
+	font-size: 2.5rem;
+	font-weight: 700;
+	line-height: 1.2;
+	color: #0879f8;
+}
+
+.pricing-tier-card .pricing-period {
+	font-size: 0.9rem;
+	opacity: 0.7;
+	margin-bottom: 4px;
+}
+
+.pricing-tier-card .pricing-setup {
+	font-size: 0.85rem;
+	opacity: 0.6;
+	margin-bottom: 8px;
+}
+
+.pricing-tier-card .pricing-save {
+	color: #4CAF50;
+	font-weight: 600;
+	font-size: 0.9rem;
+	margin-bottom: 8px;
+}
+
+.pricing-tier-card .pricing-annual {
+	display: none;
+}
+
+.pricing-tier-card .btn {
+	margin-top: 10px;
+	color: #fff !important;
+}
+
+/* Feature Checklist */
+.pricing-checklist-grid {
+	max-width: 900px;
+	margin: 40px auto 0;
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	column-gap: 40px;
+	row-gap: 0;
+}
+
+.checklist-item {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	padding: 16px 20px;
+	border-bottom: 1px solid #e0e0e0;
+	color: #252525;
+	font-size: 14px;
+}
+
+.checklist-item:nth-last-child(-n+2) {
+	border-bottom: none;
+}
+
+.check-icon {
+	font-size: 24px;
+	color: #4CAF50;
+	font-weight: 700;
+	flex-shrink: 0;
+	margin-left: 12px;
+}
+
+/* Value Stats */
+.content-section.bg-dkblue:has(.pricing-stats-row) {
+	padding-top: 80px;
+	padding-bottom: 80px;
+}
+
+.pricing-stats-row {
+	display: grid;
+	grid-template-columns: 1fr 1fr 1fr;
+	gap: 24px;
+	margin-top: 40px;
+}
+
+.pricing-stat-card {
+	background-color: #052260;
+	border: 1px solid #0879f8;
+	border-radius: 8px;
+	text-align: center;
+	padding: 30px 20px;
+	color: #fff;
+}
+
+.pricing-stat-card .phrases {
+	justify-content: center;
+}
+
+.pricing-stat-card h3 {
+	margin: 0;
+}
+
+.pricing-stat-card .crumb {
+	margin-top: 8px;
+}
+
+.pricing-stat-number {
+	font-size: 2.5rem;
+	font-weight: 700;
+	line-height: 1.2;
+}
+
+.pricing-stat-label {
+	font-size: 1rem;
+	margin-top: 8px;
+	opacity: 0.85;
+}
+
+.pricing-value-closing {
+	max-width: 700px;
+	margin: 30px auto 0;
+}
+
+/* FAQ */
+.pricing-faq .faq-card {
+	color: #252525;
+}
+
+.pricing-faq .faq-card:hover {
+	background-color: #f0f7ff;
+	color: #252525;
+}
+
+.content-section.bg-white:has(.pricing-faq) {
+	padding-top: 80px;
+	padding-bottom: 80px;
+}
+
+/* Final CTA */
+.pricing-final-cta {
+	background: url('images/all-my-hr-home-video.jpg') center / cover no-repeat fixed;
+	min-height: 50vh;
+	display: flex;
+	align-items: center;
+}
+
+/* Pricing Responsive */
+@media (max-width: 991px) {
+	.pricing-slider-track .pricing-tier-card {
+		flex: 0 0 230px;
+		width: 230px;
+	}
+
+	.pricing-tier-card .pricing-price {
+		font-size: 2rem;
+	}
+}
+
+@media (max-width: 768px) {
+	.pricing-checklist-grid {
+		grid-template-columns: 1fr;
+	}
+
+	.checklist-item:last-child {
+		border-bottom: none;
+	}
+
+	.pricing-stats-row {
+		grid-template-columns: 1fr;
+	}
+
+	.pricing-slider-track {
+		padding: 10px 50px;
+	}
+
+	.pricing-slider-track .pricing-tier-card {
+		flex: 0 0 220px;
+		width: 220px;
+		min-height: 260px;
+	}
+
+	.pricing-tier-card .pricing-price {
+		font-size: 1.75rem;
+	}
+
+	.pricing-stat-number {
+		font-size: 1.75rem;
+	}
+
+	.pricing-slider-wrapper .pricing-slider-prev {
+		left: 6px;
+	}
+
+	.pricing-slider-wrapper .pricing-slider-next {
+		right: 6px;
+	}
+}
